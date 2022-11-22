@@ -28,7 +28,9 @@ enum class EFactionLeftReason : uint8_t
 	EFactionLeftReason__Defeated   = 0,
 	EFactionLeftReason__Voted      = 1,
 	EFactionLeftReason__CrewDestroyed = 2,
-	EFactionLeftReason__EFactionLeftReason_MAX = 3
+	EFactionLeftReason__EnteredCrossLevelTunnelOfTheDamned = 3,
+	EFactionLeftReason__Migrated   = 4,
+	EFactionLeftReason__EFactionLeftReason_MAX = 5
 };
 
 

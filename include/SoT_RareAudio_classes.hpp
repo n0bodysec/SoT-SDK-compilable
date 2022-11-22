@@ -319,12 +319,13 @@ public:
 
 
 // Class RareAudio.TritonAcousticMap
-// 0x0038 (0x0060 - 0x0028)
+// 0x0040 (0x0068 - 0x0028)
 class UTritonAcousticMap : public UObject
 {
 public:
 	class FString                                      TritonMapFilename;                                        // 0x0028(0x0010) (Edit, ZeroConstructor)
-	unsigned char                                      UnknownData00[0x28];                                      // 0x0038(0x0028) MISSED OFFSET
+	float                                              CustomCacheRatio;                                         // 0x0038(0x0004) (Edit, ZeroConstructor, IsPlainOldData)
+	unsigned char                                      UnknownData00[0x2C];                                      // 0x003C(0x002C) MISSED OFFSET
 
 	static UClass* StaticClass()
 	{

@@ -184,15 +184,16 @@ public:
 
 
 // Class MysteriousNotes.PlayerMysteriousNoteComponent
-// 0x0188 (0x0250 - 0x00C8)
+// 0x0190 (0x0258 - 0x00C8)
 class UPlayerMysteriousNoteComponent : public UActorComponent
 {
 public:
 	unsigned char                                      UnknownData00[0x8];                                       // 0x00C8(0x0008) MISSED OFFSET
-	struct FClientNoteData                             NoteData;                                                 // 0x00D0(0x0018) (Net)
-	bool                                               BeenPossessed;                                            // 0x00E8(0x0001) (Net, ZeroConstructor, IsPlainOldData)
-	bool                                               CinematicPlayed;                                          // 0x00E9(0x0001) (ZeroConstructor, IsPlainOldData)
-	unsigned char                                      UnknownData01[0x166];                                     // 0x00EA(0x0166) MISSED OFFSET
+	bool                                               CinematicPlayed;                                          // 0x00D0(0x0001) (ZeroConstructor, IsPlainOldData)
+	unsigned char                                      UnknownData01[0xEF];                                      // 0x00D1(0x00EF) MISSED OFFSET
+	struct FClientNoteData                             NoteData;                                                 // 0x01C0(0x0018) (Net)
+	bool                                               BeenPossessed;                                            // 0x01D8(0x0001) (Net, ZeroConstructor, IsPlainOldData)
+	unsigned char                                      UnknownData02[0x7F];                                      // 0x01D9(0x007F) MISSED OFFSET
 
 	static UClass* StaticClass()
 	{

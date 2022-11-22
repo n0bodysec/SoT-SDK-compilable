@@ -563,8 +563,8 @@ struct FKrakenShipWrappingBehaviourHeavyAttackParams
 {
 	struct FWeightedProbabilityRangeOfRanges           AttackDuration;                                           // 0x0000(0x0030) (Edit, DisableEditOnInstance)
 	float                                              ChanceOfEnteringHeavyAttack;                              // 0x0030(0x0004) (Edit, ZeroConstructor, DisableEditOnInstance, IsPlainOldData)
-	/*struct FKnockBackInfo*/unsigned char                              ExteriorKnockbackParams[0x50];                                  // 0x0034(0x0050) (Edit, DisableEditOnInstance)
-	/*struct FKnockBackInfo*/unsigned char                              InteriorKnockbackParams[0x50];                                  // 0x0084(0x0050) (Edit, DisableEditOnInstance)
+	unsigned char                              ExteriorKnockbackParams[0x50];                                  // 0x0034(0x0050) (Edit, DisableEditOnInstance)
+	unsigned char                              InteriorKnockbackParams[0x50];                                  // 0x0084(0x0050) (Edit, DisableEditOnInstance)
 	unsigned char                                      UnknownData00[0x4];                                       // 0x00D4(0x0004) MISSED OFFSET
 };
 

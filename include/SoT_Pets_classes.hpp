@@ -527,6 +527,7 @@ public:
 };
 
 
+
 // Class Pets.PetCustomisationOverrideDataAsset
 // 0x0020 (0x0048 - 0x0028)
 class UPetCustomisationOverrideDataAsset : public UDataAsset
@@ -881,6 +882,7 @@ public:
 	}
 
 };
+
 
 
 // Class Pets.ReactStateMappingsDataAsset

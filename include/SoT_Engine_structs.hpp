@@ -4007,7 +4007,7 @@ struct FFloatDistribution
 };
 
 // ScriptStruct Engine.GPUSpriteEmitterInfo
-// 0x02A0
+// 0x02B0
 struct FGPUSpriteEmitterInfo
 {
 	class UParticleModuleRequired*                     RequiredModule;                                           // 0x0000(0x0008) (ZeroConstructor, IsPlainOldData)
@@ -4055,8 +4055,10 @@ struct FGPUSpriteEmitterInfo
 	unsigned char                                      bUseInheritedVelocityLocationEmitter : 1;                 // 0x0288(0x0001)
 	unsigned char                                      UnknownData04[0x3];                                       // 0x0289(0x0003) MISSED OFFSET
 	struct FVector2D                                   InheritedVelocityScaleLocationEmitter;                    // 0x028C(0x0008) (ZeroConstructor, IsPlainOldData)
-	unsigned char                                      bKillParticlesOnFFTWater : 1;                             // 0x0294(0x0001)
-	unsigned char                                      UnknownData05[0xB];                                       // 0x0295(0x000B) MISSED OFFSET
+	TEnumAsByte<EMissingParentParticlesBehaviour>      MissingParentParticlesBehaviour;                          // 0x0294(0x0001) (ZeroConstructor, IsPlainOldData)
+	unsigned char                                      UnknownData05[0x3];                                       // 0x0295(0x0003) MISSED OFFSET
+	unsigned char                                      bKillParticlesOnFFTWater : 1;                             // 0x0298(0x0001)
+	unsigned char                                      UnknownData06[0x17];                                      // 0x0299(0x0017) MISSED OFFSET
 };
 
 // ScriptStruct Engine.GPUSpriteResourceData

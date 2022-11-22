@@ -46,6 +46,21 @@ public:
 };
 
 
+// Class AthenaEngine.AthenaGameStateInterface
+// 0x0000 (0x0028 - 0x0028)
+class UAthenaGameStateInterface : public UInterface
+{
+public:
+
+	static UClass* StaticClass()
+	{
+		static auto ptr = UObject::FindObject<UClass>(_xor_("Class AthenaEngine.AthenaGameStateInterface"));
+		return ptr;
+	}
+
+};
+
+
 // Class AthenaEngine.BoxedRpcDispatcherInterface
 // 0x0000 (0x0028 - 0x0028)
 class UBoxedRpcDispatcherInterface : public UInterface

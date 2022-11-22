@@ -466,6 +466,15 @@ struct FAthenaAIControllerHealthCustomisation
 	float                                              MaxHealth;                                                // 0x0008(0x0004) (Edit, ZeroConstructor, IsPlainOldData)
 };
 
+// ScriptStruct AthenaAI.AthenaAIControllerFeatureToggledParams
+// 0x0020
+struct FAthenaAIControllerFeatureToggledParams
+{
+	struct FFeatureFlag                                Feature;                                                  // 0x0000(0x000C) (Edit, DisableEditOnInstance)
+	unsigned char                                      UnknownData00[0x4];                                       // 0x000C(0x0004) MISSED OFFSET
+	TArray<struct FAthenaAIControllerParamValue>       Params;                                                   // 0x0010(0x0010) (Edit, ZeroConstructor)
+};
+
 // ScriptStruct AthenaAI.AthenaAIControllerWeightedRangesParamValue
 // 0x0038
 struct FAthenaAIControllerWeightedRangesParamValue
@@ -487,6 +496,14 @@ struct FExperienceTracker
 {
 	class UTaleQuestTinySharkExperienceTracker*        Tracker;                                                  // 0x0000(0x0008) (ZeroConstructor, Transient, IsPlainOldData)
 	unsigned char                                      UnknownData00[0x8];                                       // 0x0008(0x0008) MISSED OFFSET
+};
+
+// ScriptStruct AthenaAI.TinySharkTrackedShipDistanceThresholdByFeature
+// 0x0010
+struct FTinySharkTrackedShipDistanceThresholdByFeature
+{
+	struct FFeatureFlag                                Feature;                                                  // 0x0000(0x000C) (Edit, DisableEditOnInstance)
+	float                                              TrackedShipDistanceThreshold;                             // 0x000C(0x0004) (Edit, ZeroConstructor, DisableEditOnInstance, IsPlainOldData)
 };
 // ScriptStruct AthenaAI.QuestVariableTinySharkExperience
 // 0x0000 (0x0030 - 0x0030)

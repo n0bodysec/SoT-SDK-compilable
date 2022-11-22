@@ -378,6 +378,42 @@ public:
 };
 
 
+// Class Tales.TaleQuestQueryableStateCanAllDataBeReadNPCDialogConditional
+// 0x0018 (0x0048 - 0x0030)
+class UTaleQuestQueryableStateCanAllDataBeReadNPCDialogConditional : public UNPCDialogConditional
+{
+public:
+	TArray<class UClass*>                              AllDataToCheck;                                           // 0x0030(0x0010) (Edit, ZeroConstructor)
+	bool                                               ExpectedValue;                                            // 0x0040(0x0001) (Edit, ZeroConstructor, IsPlainOldData)
+	unsigned char                                      UnknownData00[0x7];                                       // 0x0041(0x0007) MISSED OFFSET
+
+	static UClass* StaticClass()
+	{
+		static auto ptr = UObject::FindObject<UClass>(_xor_("Class Tales.TaleQuestQueryableStateCanAllDataBeReadNPCDialogConditional"));
+		return ptr;
+	}
+
+};
+
+
+// Class Tales.TaleQuestQueryableStateCanAnyDataBeReadNPCDialogConditional
+// 0x0018 (0x0048 - 0x0030)
+class UTaleQuestQueryableStateCanAnyDataBeReadNPCDialogConditional : public UNPCDialogConditional
+{
+public:
+	TArray<class UClass*>                              AllDataToCheck;                                           // 0x0030(0x0010) (Edit, ZeroConstructor)
+	bool                                               ExpectedValue;                                            // 0x0040(0x0001) (Edit, ZeroConstructor, IsPlainOldData)
+	unsigned char                                      UnknownData00[0x7];                                       // 0x0041(0x0007) MISSED OFFSET
+
+	static UClass* StaticClass()
+	{
+		static auto ptr = UObject::FindObject<UClass>(_xor_("Class Tales.TaleQuestQueryableStateCanAnyDataBeReadNPCDialogConditional"));
+		return ptr;
+	}
+
+};
+
+
 // Class Tales.TaleQuestQueryableStateReadAllValueBoolNPCDialogConditional
 // 0x0018 (0x0048 - 0x0030)
 class UTaleQuestQueryableStateReadAllValueBoolNPCDialogConditional : public UNPCDialogConditional
@@ -644,6 +680,10 @@ public:
 		return ptr;
 	}
 
+
+	void AddVectorParam(const struct FName& ParamName, const struct FVector& VectorParam);
+	void AddFloatParam(const struct FName& ParamName, float FloatParam);
+	void AddActorParam(const struct FName& ParamName, class AActor* ActorParam);
 };
 
 
@@ -664,6 +704,22 @@ public:
 
 	void PreventInteractionWithTargetActor(class AActor* Actor);
 	void EnableInteractionWithTargetActor(class AActor* Actor);
+};
+
+
+// Class Tales.TaleQuestLockGhostShipDoorService
+// 0x0008 (0x0068 - 0x0060)
+class UTaleQuestLockGhostShipDoorService : public UTaleQuestService
+{
+public:
+	class UTaleQuestLockGhostShipDoorServiceDesc*      Desc;                                                     // 0x0060(0x0008) (ZeroConstructor, IsPlainOldData)
+
+	static UClass* StaticClass()
+	{
+		static auto ptr = UObject::FindObject<UClass>(_xor_("Class Tales.TaleQuestLockGhostShipDoorService"));
+		return ptr;
+	}
+
 };
 
 
@@ -893,6 +949,21 @@ public:
 	static UClass* StaticClass()
 	{
 		static auto ptr = UObject::FindObject<UClass>(_xor_("Class Tales.TaleQuestInteractionPreventionServiceDesc"));
+		return ptr;
+	}
+
+};
+
+
+// Class Tales.TaleQuestLockGhostShipDoorServiceDesc
+// 0x0000 (0x0028 - 0x0028)
+class UTaleQuestLockGhostShipDoorServiceDesc : public UTaleQuestServiceDesc
+{
+public:
+
+	static UClass* StaticClass()
+	{
+		static auto ptr = UObject::FindObject<UClass>(_xor_("Class Tales.TaleQuestLockGhostShipDoorServiceDesc"));
 		return ptr;
 	}
 
@@ -1537,6 +1608,22 @@ public:
 };
 
 
+// Class Tales.TaleMigrationVolatileTaskStep
+// 0x0010 (0x00A8 - 0x0098)
+class UTaleMigrationVolatileTaskStep : public UTaleQuestStep
+{
+public:
+	TScriptInterface<class UTaleQuestStepInterface>    Task;                                                     // 0x0098(0x0010) (ZeroConstructor, IsPlainOldData)
+
+	static UClass* StaticClass()
+	{
+		static auto ptr = UObject::FindObject<UClass>(_xor_("Class Tales.TaleMigrationVolatileTaskStep"));
+		return ptr;
+	}
+
+};
+
+
 // Class Tales.TaleQuestAddToArrayStep
 // 0x0000 (0x0098 - 0x0098)
 class UTaleQuestAddToArrayStep : public UTaleQuestStep
@@ -1591,6 +1678,22 @@ public:
 	static UClass* StaticClass()
 	{
 		static auto ptr = UObject::FindObject<UClass>(_xor_("Class Tales.TaleQuestArrayUnionStep"));
+		return ptr;
+	}
+
+};
+
+
+// Class Tales.TaleQuestAwaitCrewShipSinkStep
+// 0x0048 (0x00E0 - 0x0098)
+class UTaleQuestAwaitCrewShipSinkStep : public UTaleQuestStep
+{
+public:
+	unsigned char                                      UnknownData00[0x48];                                      // 0x0098(0x0048) MISSED OFFSET
+
+	static UClass* StaticClass()
+	{
+		static auto ptr = UObject::FindObject<UClass>(_xor_("Class Tales.TaleQuestAwaitCrewShipSinkStep"));
 		return ptr;
 	}
 
@@ -1920,6 +2023,53 @@ public:
 	static UClass* StaticClass()
 	{
 		static auto ptr = UObject::FindObject<UClass>(_xor_("Class Tales.TaleQuestShipSurfaceStep"));
+		return ptr;
+	}
+
+};
+
+
+// Class Tales.TaleQuestStarFieldPuzzleDimStep
+// 0x0000 (0x0098 - 0x0098)
+class UTaleQuestStarFieldPuzzleDimStep : public UTaleQuestStep
+{
+public:
+
+	static UClass* StaticClass()
+	{
+		static auto ptr = UObject::FindObject<UClass>(_xor_("Class Tales.TaleQuestStarFieldPuzzleDimStep"));
+		return ptr;
+	}
+
+};
+
+
+// Class Tales.TaleQuestStarFieldPuzzleEndStep
+// 0x0010 (0x00A8 - 0x0098)
+class UTaleQuestStarFieldPuzzleEndStep : public UTaleQuestStep
+{
+public:
+	unsigned char                                      UnknownData00[0x10];                                      // 0x0098(0x0010) MISSED OFFSET
+
+	static UClass* StaticClass()
+	{
+		static auto ptr = UObject::FindObject<UClass>(_xor_("Class Tales.TaleQuestStarFieldPuzzleEndStep"));
+		return ptr;
+	}
+
+};
+
+
+// Class Tales.TaleQuestStarFieldPuzzleSetupAndWaitForCompletionStep
+// 0x0018 (0x00B0 - 0x0098)
+class UTaleQuestStarFieldPuzzleSetupAndWaitForCompletionStep : public UTaleQuestStep
+{
+public:
+	unsigned char                                      UnknownData00[0x18];                                      // 0x0098(0x0018) MISSED OFFSET
+
+	static UClass* StaticClass()
+	{
+		static auto ptr = UObject::FindObject<UClass>(_xor_("Class Tales.TaleQuestStarFieldPuzzleSetupAndWaitForCompletionStep"));
 		return ptr;
 	}
 
@@ -2769,7 +2919,7 @@ public:
 
 
 // Class Tales.SpawnPhasedItemStepDesc
-// 0x00D8 (0x0158 - 0x0080)
+// 0x0108 (0x0188 - 0x0080)
 class USpawnPhasedItemStepDesc : public UTaleQuestStepDesc
 {
 public:
@@ -2780,7 +2930,8 @@ public:
 	struct FName                                       SocketName;                                               // 0x00C0(0x0008) (Edit, ZeroConstructor, IsPlainOldData)
 	struct FQuestVariableItemDescType                  Item;                                                     // 0x00C8(0x0030) (Edit)
 	struct FQuestVariableActor                         LocatorVar;                                               // 0x00F8(0x0030) (Edit)
-	struct FQuestVariableItemInfo                      SpawnedItemVar;                                           // 0x0128(0x0030) (Edit)
+	struct FQuestVariableOrientedPoint                 LocatorPoint;                                             // 0x0128(0x0030) (Edit)
+	struct FQuestVariableItemInfo                      SpawnedItemVar;                                           // 0x0158(0x0030) (Edit)
 
 	static UClass* StaticClass()
 	{
@@ -2911,6 +3062,22 @@ public:
 	static UClass* StaticClass()
 	{
 		static auto ptr = UObject::FindObject<UClass>(_xor_("Class Tales.TaleQuestArrayUnionStepDesc"));
+		return ptr;
+	}
+
+};
+
+
+// Class Tales.TaleQuestAwaitCrewShipSinkStepDesc
+// 0x0030 (0x00B0 - 0x0080)
+class UTaleQuestAwaitCrewShipSinkStepDesc : public UTaleQuestStepDesc
+{
+public:
+	struct FQuestVariableGuid                          CrewId;                                                   // 0x0080(0x0030) (Edit)
+
+	static UClass* StaticClass()
+	{
+		static auto ptr = UObject::FindObject<UClass>(_xor_("Class Tales.TaleQuestAwaitCrewShipSinkStepDesc"));
 		return ptr;
 	}
 
@@ -3656,6 +3823,54 @@ public:
 };
 
 
+// Class Tales.TaleQuestStarFieldPuzzleDimStepDesc
+// 0x0030 (0x00B0 - 0x0080)
+class UTaleQuestStarFieldPuzzleDimStepDesc : public UTaleQuestStepDesc
+{
+public:
+	struct FQuestVariableActor                         StarFieldPuzzleActor;                                     // 0x0080(0x0030) (Edit)
+
+	static UClass* StaticClass()
+	{
+		static auto ptr = UObject::FindObject<UClass>(_xor_("Class Tales.TaleQuestStarFieldPuzzleDimStepDesc"));
+		return ptr;
+	}
+
+};
+
+
+// Class Tales.TaleQuestStarFieldPuzzleEndStepDesc
+// 0x0030 (0x00B0 - 0x0080)
+class UTaleQuestStarFieldPuzzleEndStepDesc : public UTaleQuestStepDesc
+{
+public:
+	struct FQuestVariableActor                         StarFieldPuzzleActor;                                     // 0x0080(0x0030) (Edit)
+
+	static UClass* StaticClass()
+	{
+		static auto ptr = UObject::FindObject<UClass>(_xor_("Class Tales.TaleQuestStarFieldPuzzleEndStepDesc"));
+		return ptr;
+	}
+
+};
+
+
+// Class Tales.TaleQuestStarFieldPuzzleSetupAndWaitForCompletionStepDesc
+// 0x0030 (0x00B0 - 0x0080)
+class UTaleQuestStarFieldPuzzleSetupAndWaitForCompletionStepDesc : public UTaleQuestStepDesc
+{
+public:
+	struct FQuestVariableActor                         StarFieldPuzzleActor;                                     // 0x0080(0x0030) (Edit)
+
+	static UClass* StaticClass()
+	{
+		static auto ptr = UObject::FindObject<UClass>(_xor_("Class Tales.TaleQuestStarFieldPuzzleSetupAndWaitForCompletionStepDesc"));
+		return ptr;
+	}
+
+};
+
+
 // Class Tales.TaleQuestStartCameraFadeStepDesc
 // 0x0020 (0x00A0 - 0x0080)
 class UTaleQuestStartCameraFadeStepDesc : public UTaleQuestStepDesc
@@ -3735,6 +3950,21 @@ public:
 	static UClass* StaticClass()
 	{
 		static auto ptr = UObject::FindObject<UClass>(_xor_("Class Tales.TaleQuestTaskStepDescBase"));
+		return ptr;
+	}
+
+};
+
+
+// Class Tales.TaleMigrationVolatileTaskStepDesc
+// 0x0000 (0x0088 - 0x0088)
+class UTaleMigrationVolatileTaskStepDesc : public UTaleQuestTaskStepDescBase
+{
+public:
+
+	static UClass* StaticClass()
+	{
+		static auto ptr = UObject::FindObject<UClass>(_xor_("Class Tales.TaleMigrationVolatileTaskStepDesc"));
 		return ptr;
 	}
 

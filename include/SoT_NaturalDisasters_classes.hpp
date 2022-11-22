@@ -428,6 +428,7 @@ public:
 };
 
 
+
 // Class NaturalDisasters.GeyserSetupDataAsset
 // 0x00C0 (0x00E8 - 0x0028)
 class UGeyserSetupDataAsset : public UDataAsset
@@ -524,6 +525,7 @@ public:
 	}
 
 };
+
 
 
 // Class NaturalDisasters.SuperheatedWaterSetupDataAsset

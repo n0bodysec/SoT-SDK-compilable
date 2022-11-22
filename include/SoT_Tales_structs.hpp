@@ -13,9 +13,9 @@
 #include "SoT_Athena_structs.hpp"
 #include "AthenaCommons.hpp"
 #include "SoT_AthenaEngine_classes.hpp"
+#include "SoT_PrioritisedPrompts_enums.hpp"
 #include "SoT_AIModule_classes.hpp"
 #include "SoT_MerchantContracts_classes.hpp"
-#include "SoT_PrioritisedPrompts_enums.hpp"
 #include "SoT_Maths_classes.hpp"
 #include "SoT_TaleMaps_classes.hpp"
 

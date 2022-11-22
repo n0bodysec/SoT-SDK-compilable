@@ -3790,6 +3790,15 @@ enum class ELocationBoneSocketSource : uint8_t
 };
 
 
+// Enum Engine.EMissingParentParticlesBehaviour
+enum class EMissingParentParticlesBehaviour : uint8_t
+{
+	EMissingParentParticlesBehaviour__SpawnFromEmitterLocation = 0,
+	EMissingParentParticlesBehaviour__PreventSpawning = 1,
+	EMissingParentParticlesBehaviour__EMissingParentParticlesBehaviour_MAX = 2
+};
+
+
 // Enum Engine.ELocationEmitterSelectionMethod
 enum class ELocationEmitterSelectionMethod : uint8_t
 {

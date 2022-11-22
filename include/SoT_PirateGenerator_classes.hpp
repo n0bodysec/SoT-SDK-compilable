@@ -231,11 +231,10 @@ public:
 
 
 // Class PirateGenerator.WardrobeExcludeDataAsset
-// 0x0010 (0x0038 - 0x0028)
+// 0x0000 (0x0028 - 0x0028)
 class UWardrobeExcludeDataAsset : public UDataAsset
 {
 public:
-	TArray<struct FName>                               ExcludeItems;                                             // 0x0028(0x0010) (Edit, BlueprintVisible, BlueprintReadOnly, ZeroConstructor)
 
 	static UClass* StaticClass()
 	{

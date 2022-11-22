@@ -24176,38 +24176,6 @@ void ASkeletalMeshActor::OnRep_ReplicatedMesh()
 }
 
 
-// Function Engine.SkeletalMeshActor.OnRep_ReplicatedMaterial1
-// (Native, Public)
-
-void ASkeletalMeshActor::OnRep_ReplicatedMaterial1()
-{
-	static auto fn = UObject::FindObject<UFunction>(_xor_("Function Engine.SkeletalMeshActor.OnRep_ReplicatedMaterial1"));
-
-	struct
-	{
-	} params;
-
-
-	UObject::ProcessEvent(fn, &params);
-}
-
-
-// Function Engine.SkeletalMeshActor.OnRep_ReplicatedMaterial0
-// (Native, Public)
-
-void ASkeletalMeshActor::OnRep_ReplicatedMaterial0()
-{
-	static auto fn = UObject::FindObject<UFunction>(_xor_("Function Engine.SkeletalMeshActor.OnRep_ReplicatedMaterial0"));
-
-	struct
-	{
-	} params;
-
-
-	UObject::ProcessEvent(fn, &params);
-}
-
-
 // DelegateFunction Engine.ApplicationLifecycleComponent.ApplicationLifetimeDelegate__DelegateSignature
 // (MulticastDelegate, Public, Delegate)
 

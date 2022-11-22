@@ -584,7 +584,7 @@ struct FTargetSkillsetProgressionPair
 };
 
 // ScriptStruct AthenaAI.TinySharkParams
-// 0x00B8
+// 0x00C8
 struct FTinySharkParams
 {
 	class UClass*                                      TinySharkType;                                            // 0x0000(0x0008) (Edit, ZeroConstructor, IsPlainOldData)
@@ -595,8 +595,9 @@ struct FTinySharkParams
 	TAssetPtr<class ULoadoutAsset>                     TinySharkLoadout;                                         // 0x0058(0x0020) (Edit)
 	class UClass*                                      TinySharkClassID;                                         // 0x0078(0x0008) (Edit, ZeroConstructor, IsPlainOldData)
 	struct FWeightedProbabilityRangeOfRanges           LifetimeTimeout;                                          // 0x0080(0x0030) (Edit)
-	float                                              TrackedShipDistanceThreshold;                             // 0x00B0(0x0004) (Edit, ZeroConstructor, IsPlainOldData)
-	float                                              RepositionTime;                                           // 0x00B4(0x0004) (Edit, ZeroConstructor, IsPlainOldData)
+	TArray<struct FTinySharkTrackedShipDistanceThresholdByFeature> TrackedShipDistanceThresholdByFeatureInPriorityOrder;     // 0x00B0(0x0010) (Edit, ZeroConstructor)
+	float                                              RepositionTime;                                           // 0x00C0(0x0004) (Edit, ZeroConstructor, IsPlainOldData)
+	unsigned char                                      UnknownData00[0x4];                                       // 0x00C4(0x0004) MISSED OFFSET
 };
 
 // ScriptStruct AthenaAI.AIPartId
@@ -607,7 +608,7 @@ struct FAIPartId
 };
 
 // Class AthenaAI.TinySharkExperience
-// 0x0428 (0x07F0 - 0x03C8)
+// 0x0438 (0x0800 - 0x03C8)
 class ATinySharkExperience : public AActor
 {
 public:
@@ -621,15 +622,15 @@ public:
 	class ASharkPawn*                                  TinySharkPawn;                                            // 0x0498(0x0008) (Net, ZeroConstructor, IsPlainOldData)
 	struct FName                                       HealthRTPC;                                               // 0x04A0(0x0008) (Edit, ZeroConstructor, IsPlainOldData)
 	unsigned char                                      UnknownData02[0x8];                                       // 0x04A8(0x0008) MISSED OFFSET
-	struct FTinySharkParams                            Params;                                                   // 0x04B0(0x00B8) (Transient)
-	class UTinySharkTelemetryComponent*                TinySharkTelemetryComponent;                              // 0x0568(0x0008) (Edit, BlueprintVisible, ExportObject, ZeroConstructor, InstancedReference, IsPlainOldData)
-	class AShip*                                       TrackedShip;                                              // 0x0570(0x0008) (ZeroConstructor, Transient, IsPlainOldData)
-	unsigned char                                      UnknownData03[0x90];                                      // 0x0578(0x0090) MISSED OFFSET
-	struct FEncounterParams                            SightingEncounterParams;                                  // 0x0608(0x000C) (Edit, DisableEditOnInstance)
-	struct FEncounterParams                            CloseEncounterParams;                                     // 0x0614(0x000C) (Edit, DisableEditOnInstance)
-	unsigned char                                      UnknownData04[0x190];                                     // 0x0620(0x0190) MISSED OFFSET
-	TAssetPtr<class UAthenaAIControllerParamsDataAsset> CachedControllerParamsAsset;                              // 0x07B0(0x0020)
-	unsigned char                                      UnknownData05[0x20];                                      // 0x07D0(0x0020) MISSED OFFSET
+	struct FTinySharkParams                            Params;                                                   // 0x04B0(0x00C8) (Transient)
+	class UTinySharkTelemetryComponent*                TinySharkTelemetryComponent;                              // 0x0578(0x0008) (Edit, BlueprintVisible, ExportObject, ZeroConstructor, InstancedReference, IsPlainOldData)
+	class AShip*                                       TrackedShip;                                              // 0x0580(0x0008) (ZeroConstructor, Transient, IsPlainOldData)
+	unsigned char                                      UnknownData03[0x90];                                      // 0x0588(0x0090) MISSED OFFSET
+	struct FEncounterParams                            SightingEncounterParams;                                  // 0x0618(0x000C) (Edit, DisableEditOnInstance)
+	struct FEncounterParams                            CloseEncounterParams;                                     // 0x0624(0x000C) (Edit, DisableEditOnInstance)
+	unsigned char                                      UnknownData04[0x190];                                     // 0x0630(0x0190) MISSED OFFSET
+	TAssetPtr<class UAthenaAIControllerParamsDataAsset> CachedControllerParamsAsset;                              // 0x07C0(0x0020)
+	unsigned char                                      UnknownData05[0x20];                                      // 0x07E0(0x0020) MISSED OFFSET
 
 	static UClass* StaticClass()
 	{

@@ -74,8 +74,9 @@ enum class EHealthChangedReason : uint8_t
 	EHealthChangedReason__Sleeping = 56,
 	EHealthChangedReason__DestroyAllShipAI = 57,
 	EHealthChangedReason__LighthouseBeam = 58,
-	EHealthChangedReason__MAX      = 59,
-	EHealthChangedReason__EHealthChangedReason_MAX = 60
+	EHealthChangedReason__TunnelOfTheDamned = 59,
+	EHealthChangedReason__MAX      = 60,
+	EHealthChangedReason__EHealthChangedReason_MAX = 61
 };
 
 
@@ -377,7 +378,8 @@ enum class EVoyageDisplayState : uint8_t
 {
 	Default                        = 0,
 	Proposed                       = 1,
-	EVoyageDisplayState_MAX        = 2
+	Locked                         = 2,
+	EVoyageDisplayState_MAX        = 3
 };
 
 
@@ -2887,7 +2889,8 @@ enum class ETeleportActionStateFadeType : uint8_t
 	ETeleportActionStateFadeType__Fade = 0,
 	ETeleportActionStateFadeType__FadeEndOnly = 1,
 	ETeleportActionStateFadeType__NoFade = 2,
-	ETeleportActionStateFadeType__ETeleportActionStateFadeType_MAX = 3
+	ETeleportActionStateFadeType__FadeOut = 3,
+	ETeleportActionStateFadeType__ETeleportActionStateFadeType_MAX = 4
 };
 
 
@@ -2994,37 +2997,38 @@ enum class ETrackedActorType : uint8_t
 	ETrackedActorType__FogBank     = 35,
 	ETrackedActorType__Geyser      = 36,
 	ETrackedActorType__Ghostship_Flameheart_Cloud = 37,
-	ETrackedActorType__Haunted_Fort = 38,
-	ETrackedActorType__Mermaid     = 39,
-	ETrackedActorType__MessageInABottle = 40,
-	ETrackedActorType__NPC         = 41,
-	ETrackedActorType__Player      = 42,
-	ETrackedActorType__Pouch_Ammo  = 43,
-	ETrackedActorType__Pouch_Doubloons = 44,
-	ETrackedActorType__Pouch_Gold  = 45,
-	ETrackedActorType__Rowboat     = 46,
-	ETrackedActorType__Rowboat_Cannon = 47,
-	ETrackedActorType__Rowboat_Harpoon = 48,
-	ETrackedActorType__Ship_Large  = 49,
-	ETrackedActorType__Ship_Medium = 50,
-	ETrackedActorType__Ship_Small  = 51,
-	ETrackedActorType__ShipCloud   = 52,
-	ETrackedActorType__Shipwreck   = 53,
-	ETrackedActorType__Shipwreck_Graveyard = 54,
-	ETrackedActorType__ShortRangeMarker = 55,
-	ETrackedActorType__SkeletonThrone = 56,
-	ETrackedActorType__SkullCloud  = 57,
-	ETrackedActorType__Spire       = 58,
-	ETrackedActorType__StatueThreat = 59,
-	ETrackedActorType__StorageContainer = 60,
-	ETrackedActorType__StorageContainerBuoyant = 61,
-	ETrackedActorType__Storm       = 62,
-	ETrackedActorType__SuperHeatedWater = 63,
-	ETrackedActorType__Volcano     = 64,
-	ETrackedActorType__WreckDebris_Land = 65,
-	ETrackedActorType__WreckDebris_Sea = 66,
-	ETrackedActorType__MAX         = 67,
-	ETrackedActorType__ETrackedActorType_MAX = 68
+	ETrackedActorType__GoldCoin    = 38,
+	ETrackedActorType__Haunted_Fort = 39,
+	ETrackedActorType__Mermaid     = 40,
+	ETrackedActorType__MessageInABottle = 41,
+	ETrackedActorType__NPC         = 42,
+	ETrackedActorType__Player      = 43,
+	ETrackedActorType__Pouch_Ammo  = 44,
+	ETrackedActorType__Pouch_Doubloons = 45,
+	ETrackedActorType__Pouch_Gold  = 46,
+	ETrackedActorType__Rowboat     = 47,
+	ETrackedActorType__Rowboat_Cannon = 48,
+	ETrackedActorType__Rowboat_Harpoon = 49,
+	ETrackedActorType__Ship_Large  = 50,
+	ETrackedActorType__Ship_Medium = 51,
+	ETrackedActorType__Ship_Small  = 52,
+	ETrackedActorType__ShipCloud   = 53,
+	ETrackedActorType__Shipwreck   = 54,
+	ETrackedActorType__Shipwreck_Graveyard = 55,
+	ETrackedActorType__ShortRangeMarker = 56,
+	ETrackedActorType__SkeletonThrone = 57,
+	ETrackedActorType__SkullCloud  = 58,
+	ETrackedActorType__Spire       = 59,
+	ETrackedActorType__StatueThreat = 60,
+	ETrackedActorType__StorageContainer = 61,
+	ETrackedActorType__StorageContainerBuoyant = 62,
+	ETrackedActorType__Storm       = 63,
+	ETrackedActorType__SuperHeatedWater = 64,
+	ETrackedActorType__Volcano     = 65,
+	ETrackedActorType__WreckDebris_Land = 66,
+	ETrackedActorType__WreckDebris_Sea = 67,
+	ETrackedActorType__MAX         = 68,
+	ETrackedActorType__ETrackedActorType_MAX = 69
 };
 
 
@@ -3040,7 +3044,8 @@ enum class ETrackedOwnerType : uint8_t
 	ETrackedOwnerType__WreckDebris_Land = 6,
 	ETrackedOwnerType__WreckDebris_Sea = 7,
 	ETrackedOwnerType__BurnedFragment = 8,
-	ETrackedOwnerType__ETrackedOwnerType_MAX = 9
+	ETrackedOwnerType__GoldCoin    = 9,
+	ETrackedOwnerType__ETrackedOwnerType_MAX = 10
 };
 
 
@@ -3123,7 +3128,8 @@ enum class EShipAnnouncementAlignment : uint8_t
 	EShipAnnouncementAlignment__Voyager = 7,
 	EShipAnnouncementAlignment__Protector = 8,
 	EShipAnnouncementAlignment__Servant = 9,
-	EShipAnnouncementAlignment__EShipAnnouncementAlignment_MAX = 10
+	EShipAnnouncementAlignment__Event_FestivalOfGiving = 10,
+	EShipAnnouncementAlignment__EShipAnnouncementAlignment_MAX = 11
 };
 
 
@@ -3289,7 +3295,8 @@ enum class ECharacterDeathType : uint8_t
 	ECharacterDeathType__Despawn   = 2,
 	ECharacterDeathType__OwnershipRemoved = 3,
 	ECharacterDeathType__NoGameStatePresentDuringPostInitializeComponents = 4,
-	ECharacterDeathType__ECharacterDeathType_MAX = 5
+	ECharacterDeathType__SentToFerrySinBin = 5,
+	ECharacterDeathType__ECharacterDeathType_MAX = 6
 };
 
 
@@ -4228,6 +4235,16 @@ enum class EGameplayEventSignalType : uint8_t
 };
 
 
+// Enum Athena.EEventLockReason
+enum class EEventLockReason : uint8_t
+{
+	EEventLockReason__Invasion_Matchmaking = 0,
+	EEventLockReason__Invasion_Invading = 1,
+	EEventLockReason__Cooldown     = 2,
+	EEventLockReason__EEventLockReason_MAX = 3
+};
+
+
 // Enum Athena.EGameEventStatus
 enum class EGameEventStatus : uint8_t
 {
@@ -4355,8 +4372,9 @@ enum class EBootyTypes : uint8_t
 	EBootyTypes__MerchantManifest  = 24,
 	EBootyTypes__BreathOfTheSea    = 25,
 	EBootyTypes__CaptainsLog       = 26,
-	EBootyTypes__NonSellable       = 27,
-	EBootyTypes__EBootyTypes_MAX   = 28
+	EBootyTypes__SirenTrident      = 27,
+	EBootyTypes__NonSellable       = 28,
+	EBootyTypes__EBootyTypes_MAX   = 29
 };
 
 
@@ -4412,16 +4430,6 @@ enum class EMermaidState : uint8_t
 	EMermaidState__Idle            = 1,
 	EMermaidState__Disappearing    = 2,
 	EMermaidState__EMermaidState_MAX = 3
-};
-
-
-// Enum Athena.ERomeBeaconAttachType
-enum class ERomeBeaconAttachType : uint8_t
-{
-	ERomeBeaconAttachType__Ship    = 0,
-	ERomeBeaconAttachType__Player  = 1,
-	ERomeBeaconAttachType__MAX     = 2,
-	ERomeBeaconAttachType__ERomeBeaconAttachType_MAX = 3
 };
 
 
@@ -4637,6 +4645,46 @@ enum class ENamedPointGroupSearchTag : uint8_t
 };
 
 
+// Enum Athena.EFlameOfFateType
+enum class EFlameOfFateType : uint8_t
+{
+	EFlameOfFateType__Default      = 0,
+	EFlameOfFateType__Cursed       = 1,
+	EFlameOfFateType__DiedByShark  = 2,
+	EFlameOfFateType__DiedByVolcano = 3,
+	EFlameOfFateType__DiedBySkeleton = 4,
+	EFlameOfFateType__DiedByLightning = 5,
+	EFlameOfFateType__DiedByVenom  = 6,
+	EFlameOfFateType__DiedByPlayer = 7,
+	EFlameOfFateType__MAX          = 8,
+	EFlameOfFateType__EFlameOfFateType_MAX = 9
+};
+
+
+// Enum Athena.ERevealState
+enum class ERevealState : uint8_t
+{
+	ERevealState__Hidden           = 0,
+	ERevealState__FarRevealed      = 1,
+	ERevealState__CloseRevealed    = 2,
+	ERevealState__ERevealState_MAX = 3
+};
+
+
+// Enum Athena.EStarFieldPuzzleState
+enum class EStarFieldPuzzleState : uint8_t
+{
+	EStarFieldPuzzleState__NotStarted = 0,
+	EStarFieldPuzzleState__Starting = 1,
+	EStarFieldPuzzleState__Running = 2,
+	EStarFieldPuzzleState__Completed = 3,
+	EStarFieldPuzzleState__Dimmed  = 4,
+	EStarFieldPuzzleState__Cleanup = 5,
+	EStarFieldPuzzleState__MAX     = 6,
+	EStarFieldPuzzleState__EStarFieldPuzzleState_MAX = 7
+};
+
+
 // Enum Athena.EWheelAnimationType
 enum class EWheelAnimationType : uint8_t
 {
@@ -4764,22 +4812,6 @@ enum class EContestScoreId : uint8_t
 	EContestScoreId__Undefined     = 0,
 	EContestScoreId__Silver        = 1,
 	EContestScoreId__EContestScoreId_MAX = 2
-};
-
-
-// Enum Athena.EFlameOfFateType
-enum class EFlameOfFateType : uint8_t
-{
-	EFlameOfFateType__Default      = 0,
-	EFlameOfFateType__Cursed       = 1,
-	EFlameOfFateType__DiedByShark  = 2,
-	EFlameOfFateType__DiedByVolcano = 3,
-	EFlameOfFateType__DiedBySkeleton = 4,
-	EFlameOfFateType__DiedByLightning = 5,
-	EFlameOfFateType__DiedByVenom  = 6,
-	EFlameOfFateType__DiedByPlayer = 7,
-	EFlameOfFateType__MAX          = 8,
-	EFlameOfFateType__EFlameOfFateType_MAX = 9
 };
 
 
@@ -5280,6 +5312,15 @@ enum class ETunnelOfTheDamnedShipSailState : uint8_t
 };
 
 
+// Enum Athena.ETunnelPresenterStartMode
+enum class ETunnelPresenterStartMode : uint8_t
+{
+	ETunnelPresenterStartMode__OnInitialize = 0,
+	ETunnelPresenterStartMode__OnMatchmakingStart = 1,
+	ETunnelPresenterStartMode__ETunnelPresenterStartMode_MAX = 2
+};
+
+
 // Enum Athena.EWorldRegion
 enum class EWorldRegion : uint8_t
 {
@@ -5363,6 +5404,15 @@ enum class EShipType : uint8_t
 };
 
 
+// Enum Athena.EShipLoadoutPersistence
+enum class EShipLoadoutPersistence : uint8_t
+{
+	EShipLoadoutPersistence__Temporary = 0,
+	EShipLoadoutPersistence__Persistent = 1,
+	EShipLoadoutPersistence__EShipLoadoutPersistence_MAX = 2
+};
+
+
 // Enum Athena.ECanvasBlendMode
 enum class ECanvasBlendMode : uint8_t
 {
@@ -5428,45 +5478,168 @@ enum class EEventLogEntryType : uint8_t
 {
 	EEventLogEntryType__None       = 0,
 	EEventLogEntryType__PlayerDied = 1,
-	EEventLogEntryType__ArrivedAtIsland = 2,
-	EEventLogEntryType__ArrivedAtShrine = 3,
-	EEventLogEntryType__DepartedIsland = 4,
-	EEventLogEntryType__DepartedShrine = 5,
-	EEventLogEntryType__BuriedTreasure = 6,
-	EEventLogEntryType__VoyageComplete = 7,
-	EEventLogEntryType__FortComplete = 8,
-	EEventLogEntryType__DamnedFortComplete = 9,
-	EEventLogEntryType__TallTaleComplete = 10,
-	EEventLogEntryType__LordFought = 11,
-	EEventLogEntryType__FlameheartFought = 12,
-	EEventLogEntryType__GhostShipFought = 13,
-	EEventLogEntryType__SkellyShipFought = 14,
-	EEventLogEntryType__KrakenEncountered = 15,
-	EEventLogEntryType__MegEncountered = 16,
-	EEventLogEntryType__FoundMessageInABottle = 17,
-	EEventLogEntryType__FoundTreasure = 18,
-	EEventLogEntryType__AllianceFormed = 19,
-	EEventLogEntryType__AllianceDisbanded = 20,
-	EEventLogEntryType__Sunk       = 21,
-	EEventLogEntryType__SailedDistance = 22,
-	EEventLogEntryType__ShipwreckExplored = 23,
-	EEventLogEntryType__FightPlayers = 24,
-	EEventLogEntryType__EndedCaptaincy = 25,
-	EEventLogEntryType__EnteredSea = 26,
-	EEventLogEntryType__BattleNonCaptainsShip = 27,
-	EEventLogEntryType__BattleCaptainsShip = 28,
-	EEventLogEntryType__AllianceJoined = 29,
-	EEventLogEntryType__AllianceLeft = 30,
-	EEventLogEntryType__GoldHoarderVoyageComplete = 31,
-	EEventLogEntryType__OrderOfSoulsVoyageComplete = 32,
-	EEventLogEntryType__MerchantAllianceVoyageComplete = 33,
-	EEventLogEntryType__AthenasFortuneVoyageComplete = 34,
-	EEventLogEntryType__BilgeRatsVoyageComplete = 35,
-	EEventLogEntryType__EmergentVoyageComplete = 36,
-	EEventLogEntryType__TavernBoardQuestComplete = 37,
-	EEventLogEntryType__EnteredStorm = 38,
-	EEventLogEntryType__ExitedStorm = 39,
-	EEventLogEntryType__EEventLogEntryType_MAX = 40
+	EEventLogEntryType__PlayerShipSpottedSloop = 2,
+	EEventLogEntryType__PlayerShipSpottedBrigantine = 3,
+	EEventLogEntryType__PlayerShipSpottedGalleon = 4,
+	EEventLogEntryType__ArrivedAtIsland = 5,
+	EEventLogEntryType__ArrivedAtShrine = 6,
+	EEventLogEntryType__DepartedIsland = 7,
+	EEventLogEntryType__DepartedShrine = 8,
+	EEventLogEntryType__BuriedTreasure = 9,
+	EEventLogEntryType__VoyageComplete = 10,
+	EEventLogEntryType__FortComplete = 11,
+	EEventLogEntryType__FortCompleteKeelHaulFort = 12,
+	EEventLogEntryType__FortCompleteHiddenSpringKeep = 13,
+	EEventLogEntryType__FortCompleteSailorsKnotStronghold = 14,
+	EEventLogEntryType__FortCompleteLostGoldFort = 15,
+	EEventLogEntryType__FortCompleteTheCrowsNestFortress = 16,
+	EEventLogEntryType__FortCompleteSkullKeep = 17,
+	EEventLogEntryType__FortCompleteKrakenWatchtower = 18,
+	EEventLogEntryType__FortCompleteSharkFinCamp = 19,
+	EEventLogEntryType__FortCompleteMoltenSandsFortress = 20,
+	EEventLogEntryType__FortOfFortuneCompleteKeelHaulFort = 21,
+	EEventLogEntryType__FortOfFortuneCompleteHiddenSpringKeep = 22,
+	EEventLogEntryType__FortOfFortuneCompleteSailorsKnotStronghold = 23,
+	EEventLogEntryType__FortOfFortuneCompleteLostGoldFort = 24,
+	EEventLogEntryType__FortOfFortuneCompleteTheCrowsNestFortress = 25,
+	EEventLogEntryType__FortOfFortuneCompleteSkullKeep = 26,
+	EEventLogEntryType__FortOfFortuneCompleteKrakenWatchtower = 27,
+	EEventLogEntryType__FortOfFortuneCompleteSharkFinCamp = 28,
+	EEventLogEntryType__FortOfFortuneCompleteMoltenSandsFortress = 29,
+	EEventLogEntryType__DamnedFortComplete = 30,
+	EEventLogEntryType__SeaFortConqueredSeaFort01 = 31,
+	EEventLogEntryType__SeaFortConqueredSeaFort02 = 32,
+	EEventLogEntryType__SeaFortConqueredSeaFort03 = 33,
+	EEventLogEntryType__SeaFortConqueredSeaFort04 = 34,
+	EEventLogEntryType__SeaFortConqueredSeaFort05 = 35,
+	EEventLogEntryType__SeaFortConqueredSeaFort06 = 36,
+	EEventLogEntryType__TreasuryCompletedSunkenShores = 37,
+	EEventLogEntryType__TreasuryCompletedLostAncients = 38,
+	EEventLogEntryType__TreasuryCompletedSecretWilds = 39,
+	EEventLogEntryType__TallTaleComplete = 40,
+	EEventLogEntryType__TallTaleShroudBreakerComplete = 41,
+	EEventLogEntryType__TallTaleCursedRogueComplete = 42,
+	EEventLogEntryType__TallTaleLegendaryStorytellerComplete = 43,
+	EEventLogEntryType__TallTaleStarsOfAThiefComplete = 44,
+	EEventLogEntryType__TallTaleWildRoseComplete = 45,
+	EEventLogEntryType__TallTaleArtOfTheTricksterComplete = 46,
+	EEventLogEntryType__TallTaleFateOfTheMorningstarComplete = 47,
+	EEventLogEntryType__TallTaleRevengeOfTheMorningstarComplete = 48,
+	EEventLogEntryType__TallTaleShoresOfGoldComplete = 49,
+	EEventLogEntryType__TallTaleAshenDragonComplete = 50,
+	EEventLogEntryType__TallTaleHeartOfFireComplete = 51,
+	EEventLogEntryType__TallTaleAPiratesLifeComplete = 52,
+	EEventLogEntryType__TallTaleTheSunkenPearlComplete = 53,
+	EEventLogEntryType__TallTaleCaptainsOfTheDamnedComplete = 54,
+	EEventLogEntryType__TallTaleDarkBrethrenComplete = 55,
+	EEventLogEntryType__TallTaleLordsOfTheSeaComplete = 56,
+	EEventLogEntryType__LordFought = 57,
+	EEventLogEntryType__LordDefeated = 58,
+	EEventLogEntryType__LordDefeatedCaptainBriggsy = 59,
+	EEventLogEntryType__LordDefeatedGraymarrow = 60,
+	EEventLogEntryType__LordDefeatedGoldHoarder = 61,
+	EEventLogEntryType__LordDefeatedGhostGraymarrow = 62,
+	EEventLogEntryType__LordDefeatedMutinousHelmsman = 63,
+	EEventLogEntryType__LordDefeatedTwoFacedScoundrel = 64,
+	EEventLogEntryType__LordDefeatedDuchess = 65,
+	EEventLogEntryType__LordDefeatedOldHoratio = 66,
+	EEventLogEntryType__LordDefeatedWardenChi = 67,
+	EEventLogEntryType__LordDefeatedCaptainGrimm = 68,
+	EEventLogEntryType__LordDefeatedRedRuth = 69,
+	EEventLogEntryType__FlameheartFought = 70,
+	EEventLogEntryType__GhostShipFought = 71,
+	EEventLogEntryType__GhostShipDefeatedGruntShip = 72,
+	EEventLogEntryType__GhostShipDefeatedGhostFlagship = 73,
+	EEventLogEntryType__GhostShipDefeatedGhostCaptainShip = 74,
+	EEventLogEntryType__GhostShipDefeatedBurningBlade = 75,
+	EEventLogEntryType__GhostShipDefeatedGhostBrethrenShip = 76,
+	EEventLogEntryType__GhostShipDefeatedGhostBrethrenCaptainShip = 77,
+	EEventLogEntryType__SkellyShipFought = 78,
+	EEventLogEntryType__SkellyShipDefeatedSkellySloop = 79,
+	EEventLogEntryType__SkellyShipDefeatedSkellyGalleon = 80,
+	EEventLogEntryType__KrakenEncountered = 81,
+	EEventLogEntryType__KrakenDefeated = 82,
+	EEventLogEntryType__MegEncountered = 83,
+	EEventLogEntryType__MegDefeatedHungeringOne = 84,
+	EEventLogEntryType__MegDefeatedQueenOfTheDepths = 85,
+	EEventLogEntryType__MegDefeatedShadowmaw = 86,
+	EEventLogEntryType__MegDefeatedAncientTerror = 87,
+	EEventLogEntryType__MegDefeatedGhostOfTheDeep = 88,
+	EEventLogEntryType__FoundMessageInABottle = 89,
+	EEventLogEntryType__FoundTreasure = 90,
+	EEventLogEntryType__AllianceFormed = 91,
+	EEventLogEntryType__AllianceDisbanded = 92,
+	EEventLogEntryType__Sunk       = 93,
+	EEventLogEntryType__SailedDistance = 94,
+	EEventLogEntryType__ShipwreckExplored = 95,
+	EEventLogEntryType__PlayerShipLanternRowboatDocked = 96,
+	EEventLogEntryType__PlayerShipHarpoonRowboatDocked = 97,
+	EEventLogEntryType__PlayerShipCannonRowboatDocked = 98,
+	EEventLogEntryType__FightPlayers = 99,
+	EEventLogEntryType__EndedCaptaincy = 100,
+	EEventLogEntryType__EnteredSea = 101,
+	EEventLogEntryType__BattleNonCaptainsShip = 102,
+	EEventLogEntryType__BattleCaptainsShip = 103,
+	EEventLogEntryType__AllianceJoined = 104,
+	EEventLogEntryType__AllianceLeft = 105,
+	EEventLogEntryType__GoldHoarderEmissaryRaised = 106,
+	EEventLogEntryType__GoldHoarderEmissaryLevel5Reached = 107,
+	EEventLogEntryType__MerchantAllianceEmissaryRaised = 108,
+	EEventLogEntryType__MerchantAllianceEmissaryLevel5Reached = 109,
+	EEventLogEntryType__OrderOfSoulsAllianceEmissaryRaised = 110,
+	EEventLogEntryType__OrderOfSoulsEmissaryLevel5Reached = 111,
+	EEventLogEntryType__AthenasFortuneAllianceEmissaryRaised = 112,
+	EEventLogEntryType__AthenasFortuneEmissaryLevel5Reached = 113,
+	EEventLogEntryType__ReapersBonesAllianceEmissaryRaised = 114,
+	EEventLogEntryType__ReapersBonesEmissaryLevel5Reached = 115,
+	EEventLogEntryType__GoldHoarderVoyageComplete = 116,
+	EEventLogEntryType__GoldHoarderXMarksComplete = 117,
+	EEventLogEntryType__GoldHoarderRiddlesComplete = 118,
+	EEventLogEntryType__GoldHoarderWayfinderComplete = 119,
+	EEventLogEntryType__GoldHoarderAshenXMarksComplete = 120,
+	EEventLogEntryType__GoldHoarderAshenRiddleMapComplete = 121,
+	EEventLogEntryType__GoldHoarderAshenWayfinderComplete = 122,
+	EEventLogEntryType__OrderOfSoulsVoyageComplete = 123,
+	EEventLogEntryType__OrderOfSoulsAshenVoyageComplete = 124,
+	EEventLogEntryType__OrderOfSoulsGhostShipVoyageComplete = 125,
+	EEventLogEntryType__MerchantAllianceVoyageComplete = 126,
+	EEventLogEntryType__MerchantAllianceTradeGoodComplete = 127,
+	EEventLogEntryType__MerchantAllianceLostShipmentComplete = 128,
+	EEventLogEntryType__AthenasFortuneVoyageComplete = 129,
+	EEventLogEntryType__AthenasFortuneAshenVoyageComplete = 130,
+	EEventLogEntryType__AthenasFortuneHauntedIslandsComplete = 131,
+	EEventLogEntryType__AthenasFortuneLyingMapsComplete = 132,
+	EEventLogEntryType__AthenasFortunePictorialMapsComplete = 133,
+	EEventLogEntryType__AthenasFortuneShipwreckGraveyardsComplete = 134,
+	EEventLogEntryType__AthenasFortuneZoomMapsComplete = 135,
+	EEventLogEntryType__AthenasFortuneGhostGarrisonComplete = 136,
+	EEventLogEntryType__BilgeRatsVoyageComplete = 137,
+	EEventLogEntryType__EmergentVoyageComplete = 138,
+	EEventLogEntryType__TavernBoardQuestComplete = 139,
+	EEventLogEntryType__EnteredStorm = 140,
+	EEventLogEntryType__ExitedStorm = 141,
+	EEventLogEntryType__FiresDoused = 142,
+	EEventLogEntryType__ServantJoinedTheFight = 143,
+	EEventLogEntryType__ServantLeftTheFight = 144,
+	EEventLogEntryType__ServantBattleBegins = 145,
+	EEventLogEntryType__ServantStreakIncreased = 146,
+	EEventLogEntryType__ServantPirateLordShipsSunkSloop = 147,
+	EEventLogEntryType__ServantPirateLordShipsSunkBrigantine = 148,
+	EEventLogEntryType__ServantPirateLordShipsSunkGalleon = 149,
+	EEventLogEntryType__ServantPirateLordBossShipsSunkSloop = 150,
+	EEventLogEntryType__ServantPirateLordBossShipsSunkBrigantine = 151,
+	EEventLogEntryType__ServantPirateLordBossShipsSunkGalleon = 152,
+	EEventLogEntryType__GuardianJoinedTheFight = 153,
+	EEventLogEntryType__GuardianLeftTheFight = 154,
+	EEventLogEntryType__GuardianBattleBegins = 155,
+	EEventLogEntryType__GuardianStreakIncreased = 156,
+	EEventLogEntryType__GuardianFlameheartShipsSunkSloop = 157,
+	EEventLogEntryType__GuardianFlameheartShipsSunkBrigantine = 158,
+	EEventLogEntryType__GuardianFlameheartLordShipsSunkGalleon = 159,
+	EEventLogEntryType__GuardianFlameheartLordBossShipsSunkSloop = 160,
+	EEventLogEntryType__GuardianFlameheartLordBossShipsSunkBrigantine = 161,
+	EEventLogEntryType__GuardianFlameheartLordBossShipsSunkGalleon = 162,
+	EEventLogEntryType__EEventLogEntryType_MAX = 163
 };
 
 
@@ -5499,31 +5672,6 @@ enum class ESwimmingCreatureDeathCustomEventEnum : uint8_t
 	ESwimmingCreatureDeathCustomEventEnum__StartSinking = 1,
 	ESwimmingCreatureDeathCustomEventEnum__StartSinkingAnim = 2,
 	ESwimmingCreatureDeathCustomEventEnum__ESwimmingCreatureDeathCustomEventEnum_MAX = 3
-};
-
-
-// Enum Athena.EBeckonNPCGroup
-enum class EBeckonNPCGroup : uint8_t
-{
-	EBeckonNPCGroup__Default       = 0,
-	EBeckonNPCGroup__Larinna       = 1,
-	EBeckonNPCGroup__Belle         = 2,
-	EBeckonNPCGroup__Pendragon     = 3,
-	EBeckonNPCGroup__Test          = 4,
-	EBeckonNPCGroup__Test2         = 5,
-	EBeckonNPCGroup__EBeckonNPCGroup_MAX = 6
-};
-
-
-// Enum Athena.EBeckonGesture
-enum class EBeckonGesture : uint8_t
-{
-	EBeckonGesture__Default        = 0,
-	EBeckonGesture__Welcome        = 1,
-	EBeckonGesture__Goodbye        = 2,
-	EBeckonGesture__Test           = 3,
-	EBeckonGesture__Test2          = 4,
-	EBeckonGesture__EBeckonGesture_MAX = 5
 };
 
 
@@ -5849,16 +5997,6 @@ enum class ENavigationDirection : uint8_t
 	ENavigationDirection__Up       = 3,
 	ENavigationDirection__Down     = 4,
 	ENavigationDirection__ENavigationDirection_MAX = 5
-};
-
-
-// Enum Athena.ERevealState
-enum class ERevealState : uint8_t
-{
-	ERevealState__Hidden           = 0,
-	ERevealState__FarRevealed      = 1,
-	ERevealState__CloseRevealed    = 2,
-	ERevealState__ERevealState_MAX = 3
 };
 
 
