@@ -83,6 +83,21 @@ public:
 };
 
 
+// Class Repair.ShipRepairInterface
+// 0x0000 (0x0028 - 0x0028)
+class UShipRepairInterface : public UInterface
+{
+public:
+
+	static UClass* StaticClass()
+	{
+		static auto ptr = UObject::FindObject<UClass>(_xor_("Class Repair.ShipRepairInterface"));
+		return ptr;
+	}
+
+};
+
+
 }
 
 #ifdef _MSC_VER

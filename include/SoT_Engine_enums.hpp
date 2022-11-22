@@ -77,6 +77,17 @@ enum class EAutoReceiveInput : uint8_t
 };
 
 
+// Enum Engine.EActorSpawnRestrictions
+enum class EActorSpawnRestrictions : uint8_t
+{
+	EActorSpawnRestrictions__ServerOnly = 0,
+	EActorSpawnRestrictions__ClientOnly = 1,
+	EActorSpawnRestrictions__ServerAndClient = 2,
+	EActorSpawnRestrictions__SpawnRestrictionMax = 3,
+	EActorSpawnRestrictions__EActorSpawnRestrictions_MAX = 4
+};
+
+
 // Enum Engine.ENetRole
 enum class ENetRole : uint8_t
 {
@@ -104,17 +115,6 @@ enum class EVectorQuantization : uint8_t
 	EVectorQuantization__RoundOneDecimal = 1,
 	EVectorQuantization__RoundTwoDecimals = 2,
 	EVectorQuantization__EVectorQuantization_MAX = 3
-};
-
-
-// Enum Engine.EActorSpawnRestrictions
-enum class EActorSpawnRestrictions : uint8_t
-{
-	EActorSpawnRestrictions__ServerOnly = 0,
-	EActorSpawnRestrictions__ClientOnly = 1,
-	EActorSpawnRestrictions__ServerAndClient = 2,
-	EActorSpawnRestrictions__SpawnRestrictionMax = 3,
-	EActorSpawnRestrictions__EActorSpawnRestrictions_MAX = 4
 };
 
 
@@ -1189,6 +1189,16 @@ enum class EDetailMode : uint8_t
 };
 
 
+// Enum Engine.ENetSpatialClusteringOptions
+enum class ENetSpatialClusteringOptions : uint8_t
+{
+	ENetSpatialClusteringOptions__OptIn = 0,
+	ENetSpatialClusteringOptions__OptOut = 1,
+	ENetSpatialClusteringOptions__NeverRelevant = 2,
+	ENetSpatialClusteringOptions__ENetSpatialClusteringOptions_MAX = 3
+};
+
+
 // Enum Engine.EBrushType
 enum class EBrushType : uint8_t
 {
@@ -1640,6 +1650,16 @@ enum class EParticleSystemUpdateMode : uint8_t
 };
 
 
+// Enum Engine.EWaterKillCondition
+enum class EWaterKillCondition : uint8_t
+{
+	EWaterKillCondition__None      = 0,
+	EWaterKillCondition__AboveWater = 1,
+	EWaterKillCondition__Underwater = 2,
+	EWaterKillCondition__EWaterKillCondition_MAX = 3
+};
+
+
 // Enum Engine.EParticleEventType
 enum class EParticleEventType : uint8_t
 {
@@ -1649,7 +1669,8 @@ enum class EParticleEventType : uint8_t
 	EPET_Collision                 = 3,
 	EPET_Burst                     = 4,
 	EPET_Blueprint                 = 5,
-	EPET_MAX                       = 6
+	EPET_KillByKillPlane           = 6,
+	EPET_MAX                       = 7
 };
 
 
@@ -2131,7 +2152,8 @@ enum class ETexturePowerOfTwoSetting : uint8_t
 	ETexturePowerOfTwoSetting__None = 0,
 	ETexturePowerOfTwoSetting__PadToPowerOfTwo = 1,
 	ETexturePowerOfTwoSetting__PadToSquarePowerOfTwo = 2,
-	ETexturePowerOfTwoSetting__ETexturePowerOfTwoSetting_MAX = 3
+	ETexturePowerOfTwoSetting__PadToMultipleOfFour = 3,
+	ETexturePowerOfTwoSetting__ETexturePowerOfTwoSetting_MAX = 4
 };
 
 
@@ -2199,7 +2221,8 @@ enum class ETextureGroup : uint8_t
 	TEXTUREGROUP_Animation         = 31,
 	TEXTUREGROUP_Coherent          = 32,
 	TEXTUREGROUP_MippedUI          = 33,
-	TEXTUREGROUP_MAX               = 34
+	TEXTUREGROUP_LoadingScreen     = 34,
+	TEXTUREGROUP_MAX               = 35
 };
 
 
@@ -2732,6 +2755,17 @@ enum class EFullyLoadPackageType : uint8_t
 	FULLYLOAD_Always               = 3,
 	FULLYLOAD_Mutator              = 4,
 	FULLYLOAD_MAX                  = 5
+};
+
+
+// Enum Engine.ECustomTimeStepSynchronizationState
+enum class ECustomTimeStepSynchronizationState : uint8_t
+{
+	ECustomTimeStepSynchronizationState__Closed = 0,
+	ECustomTimeStepSynchronizationState__Error = 1,
+	ECustomTimeStepSynchronizationState__Synchronized = 2,
+	ECustomTimeStepSynchronizationState__Synchronizing = 3,
+	ECustomTimeStepSynchronizationState__ECustomTimeStepSynchronizationState_MAX = 4
 };
 
 
@@ -4410,6 +4444,17 @@ enum class EModulationParamMode : uint8_t
 };
 
 
+// Enum Engine.ETimecodeProviderSynchronizationState
+enum class ETimecodeProviderSynchronizationState : uint8_t
+{
+	ETimecodeProviderSynchronizationState__Closed = 0,
+	ETimecodeProviderSynchronizationState__Error = 1,
+	ETimecodeProviderSynchronizationState__Synchronized = 2,
+	ETimecodeProviderSynchronizationState__Synchronizing = 3,
+	ETimecodeProviderSynchronizationState__ETimecodeProviderSynchronizationState_MAX = 4
+};
+
+
 // Enum Engine.EUserDefinedStructureStatus
 enum class EUserDefinedStructureStatus : uint8_t
 {
@@ -4483,6 +4528,37 @@ enum class ECameraAlphaBlendMode : uint8_t
 	ECameraAlphaBlendMode__CABM_Linear = 0,
 	ECameraAlphaBlendMode__CABM_Cubic = 1,
 	ECameraAlphaBlendMode__CABM_MAX = 2
+};
+
+
+// Enum Engine.EChannelDormancy
+enum class EChannelDormancy : uint8_t
+{
+	EChannelDormancy__Awake        = 0,
+	EChannelDormancy__PendingDormant = 1,
+	EChannelDormancy__Dormant      = 2,
+	EChannelDormancy__EChannelDormancy_MAX = 3
+};
+
+
+// Enum Engine.EActorChannelState
+enum class EActorChannelState : uint8_t
+{
+	EActorChannelState__NoChannel  = 0,
+	EActorChannelState__ChannelCreated = 1,
+	EActorChannelState__SpawnAcked = 2,
+	EActorChannelState__EActorChannelState_MAX = 3
+};
+
+
+// Enum Engine.EShippingStatCategory
+enum class EShippingStatCategory : uint8_t
+{
+	EShippingStatCategory__FrameSegment = 0,
+	EShippingStatCategory__Game    = 1,
+	EShippingStatCategory__Engine  = 2,
+	EShippingStatCategory__Blueprint = 3,
+	EShippingStatCategory__EShippingStatCategory_MAX = 4
 };
 
 

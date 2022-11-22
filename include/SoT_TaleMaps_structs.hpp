@@ -18,8 +18,31 @@ namespace SDK
 //---------------------------------------------------------------------------
 
 // ScriptStruct TaleMaps.TaleQuestVariableMapMarkType
-// 0x0000 (0x0010 - 0x0010)
+// 0x0000 (0x0030 - 0x0030)
 struct FTaleQuestVariableMapMarkType : public FQuestVariable
+{
+
+};
+
+// ScriptStruct TaleMaps.ChecklistActionProgressTracker
+// 0x0010
+struct FChecklistActionProgressTracker
+{
+	class UChecklistActionData*                        ActionData;                                               // 0x0000(0x0008) (ZeroConstructor, IsPlainOldData)
+	unsigned char                                      UnknownData00[0x8];                                       // 0x0008(0x0008) MISSED OFFSET
+};
+
+// ScriptStruct TaleMaps.TaleQuestChecklistItem
+// 0x0050
+struct FTaleQuestChecklistItem
+{
+	TArray<struct FChecklistActionProgressTracker>     ChecklistActions;                                         // 0x0000(0x0010) (ZeroConstructor)
+	unsigned char                                      UnknownData00[0x40];                                      // 0x0010(0x0040) MISSED OFFSET
+};
+
+// ScriptStruct TaleMaps.TaleQuestVariableTreasureMapItemDescType
+// 0x0000 (0x0030 - 0x0030)
+struct FTaleQuestVariableTreasureMapItemDescType : public FQuestVariable
 {
 
 };

@@ -216,39 +216,78 @@ public:
 
 	static bool SavePirateDescription(const class FString& RelativePath, const struct FPirateDescription& InDesc);
 	static struct FRadialCoordinate RandomBodyShape(int Seed);
+	static class UWardrobeDataAsset* LoadWardrobeDataAsset();
 	static bool LoadPirateDescription(const class FString& RelativePath, struct FPirateDescription* OutDesc);
-	static void K2_BakeFromDescriptionGameThread(const struct FPirateDescription& Desc, TEnumAsByte<EPirateBakeFlags> Flags, class USkeletalMesh** OutMesh, struct FPirateDescription* OutDesc);
+	static void K2_BakeFromDescriptionGameThread(const struct FPirateDescription& Desc, TEnumAsByte<EPirateBakeFlags> Flags, class USkeletalMesh** OutMesh, struct FPirateGeneratorAdditionalBakeInfo* OutAdditionalBakeInfo, struct FPirateDescription* OutDesc);
 	static int IPGLatestVersion();
 	static int GetSeedFromString(const class FString& RefName, const class FString& Str);
 	static void GetAllTextureReferences(class USkeletalMesh* Mesh, TArray<struct FPirateGeneratorTextureReference>* OutReferences);
 	static TArray<class FString> GetAllDescriptions();
 	static struct FPirateDescription GenerateRandomPirateWithVersion(int Seed, int Version, bool bOverrideBodyShape, const struct FRadialCoordinate& BodyShapeOverride, TEnumAsByte<EIPGGender> SpecificGender, TEnumAsByte<EIPGEthnicity> SpecificEthnicity, TArray<struct FIPGDynamicSlider> DynamicSliders, TArray<struct FName> TextureReferences, TArray<struct FIPGScalarParameter> ScalarParameters);
 	static struct FPirateDescription GenerateRandomPirate(int Seed, bool bOverrideBodyShape, const struct FRadialCoordinate& BodyShapeOverride, TEnumAsByte<EIPGGender> SpecificGender, TEnumAsByte<EIPGEthnicity> SpecificEthnicity, TArray<struct FIPGDynamicSlider> DynamicSliders, TArray<struct FName> TextureReferences, TArray<struct FIPGScalarParameter> ScalarParameters);
+	static void BakeMeshWithNewMaterial(const struct FName& InMaterialName, const struct FPirateDescription& InPirateDesc, TArray<struct FName> ClothingWardrobeKeys, bool InFirstPerson, const struct FScriptDelegate& Result);
 	static void BakeFromDescriptionAsync(const struct FPirateDescription& Desc, TEnumAsByte<EPirateBakeFlags> Flags, const struct FScriptDelegate& AsyncResult);
 };
 
 
-// Class PirateGenerator.PirateGeneratorSettings
-// 0x00E8 (0x0110 - 0x0028)
-class UPirateGeneratorSettings : public UObject
+// Class PirateGenerator.WardrobeExcludeDataAsset
+// 0x0010 (0x0038 - 0x0028)
+class UWardrobeExcludeDataAsset : public UDataAsset
 {
 public:
-	class FString                                      ConfigJson;                                               // 0x0028(0x0010) (Edit, ZeroConstructor, Config)
-	class FString                                      PiratesFolder;                                            // 0x0038(0x0010) (Edit, ZeroConstructor, Config)
-	class FString                                      WardrobeFolder;                                           // 0x0048(0x0010) (Edit, ZeroConstructor, Config)
-	struct FStringAssetReference                       WardrobeDataAsset;                                        // 0x0058(0x0010) (Edit, ZeroConstructor, Config)
-	TArray<struct FName>                               DefaultWardrobeItems;                                     // 0x0068(0x0010) (Edit, ZeroConstructor, Config)
-	struct FStringAssetReference                       MaterialReferencesDataAsset;                              // 0x0078(0x0010) (Edit, ZeroConstructor, Config)
-	struct FStringAssetReference                       SkeletonsDataAsset;                                       // 0x0088(0x0010) (Edit, ZeroConstructor, Config)
-	TArray<struct FStringAssetReference>               BaseSkeletonMeshes;                                       // 0x0098(0x0010) (Edit, ZeroConstructor, Config)
-	TArray<struct FStringAssetReference>               Characterization;                                         // 0x00A8(0x0010) (Edit, ZeroConstructor, Config)
-	TArray<class FString>                              SkeletonMeshFormats;                                      // 0x00B8(0x0010) (Edit, ZeroConstructor, Config)
-	struct FStringAssetReference                       FirstPersonAnimations;                                    // 0x00C8(0x0010) (Edit, ZeroConstructor, Config)
-	struct FStringAssetReference                       ThirdPersonAnimations;                                    // 0x00D8(0x0010) (Edit, ZeroConstructor, Config)
-	TArray<float>                                      LODScreenSizes;                                           // 0x00E8(0x0010) (Edit, ZeroConstructor, Config)
-	TArray<float>                                      LODHysteresis;                                            // 0x00F8(0x0010) (Edit, ZeroConstructor, Config)
-	int                                                DefaultPirateGenerationSeed;                              // 0x0108(0x0004) (ZeroConstructor, Config, IsPlainOldData)
-	unsigned char                                      UnknownData00[0x4];                                       // 0x010C(0x0004) MISSED OFFSET
+	TArray<struct FName>                               ExcludeItems;                                             // 0x0028(0x0010) (Edit, BlueprintVisible, BlueprintReadOnly, ZeroConstructor)
+
+	static UClass* StaticClass()
+	{
+		static auto ptr = UObject::FindObject<UClass>(_xor_("Class PirateGenerator.WardrobeExcludeDataAsset"));
+		return ptr;
+	}
+
+};
+
+
+// Class PirateGenerator.WardrobeDataAsset
+// 0x00B0 (0x00D8 - 0x0028)
+class UWardrobeDataAsset : public UDataAsset
+{
+public:
+	unsigned char                                      UnknownData00[0xA0];                                      // 0x0028(0x00A0) MISSED OFFSET
+	TArray<struct FMeshPatchEntry>                     AssetMap;                                                 // 0x00C8(0x0010) (Edit, BlueprintVisible, BlueprintReadOnly, ZeroConstructor, DisableEditOnInstance, EditConst)
+
+	static UClass* StaticClass()
+	{
+		static auto ptr = UObject::FindObject<UClass>(_xor_("Class PirateGenerator.WardrobeDataAsset"));
+		return ptr;
+	}
+
+
+	bool Rebuild(bool LoadAllAssets);
+	int GetNumNewAssets();
+};
+
+
+// Class PirateGenerator.PirateGeneratorSettings
+// 0x00F8 (0x0130 - 0x0038)
+class UPirateGeneratorSettings : public UDeveloperSettings
+{
+public:
+	struct FStringAssetReference                       WardrobeDataAsset;                                        // 0x0038(0x0010) (Edit, ZeroConstructor, Config, DisableEditOnInstance)
+	class FString                                      ConfigJson;                                               // 0x0048(0x0010) (Edit, ZeroConstructor, Config, DisableEditOnInstance)
+	class FString                                      PiratesFolder;                                            // 0x0058(0x0010) (Edit, ZeroConstructor, Config, DisableEditOnInstance)
+	class FString                                      WardrobeFolder;                                           // 0x0068(0x0010) (Edit, ZeroConstructor, Config, DisableEditOnInstance)
+	TArray<struct FName>                               DefaultWardrobeItems;                                     // 0x0078(0x0010) (Edit, ZeroConstructor, Config, DisableEditOnInstance)
+	struct FStringAssetReference                       MaterialReferencesDataAsset;                              // 0x0088(0x0010) (Edit, ZeroConstructor, Config, DisableEditOnInstance)
+	struct FStringAssetReference                       SkeletonsDataAsset;                                       // 0x0098(0x0010) (Edit, ZeroConstructor, Config, DisableEditOnInstance)
+	TArray<struct FStringAssetReference>               BaseSkeletonMeshes;                                       // 0x00A8(0x0010) (Edit, ZeroConstructor, Config, DisableEditOnInstance)
+	TArray<struct FStringAssetReference>               Characterization;                                         // 0x00B8(0x0010) (Edit, ZeroConstructor, Config, DisableEditOnInstance)
+	TArray<class FString>                              SkeletonMeshFormats;                                      // 0x00C8(0x0010) (Edit, ZeroConstructor, Config, DisableEditOnInstance)
+	struct FStringAssetReference                       FirstPersonAnimations;                                    // 0x00D8(0x0010) (Edit, ZeroConstructor, Config, DisableEditOnInstance)
+	struct FStringAssetReference                       ThirdPersonAnimations;                                    // 0x00E8(0x0010) (Edit, ZeroConstructor, Config, DisableEditOnInstance)
+	TArray<float>                                      LODScreenSizes;                                           // 0x00F8(0x0010) (Edit, ZeroConstructor, Config, DisableEditOnInstance)
+	TArray<float>                                      LODHysteresis;                                            // 0x0108(0x0010) (Edit, ZeroConstructor, Config, DisableEditOnInstance)
+	TArray<struct FStringAssetReference>               ExcludeDataAssets;                                        // 0x0118(0x0010) (Edit, ZeroConstructor, Config, DisableEditOnInstance)
+	int                                                DefaultPirateGenerationSeed;                              // 0x0128(0x0004) (ZeroConstructor, Config, IsPlainOldData)
+	unsigned char                                      UnknownData00[0x4];                                       // 0x012C(0x0004) MISSED OFFSET
 
 	static UClass* StaticClass()
 	{
@@ -393,40 +432,6 @@ public:
 	static UClass* StaticClass()
 	{
 		static auto ptr = UObject::FindObject<UClass>(_xor_("Class PirateGenerator.ColorTextureSwitchBySeed"));
-		return ptr;
-	}
-
-};
-
-
-// Class PirateGenerator.WardrobeExcludeDataAsset
-// 0x0010 (0x0038 - 0x0028)
-class UWardrobeExcludeDataAsset : public UDataAsset
-{
-public:
-	TArray<struct FName>                               ExcludeItems;                                             // 0x0028(0x0010) (Edit, BlueprintVisible, BlueprintReadOnly, ZeroConstructor)
-
-	static UClass* StaticClass()
-	{
-		static auto ptr = UObject::FindObject<UClass>(_xor_("Class PirateGenerator.WardrobeExcludeDataAsset"));
-		return ptr;
-	}
-
-};
-
-
-// Class PirateGenerator.WardrobeDataAsset
-// 0x00C0 (0x00E8 - 0x0028)
-class UWardrobeDataAsset : public UDataAsset
-{
-public:
-	unsigned char                                      UnknownData00[0xA0];                                      // 0x0028(0x00A0) MISSED OFFSET
-	TArray<class UWardrobeExcludeDataAsset*>           ExcludeDataAssets;                                        // 0x00C8(0x0010) (Edit, BlueprintVisible, BlueprintReadOnly, ZeroConstructor)
-	TArray<struct FMeshPatchEntry>                     AssetMap;                                                 // 0x00D8(0x0010) (Edit, BlueprintVisible, BlueprintReadOnly, ZeroConstructor)
-
-	static UClass* StaticClass()
-	{
-		static auto ptr = UObject::FindObject<UClass>(_xor_("Class PirateGenerator.WardrobeDataAsset"));
 		return ptr;
 	}
 

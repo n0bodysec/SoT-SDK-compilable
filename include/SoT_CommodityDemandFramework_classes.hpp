@@ -14,6 +14,23 @@ namespace SDK
 //Classes
 //---------------------------------------------------------------------------
 
+// Class CommodityDemandFramework.CommodityTokenEntitlementDesc
+// 0x0010 (0x00D8 - 0x00C8)
+class UCommodityTokenEntitlementDesc : public UEntitlementDesc
+{
+public:
+	struct FName                                       NPCToRedeemAt;                                            // 0x00C8(0x0008) (Edit, ZeroConstructor, DisableEditOnInstance, IsPlainOldData)
+	class UClass*                                      ItemToRedeemFor;                                          // 0x00D0(0x0008) (Edit, ZeroConstructor, DisableEditOnInstance, IsPlainOldData)
+
+	static UClass* StaticClass()
+	{
+		static auto ptr = UObject::FindObject<UClass>(_xor_("Class CommodityDemandFramework.CommodityTokenEntitlementDesc"));
+		return ptr;
+	}
+
+};
+
+
 // Class CommodityDemandFramework.CommodityDemandFrameworkEditorSettings
 // 0x0010 (0x0048 - 0x0038)
 class UCommodityDemandFrameworkEditorSettings : public UDeveloperSettings
@@ -68,12 +85,12 @@ public:
 
 
 // Class CommodityDemandFramework.CommodityDemandService
-// 0x0040 (0x0410 - 0x03D0)
+// 0x0040 (0x0408 - 0x03C8)
 class ACommodityDemandService : public AActor
 {
 public:
-	unsigned char                                      UnknownData00[0x20];                                      // 0x03D0(0x0020) MISSED OFFSET
-	struct FActiveNPCDemands                           ActiveCommodityDemands;                                   // 0x03F0(0x0020) (Net)
+	unsigned char                                      UnknownData00[0x20];                                      // 0x03C8(0x0020) MISSED OFFSET
+	struct FActiveNPCDemands                           ActiveCommodityDemands;                                   // 0x03E8(0x0020) (Net)
 
 	static UClass* StaticClass()
 	{
@@ -133,13 +150,13 @@ public:
 
 
 // Class CommodityDemandFramework.CommodityItemDesc
-// 0x0010 (0x0140 - 0x0130)
+// 0x0010 (0x0130 - 0x0120)
 class UCommodityItemDesc : public UBootyItemDesc
 {
 public:
-	struct FCommoditySelectionType                     CommodityType;                                            // 0x0130(0x0008) (Edit, DisableEditOnInstance)
-	TEnumAsByte<ECommodityDemand>                      CommodityDemand;                                          // 0x0138(0x0001) (Edit, ZeroConstructor, DisableEditOnInstance, IsPlainOldData)
-	unsigned char                                      UnknownData00[0x7];                                       // 0x0139(0x0007) MISSED OFFSET
+	struct FCommoditySelectionType                     CommodityType;                                            // 0x0120(0x0008) (Edit, DisableEditOnInstance)
+	TEnumAsByte<ECommodityDemand>                      CommodityDemand;                                          // 0x0128(0x0001) (Edit, ZeroConstructor, DisableEditOnInstance, IsPlainOldData)
+	unsigned char                                      UnknownData00[0x7];                                       // 0x0129(0x0007) MISSED OFFSET
 
 	static UClass* StaticClass()
 	{
@@ -216,33 +233,17 @@ public:
 
 
 // Class CommodityDemandFramework.CommoditySourceComponent
-// 0x0010 (0x00D8 - 0x00C8)
+// 0x0018 (0x00E0 - 0x00C8)
 class UCommoditySourceComponent : public UActorComponent
 {
 public:
 	unsigned char                                      UnknownData00[0x8];                                       // 0x00C8(0x0008) MISSED OFFSET
 	struct FName                                       NPCIdentifier;                                            // 0x00D0(0x0008) (Net, ZeroConstructor, IsPlainOldData)
+	struct FName                                       IslandIdentifier;                                         // 0x00D8(0x0008) (Net, ZeroConstructor, IsPlainOldData)
 
 	static UClass* StaticClass()
 	{
 		static auto ptr = UObject::FindObject<UClass>(_xor_("Class CommodityDemandFramework.CommoditySourceComponent"));
-		return ptr;
-	}
-
-};
-
-
-// Class CommodityDemandFramework.CommodityTokenEntitlementDesc
-// 0x0010 (0x00E8 - 0x00D8)
-class UCommodityTokenEntitlementDesc : public UEntitlementDesc
-{
-public:
-	struct FName                                       NPCToRedeemAt;                                            // 0x00D8(0x0008) (Edit, ZeroConstructor, DisableEditOnInstance, IsPlainOldData)
-	class UClass*                                      ItemToRedeemFor;                                          // 0x00E0(0x0008) (Edit, ZeroConstructor, DisableEditOnInstance, IsPlainOldData)
-
-	static UClass* StaticClass()
-	{
-		static auto ptr = UObject::FindObject<UClass>(_xor_("Class CommodityDemandFramework.CommodityTokenEntitlementDesc"));
 		return ptr;
 	}
 

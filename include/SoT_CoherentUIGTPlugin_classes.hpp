@@ -153,11 +153,11 @@ public:
 
 
 // Class CoherentUIGTPlugin.CoherentUIGTSystem
-// 0x0050 (0x0420 - 0x03D0)
+// 0x0050 (0x0418 - 0x03C8)
 class ACoherentUIGTSystem : public AActor
 {
 public:
-	unsigned char                                      UnknownData00[0x50];                                      // 0x03D0(0x0050) MISSED OFFSET
+	unsigned char                                      UnknownData00[0x50];                                      // 0x03C8(0x0050) MISSED OFFSET
 
 	static UClass* StaticClass()
 	{
@@ -282,12 +282,12 @@ public:
 
 
 // Class CoherentUIGTPlugin.CoherentUIGTGameHUD
-// 0x0098 (0x0560 - 0x04C8)
+// 0x0098 (0x0558 - 0x04C0)
 class ACoherentUIGTGameHUD : public AHUD
 {
 public:
-	class UCoherentUIGTHUD*                            CoherentUIGTHUD;                                          // 0x04C8(0x0008) (BlueprintVisible, ExportObject, BlueprintReadOnly, ZeroConstructor, InstancedReference, IsPlainOldData)
-	unsigned char                                      UnknownData00[0x90];                                      // 0x04D0(0x0090) MISSED OFFSET
+	class UCoherentUIGTHUD*                            CoherentUIGTHUD;                                          // 0x04C0(0x0008) (BlueprintVisible, ExportObject, BlueprintReadOnly, ZeroConstructor, InstancedReference, IsPlainOldData)
+	unsigned char                                      UnknownData00[0x90];                                      // 0x04C8(0x0090) MISSED OFFSET
 
 	static UClass* StaticClass()
 	{
@@ -302,15 +302,15 @@ public:
 
 
 // Class CoherentUIGTPlugin.CoherentUIGTInputActor
-// 0x0060 (0x0430 - 0x03D0)
+// 0x0060 (0x0428 - 0x03C8)
 class ACoherentUIGTInputActor : public AActor
 {
 public:
-	struct FScriptMulticastDelegate                    OnCoherentUIGTInputActorMouseButtonDown;                  // 0x03D0(0x0010) (ZeroConstructor, InstancedReference, BlueprintAssignable)
-	struct FScriptMulticastDelegate                    OnCoherentUIGTInputActorMouseButtonUp;                    // 0x03E0(0x0010) (ZeroConstructor, InstancedReference, BlueprintAssignable)
-	struct FScriptMulticastDelegate                    OnCoherentUIGTInputActorKeyDown;                          // 0x03F0(0x0010) (ZeroConstructor, InstancedReference, BlueprintAssignable)
-	struct FScriptMulticastDelegate                    OnCoherentUIGTInputActorKeyUp;                            // 0x0400(0x0010) (ZeroConstructor, InstancedReference, BlueprintAssignable)
-	unsigned char                                      UnknownData00[0x20];                                      // 0x0410(0x0020) MISSED OFFSET
+	struct FScriptMulticastDelegate                    OnCoherentUIGTInputActorMouseButtonDown;                  // 0x03C8(0x0010) (ZeroConstructor, InstancedReference, BlueprintAssignable)
+	struct FScriptMulticastDelegate                    OnCoherentUIGTInputActorMouseButtonUp;                    // 0x03D8(0x0010) (ZeroConstructor, InstancedReference, BlueprintAssignable)
+	struct FScriptMulticastDelegate                    OnCoherentUIGTInputActorKeyDown;                          // 0x03E8(0x0010) (ZeroConstructor, InstancedReference, BlueprintAssignable)
+	struct FScriptMulticastDelegate                    OnCoherentUIGTInputActorKeyUp;                            // 0x03F8(0x0010) (ZeroConstructor, InstancedReference, BlueprintAssignable)
+	unsigned char                                      UnknownData00[0x20];                                      // 0x0408(0x0020) MISSED OFFSET
 
 	static UClass* StaticClass()
 	{

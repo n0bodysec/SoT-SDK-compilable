@@ -32,6 +32,15 @@ enum class ETaleQuestStepState : uint8_t
 };
 
 
+// Enum Tales.ETaleInteractionState
+enum class ETaleInteractionState : uint8_t
+{
+	ETaleInteractionState__Enabled = 0,
+	ETaleInteractionState__Disabled = 1,
+	ETaleInteractionState__ETaleInteractionState_MAX = 2
+};
+
+
 // Enum Tales.ELostShipmentsIslandTypes
 enum class ELostShipmentsIslandTypes : uint8_t
 {

@@ -77,6 +77,8 @@ public:
 		return ptr;
 	}
 
+
+	struct FGuid GetSpawningCrewIdByCopy();
 };
 
 

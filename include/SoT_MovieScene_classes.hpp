@@ -108,6 +108,21 @@ public:
 };
 
 
+// Class MovieScene.MovieSceneCameraDockingInterface
+// 0x0000 (0x0028 - 0x0028)
+class UMovieSceneCameraDockingInterface : public UInterface
+{
+public:
+
+	static UClass* StaticClass()
+	{
+		static auto ptr = UObject::FindObject<UClass>(_xor_("Class MovieScene.MovieSceneCameraDockingInterface"));
+		return ptr;
+	}
+
+};
+
+
 // Class MovieScene.MovieSceneFolder
 // 0x0048 (0x0070 - 0x0028)
 class UMovieSceneFolder : public UObject
@@ -129,7 +144,7 @@ public:
 
 
 // Class MovieScene.MovieSceneSequencePlayer
-// 0x05D8 (0x0600 - 0x0028)
+// 0x05E0 (0x0608 - 0x0028)
 class UMovieSceneSequencePlayer : public UObject
 {
 public:
@@ -148,7 +163,9 @@ public:
 	int                                                CurrentNumLoops;                                          // 0x03DC(0x0004) (ZeroConstructor, Transient, IsPlainOldData)
 	unsigned char                                      UnknownData02[0x10];                                      // 0x03E0(0x0010) MISSED OFFSET
 	struct FMovieSceneSequencePlaybackSettings         PlaybackSettings;                                         // 0x03F0(0x0028)
-	unsigned char                                      UnknownData03[0x1E8];                                     // 0x0418(0x01E8) MISSED OFFSET
+	unsigned char                                      UnknownData03[0x1D0];                                     // 0x0418(0x01D0) MISSED OFFSET
+	class ACharacter*                                  InteractingCharacter;                                     // 0x05E8(0x0008) (ZeroConstructor, IsPlainOldData)
+	unsigned char                                      UnknownData04[0x18];                                      // 0x05F0(0x0018) MISSED OFFSET
 
 	static UClass* StaticClass()
 	{
@@ -165,7 +182,7 @@ public:
 	void SetOverridePlaybackSettings(const struct FMovieSceneSequencePlaybackSettings& InSettings);
 	void PlayReverse();
 	void PlayLooping(int NumLoops);
-	void Play();
+	void Play(class ACharacter* OptionalInteractingCharacter);
 	void Pause();
 	bool IsPlaying();
 	float GetPlayRate();

@@ -215,13 +215,13 @@ public:
 
 
 // Class AIShips.ShipProxyPawn
-// 0x0038 (0x0480 - 0x0448)
+// 0x0038 (0x0478 - 0x0440)
 class AShipProxyPawn : public APawn
 {
 public:
-	class AShip*                                       Ship;                                                     // 0x0448(0x0008) (ZeroConstructor, IsPlainOldData)
-	class AShip*                                       SpawnTargetShip;                                          // 0x0450(0x0008) (ZeroConstructor, IsPlainOldData)
-	unsigned char                                      UnknownData00[0x28];                                      // 0x0458(0x0028) MISSED OFFSET
+	class AShip*                                       Ship;                                                     // 0x0440(0x0008) (ZeroConstructor, IsPlainOldData)
+	class AShip*                                       SpawnTargetShip;                                          // 0x0448(0x0008) (ZeroConstructor, IsPlainOldData)
+	unsigned char                                      UnknownData00[0x28];                                      // 0x0450(0x0028) MISSED OFFSET
 
 	static UClass* StaticClass()
 	{
@@ -266,7 +266,7 @@ public:
 
 
 // Class AIShips.AIShipServiceDataAsset
-// 0x01B8 (0x01E0 - 0x0028)
+// 0x01D0 (0x01F8 - 0x0028)
 class UAIShipServiceDataAsset : public UDataAsset
 {
 public:
@@ -288,6 +288,9 @@ public:
 	float                                              TimerBattleMinActivationDistanceFromPlayers;              // 0x01D0(0x0004) (Edit, ZeroConstructor, DisableEditOnInstance, IsPlainOldData)
 	unsigned char                                      UnknownData02[0x4];                                       // 0x01D4(0x0004) MISSED OFFSET
 	class UShortRangeMarkerDataAsset*                  RewardMarkerParams;                                       // 0x01D8(0x0008) (Edit, ZeroConstructor, DisableEditOnInstance, IsPlainOldData)
+	TArray<struct FName>                               IslandsToAvoid;                                           // 0x01E0(0x0010) (Edit, ZeroConstructor, DisableEditOnInstance)
+	float                                              AvoidanceRange;                                           // 0x01F0(0x0004) (Edit, ZeroConstructor, DisableEditOnInstance, IsPlainOldData)
+	unsigned char                                      UnknownData03[0x4];                                       // 0x01F4(0x0004) MISSED OFFSET
 
 	static UClass* StaticClass()
 	{
@@ -347,12 +350,31 @@ public:
 };
 
 
+// Class AIShips.AIShipObstacleComponent
+// 0x0028 (0x00F0 - 0x00C8)
+class UAIShipObstacleComponent : public UActorComponent
+{
+public:
+	TEnumAsByte<EObstacleType>                         ObstacleType;                                             // 0x00C8(0x0001) (Edit, ZeroConstructor, IsPlainOldData)
+	unsigned char                                      UnknownData00[0x3];                                       // 0x00C9(0x0003) MISSED OFFSET
+	float                                              Radius;                                                   // 0x00CC(0x0004) (Edit, ZeroConstructor, IsPlainOldData)
+	unsigned char                                      UnknownData01[0x20];                                      // 0x00D0(0x0020) MISSED OFFSET
+
+	static UClass* StaticClass()
+	{
+		static auto ptr = UObject::FindObject<UClass>(_xor_("Class AIShips.AIShipObstacleComponent"));
+		return ptr;
+	}
+
+};
+
+
 // Class AIShips.AIShipObstacleService
-// 0x0070 (0x0440 - 0x03D0)
+// 0x0088 (0x0450 - 0x03C8)
 class AAIShipObstacleService : public AActor
 {
 public:
-	unsigned char                                      UnknownData00[0x70];                                      // 0x03D0(0x0070) MISSED OFFSET
+	unsigned char                                      UnknownData00[0x88];                                      // 0x03C8(0x0088) MISSED OFFSET
 
 	static UClass* StaticClass()
 	{
@@ -379,14 +401,13 @@ public:
 
 
 // Class AIShips.AIShipService
-// 0x0368 (0x0738 - 0x03D0)
+// 0x0330 (0x06F8 - 0x03C8)
 class AAIShipService : public AActor
 {
 public:
-	unsigned char                                      UnknownData00[0x20];                                      // 0x03D0(0x0020) MISSED OFFSET
-	class UAIShipServiceDataAsset*                     Params;                                                   // 0x03F0(0x0008) (ZeroConstructor, IsPlainOldData)
-	unsigned char                                      UnknownData01[0x330];                                     // 0x03F8(0x0330) MISSED OFFSET
-	TArray<class UAIShipEncounterDesc*>                BattleEncounters;                                         // 0x0728(0x0010) (ZeroConstructor, Transient)
+	unsigned char                                      UnknownData00[0x20];                                      // 0x03C8(0x0020) MISSED OFFSET
+	class UAIShipServiceDataAsset*                     Params;                                                   // 0x03E8(0x0008) (ZeroConstructor, IsPlainOldData)
+	unsigned char                                      UnknownData01[0x308];                                     // 0x03F0(0x0308) MISSED OFFSET
 
 	static UClass* StaticClass()
 	{
@@ -414,16 +435,16 @@ public:
 
 
 // Class AIShips.AthenaAIShipController
-// 0x00E0 (0x06F8 - 0x0618)
+// 0x0150 (0x0760 - 0x0610)
 class AAthenaAIShipController : public AAthenaAIControllerBase
 {
 public:
-	class UBehaviorTree*                               BTAsset;                                                  // 0x0618(0x0008) (Edit, ZeroConstructor, IsPlainOldData)
-	unsigned char                                      UnknownData00[0x18];                                      // 0x0620(0x0018) MISSED OFFSET
-	class UAthenaAIShipControllerParamsDataAsset*      ShipParamsDataAsset;                                      // 0x0638(0x0008) (ZeroConstructor, IsPlainOldData)
-	class UStatusEffectManagerComponent*               StatusEffectManagerComponent;                             // 0x0640(0x0008) (Edit, ExportObject, ZeroConstructor, EditConst, InstancedReference, IsPlainOldData)
-	struct FStandardAnchorDynamicsParameters           AnchorDynamicsParams;                                     // 0x0648(0x0028) (Edit)
-	unsigned char                                      UnknownData01[0x88];                                      // 0x0670(0x0088) MISSED OFFSET
+	class UBehaviorTree*                               BTAsset;                                                  // 0x0610(0x0008) (Edit, ZeroConstructor, IsPlainOldData)
+	unsigned char                                      UnknownData00[0x18];                                      // 0x0618(0x0018) MISSED OFFSET
+	class UAthenaAIShipControllerParamsDataAsset*      ShipParamsDataAsset;                                      // 0x0630(0x0008) (ZeroConstructor, IsPlainOldData)
+	class UStatusEffectManagerComponent*               StatusEffectManagerComponent;                             // 0x0638(0x0008) (Edit, ExportObject, ZeroConstructor, EditConst, InstancedReference, IsPlainOldData)
+	struct FStandardAnchorDynamicsParameters           AnchorDynamicsParams;                                     // 0x0640(0x0028) (Edit)
+	unsigned char                                      UnknownData01[0xF8];                                      // 0x0668(0x00F8) MISSED OFFSET
 
 	static UClass* StaticClass()
 	{

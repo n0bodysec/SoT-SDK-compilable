@@ -10,6 +10,25 @@
 
 namespace SDK
 {
+//---------------------------------------------------------------------------
+//Classes
+//---------------------------------------------------------------------------
+
+// Class Sessions.ServerCrewSessionManagerProviderInterface
+// 0x0000 (0x0028 - 0x0028)
+class UServerCrewSessionManagerProviderInterface : public UInterface
+{
+public:
+
+	static UClass* StaticClass()
+	{
+		static auto ptr = UObject::FindObject<UClass>(_xor_("Class Sessions.ServerCrewSessionManagerProviderInterface"));
+		return ptr;
+	}
+
+};
+
+
 }
 
 #ifdef _MSC_VER

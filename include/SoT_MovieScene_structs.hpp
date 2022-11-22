@@ -17,15 +17,18 @@ namespace SDK
 //---------------------------------------------------------------------------
 
 // ScriptStruct MovieScene.MovieSceneSpawnable
-// 0x0040
+// 0x0048
 struct FMovieSceneSpawnable
 {
-	struct FGuid                                       Guid;                                                     // 0x0000(0x0010) (ZeroConstructor, IsPlainOldData)
-	class FString                                      Name;                                                     // 0x0010(0x0010) (ZeroConstructor)
-	class UObject*                                     ObjectTemplate;                                           // 0x0020(0x0008) (ZeroConstructor, IsPlainOldData)
-	TArray<struct FGuid>                               ChildPossessables;                                        // 0x0028(0x0010) (ZeroConstructor)
-	TEnumAsByte<ESpawnOwnership>                       Ownership;                                                // 0x0038(0x0001) (ZeroConstructor, IsPlainOldData)
-	unsigned char                                      UnknownData00[0x7];                                       // 0x0039(0x0007) MISSED OFFSET
+	bool                                               IsCameraDockable;                                         // 0x0000(0x0001) (ZeroConstructor, IsPlainOldData)
+	unsigned char                                      UnknownData00[0x3];                                       // 0x0001(0x0003) MISSED OFFSET
+	struct FGuid                                       Guid;                                                     // 0x0004(0x0010) (ZeroConstructor, IsPlainOldData)
+	unsigned char                                      UnknownData01[0x4];                                       // 0x0014(0x0004) MISSED OFFSET
+	class FString                                      Name;                                                     // 0x0018(0x0010) (ZeroConstructor)
+	class UObject*                                     ObjectTemplate;                                           // 0x0028(0x0008) (ZeroConstructor, IsPlainOldData)
+	TArray<struct FGuid>                               ChildPossessables;                                        // 0x0030(0x0010) (ZeroConstructor)
+	TEnumAsByte<ESpawnOwnership>                       Ownership;                                                // 0x0040(0x0001) (ZeroConstructor, IsPlainOldData)
+	unsigned char                                      UnknownData02[0x7];                                       // 0x0041(0x0007) MISSED OFFSET
 };
 
 // ScriptStruct MovieScene.MovieScenePossessable
@@ -164,7 +167,7 @@ struct FMovieSceneTrackIdentifier
 // 0x0008
 struct FMovieSceneEvaluationFieldTrackPtr
 {
-	struct FMovieSceneSequenceID                       SequenceId;                                               // 0x0000(0x0004)
+	struct FMovieSceneSequenceID                       SequenceID;                                               // 0x0000(0x0004)
 	struct FMovieSceneTrackIdentifier                  TrackIdentifier;                                          // 0x0004(0x0004)
 };
 

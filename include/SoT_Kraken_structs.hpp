@@ -11,9 +11,9 @@
 #include "SoT_CoreUObject_classes.hpp"
 #include "SoT_Engine_classes.hpp"
 #include "SoT_Athena_classes.hpp"
-#include "SoT_Maths_classes.hpp"
 #include "SoT_AIModule_classes.hpp"
 #include "SoT_StatusEffects_classes.hpp"
+#include "SoT_Maths_classes.hpp"
 
 namespace SDK
 {
@@ -557,6 +557,17 @@ struct FKrakenShipWrappingBehaviourShakeAttackParams
 	float                                              ChanceOfShake;                                            // 0x0064(0x0004) (Edit, ZeroConstructor, DisableEditOnInstance, IsPlainOldData)
 };
 
+// ScriptStruct Kraken.KrakenShipWrappingBehaviourHeavyAttackParams
+// 0x00D8
+struct FKrakenShipWrappingBehaviourHeavyAttackParams
+{
+	struct FWeightedProbabilityRangeOfRanges           AttackDuration;                                           // 0x0000(0x0030) (Edit, DisableEditOnInstance)
+	float                                              ChanceOfEnteringHeavyAttack;                              // 0x0030(0x0004) (Edit, ZeroConstructor, DisableEditOnInstance, IsPlainOldData)
+	/*struct FKnockBackInfo*/unsigned char                              ExteriorKnockbackParams[0x50];                                  // 0x0034(0x0050) (Edit, DisableEditOnInstance)
+	/*struct FKnockBackInfo*/unsigned char                              InteriorKnockbackParams[0x50];                                  // 0x0084(0x0050) (Edit, DisableEditOnInstance)
+	unsigned char                                      UnknownData00[0x4];                                       // 0x00D4(0x0004) MISSED OFFSET
+};
+
 // ScriptStruct Kraken.KrakenShipWrappingBehaviourDamageParams
 // 0x0070
 struct FKrakenShipWrappingBehaviourDamageParams
@@ -805,11 +816,13 @@ struct FKrakenDespawnTelemetryEvent
 };
 
 // ScriptStruct Kraken.KrakenSpawnTelemetryEvent
-// 0x0020
+// 0x0030
 struct FKrakenSpawnTelemetryEvent
 {
 	class FString                                      KrakenId;                                                 // 0x0000(0x0010) (BlueprintVisible, BlueprintReadOnly, ZeroConstructor)
-	struct FGuid                                       ConfigSpawnId;                                            // 0x0010(0x0010) (BlueprintVisible, BlueprintReadOnly, ZeroConstructor, IsPlainOldData)
+	struct FVector                                     SpawnLocation;                                            // 0x0010(0x000C) (ZeroConstructor, IsPlainOldData)
+	struct FGuid                                       ConfigSpawnId;                                            // 0x001C(0x0010) (BlueprintVisible, BlueprintReadOnly, ZeroConstructor, IsPlainOldData)
+	unsigned char                                      UnknownData00[0x4];                                       // 0x002C(0x0004) MISSED OFFSET
 };
 
 }

@@ -10,8 +10,8 @@
 #include "SoT_StatusEffects_enums.hpp"
 #include "SoT_Engine_classes.hpp"
 #include "SoT_CoreUObject_classes.hpp"
+#include "SoT_SimpleOverlaps_classes.hpp"
 #include "SoT_Athena_classes.hpp"
-#include "AthenaCommons.hpp"
 
 namespace SDK
 {
@@ -43,15 +43,6 @@ struct FDebugMenuStatusDefinition
 	struct FStatus                                     Status;                                                   // 0x0008(0x0018) (Edit)
 };
 
-// ScriptStruct StatusEffects.DelayedStatusEffect
-// 0x0020
-struct FDelayedStatusEffect
-{
-	struct FStatus                                     StatusEffect;                                             // 0x0000(0x0018) (Edit)
-	float                                              InEffectTime;                                             // 0x0018(0x0004) (Edit, ZeroConstructor, IsPlainOldData)
-	unsigned char                                      UnknownData00[0x4];                                       // 0x001C(0x0004) MISSED OFFSET
-};
-
 // ScriptStruct StatusEffects.FeatureToggledStatusResponseList
 // 0x0018
 struct FFeatureToggledStatusResponseList
@@ -80,6 +71,15 @@ struct FEventAppliedStatusToTargets
 	TArray<class UClass*>                              StatusApplied;                                            // 0x0000(0x0010) (ZeroConstructor)
 	TArray<class AActor*>                              Targets;                                                  // 0x0010(0x0010) (ZeroConstructor)
 	class AActor*                                      StatusSource;                                             // 0x0020(0x0008) (ZeroConstructor, IsPlainOldData)
+};
+
+// ScriptStruct StatusEffects.DelayedStatusEffect
+// 0x0020
+struct FDelayedStatusEffect
+{
+	struct FStatus                                     StatusEffect;                                             // 0x0000(0x0018) (Edit)
+	float                                              InEffectTime;                                             // 0x0018(0x0004) (Edit, ZeroConstructor, IsPlainOldData)
+	unsigned char                                      UnknownData00[0x4];                                       // 0x001C(0x0004) MISSED OFFSET
 };
 
 // ScriptStruct StatusEffects.StatusEffectPersistenceKey

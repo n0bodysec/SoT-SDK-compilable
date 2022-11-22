@@ -38,7 +38,9 @@ enum class EIPGPirateType : uint8_t
 {
 	EIPGPirateType__PLAYER         = 0,
 	EIPGPirateType__NPC            = 1,
-	EIPGPirateType__EIPGPirateType_MAX = 2
+	EIPGPirateType__BONES          = 2,
+	EIPGPirateType__GHOST          = 3,
+	EIPGPirateType__EIPGPirateType_MAX = 4
 };
 
 

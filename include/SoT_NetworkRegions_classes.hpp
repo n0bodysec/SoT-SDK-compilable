@@ -47,13 +47,13 @@ public:
 
 
 // Class NetworkRegions.RegionAssetCacheActor
-// 0x0040 (0x0410 - 0x03D0)
+// 0x0040 (0x0408 - 0x03C8)
 class ARegionAssetCacheActor : public AActor
 {
 public:
-	TArray<struct FRegionAssetsList>                   RegionData;                                               // 0x03D0(0x0010) (Edit, ZeroConstructor, Config)
-	TArray<class UObject*>                             LoadedAssets;                                             // 0x03E0(0x0010) (ZeroConstructor, Transient)
-	unsigned char                                      UnknownData00[0x20];                                      // 0x03F0(0x0020) MISSED OFFSET
+	TArray<struct FRegionAssetsList>                   RegionData;                                               // 0x03C8(0x0010) (Edit, ZeroConstructor, Config)
+	TArray<class UObject*>                             LoadedAssets;                                             // 0x03D8(0x0010) (ZeroConstructor, Transient)
+	unsigned char                                      UnknownData00[0x20];                                      // 0x03E8(0x0020) MISSED OFFSET
 
 	static UClass* StaticClass()
 	{

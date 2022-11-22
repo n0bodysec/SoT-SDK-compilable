@@ -49,7 +49,8 @@ enum class EBountySpawnerType : uint8_t
 	EBountySpawnerType__Default    = 0,
 	EBountySpawnerType__BountyQuest = 1,
 	EBountySpawnerType__BountyFort = 2,
-	EBountySpawnerType__EBountySpawnerType_MAX = 3
+	EBountySpawnerType__SeaFort    = 3,
+	EBountySpawnerType__EBountySpawnerType_MAX = 4
 };
 
 
@@ -229,6 +230,19 @@ enum class ETinySharkState : uint8_t
 	ETinySharkState__Defeated      = 3,
 	ETinySharkState__Despawning    = 4,
 	ETinySharkState__ETinySharkState_MAX = 5
+};
+
+
+// Enum AthenaAI.ETinySharkTypes
+enum class ETinySharkTypes : uint8_t
+{
+	ETinySharkTypes__None          = 0,
+	ETinySharkTypes__TheHuneringOne = 1,
+	ETinySharkTypes__TheCrestedQueen = 2,
+	ETinySharkTypes__TheShadowmaw  = 3,
+	ETinySharkTypes__TheAncientTerror = 4,
+	ETinySharkTypes__TheShroudedGhost = 5,
+	ETinySharkTypes__ETinySharkTypes_MAX = 6
 };
 
 

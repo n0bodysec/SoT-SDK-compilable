@@ -142,8 +142,25 @@ public:
 };
 
 
+// Class WwiseAudio.MultiEmitterRootComponent
+// 0x0020 (0x0300 - 0x02E0)
+class UMultiEmitterRootComponent : public USceneComponent
+{
+public:
+	TArray<struct FMultiEmitterData>                   MultiEmitterDataArray;                                    // 0x02E0(0x0010) (BlueprintVisible, BlueprintReadOnly, ZeroConstructor)
+	TArray<struct FWwiseEmitter>                       PlayingEmitters;                                          // 0x02F0(0x0010) (BlueprintVisible, BlueprintReadOnly, ZeroConstructor)
+
+	static UClass* StaticClass()
+	{
+		static auto ptr = UObject::FindObject<UClass>(_xor_("Class WwiseAudio.MultiEmitterRootComponent"));
+		return ptr;
+	}
+
+};
+
+
 // Class WwiseAudio.WwiseAudioSettings
-// 0x03C0 (0x03E8 - 0x0028)
+// 0x03F8 (0x0420 - 0x0028)
 class UWwiseAudioSettings : public UObject
 {
 public:
@@ -155,31 +172,34 @@ public:
 	struct FStringAssetReference                       InitBank;                                                 // 0x0198(0x0010) (Edit, ZeroConstructor, Config)
 	struct FDirectoryPath                              WwiseSoundbanksRoot;                                      // 0x01A8(0x0010) (Edit, Config)
 	struct FStringAssetReference                       WwiseIDsDatabase;                                         // 0x01B8(0x0010) (Edit, ZeroConstructor, Config)
-	struct FDirectoryPath                              WwiseStreamedFilesDirectory;                              // 0x01C8(0x0010) (Edit, Config)
-	TArray<struct FWwiseIOPriorityMappingConfig>       AsyncIOPriorityMappings;                                  // 0x01D8(0x0010) (Edit, ZeroConstructor, Config)
-	struct FDirectoryPath                              TritonAcousticMapsDirectory;                              // 0x01E8(0x0010) (Edit, Config)
-	class FString                                      DefaultLanguage;                                          // 0x01F8(0x0010) (Edit, ZeroConstructor, Config)
-	class FString                                      SinkSharesetName;                                         // 0x0208(0x0010) (Edit, ZeroConstructor, Config)
-	struct FStringAssetReference                       PauseEventStart;                                          // 0x0218(0x0010) (Edit, ZeroConstructor, Config)
-	struct FStringAssetReference                       PauseEventRelease;                                        // 0x0228(0x0010) (Edit, ZeroConstructor, Config)
-	struct FStringAssetReference                       StopAllEvent;                                             // 0x0238(0x0010) (Edit, ZeroConstructor, Config)
-	struct FWwiseNetworkRelationship                   NetworkRelationship;                                      // 0x0248(0x0018) (Edit, Config)
-	struct FWwiseAudioGameStateSettings                AudioStateSettings;                                       // 0x0260(0x00A0) (Edit, Config)
-	uint32_t                                           WaapiInterpreterPort;                                     // 0x0300(0x0004) (Edit, ZeroConstructor, Config, IsPlainOldData)
-	unsigned char                                      UnknownData02[0x4];                                       // 0x0304(0x0004) MISSED OFFSET
-	class UWwiseEvent*                                 PauseEventStartInstance;                                  // 0x0308(0x0008) (ZeroConstructor, Transient, IsPlainOldData)
-	class UWwiseEvent*                                 PauseEventReleaseInstance;                                // 0x0310(0x0008) (ZeroConstructor, Transient, IsPlainOldData)
-	class UWwiseEvent*                                 StopAllEventInstance;                                     // 0x0318(0x0008) (ZeroConstructor, Transient, IsPlainOldData)
-	class UWwiseObjectPoolWrapper*                     AnimNotifyPoolInstance;                                   // 0x0320(0x0008) (ZeroConstructor, Transient, IsPlainOldData)
-	unsigned char                                      UnknownData03[0x40];                                      // 0x0328(0x0040) MISSED OFFSET
-	TArray<class UWwiseEvent*>                         EventsToPlayOnFrontendStartInstance;                      // 0x0368(0x0010) (ZeroConstructor, Transient)
-	TArray<class UWwiseEvent*>                         EventsToPlayOnFrontendEndInstance;                        // 0x0378(0x0010) (ZeroConstructor, Transient)
-	TArray<class UWwiseEvent*>                         EventsToPlayOnStartEngagementInstance;                    // 0x0388(0x0010) (ZeroConstructor, Transient)
-	TArray<class UWwiseEvent*>                         EventsToPlayOnEndEngagementInstance;                      // 0x0398(0x0010) (ZeroConstructor, Transient)
-	TArray<class UWwiseEvent*>                         EventsToPlayOnLoadingStartInstance;                       // 0x03A8(0x0010) (ZeroConstructor, Transient)
-	TArray<class UWwiseEvent*>                         EventsToPlayOnLoadingEndInstance;                         // 0x03B8(0x0010) (ZeroConstructor, Transient)
-	TArray<class UWwiseEvent*>                         EventsToPlayOnFrontEndOrLoadingStartInstance;             // 0x03C8(0x0010) (ZeroConstructor, Transient)
-	TArray<class UWwiseEvent*>                         EventsToPlayOnFrontEndOrLoadingEndInstance;               // 0x03D8(0x0010) (ZeroConstructor, Transient)
+	struct FStringAssetReference                       WwiseFileHashDatabase;                                    // 0x01C8(0x0010) (Edit, ZeroConstructor, Config)
+	struct FDirectoryPath                              WwiseStreamedFilesRoot;                                   // 0x01D8(0x0010) (Edit, Config)
+	TArray<struct FWwiseIOPriorityMappingConfig>       AsyncIOPriorityMappings;                                  // 0x01E8(0x0010) (Edit, ZeroConstructor, Config)
+	struct FDirectoryPath                              TritonAcousticMapsDirectory;                              // 0x01F8(0x0010) (Edit, Config)
+	class FString                                      DefaultLanguage;                                          // 0x0208(0x0010) (Edit, ZeroConstructor, Config)
+	class FString                                      SinkSharesetName;                                         // 0x0218(0x0010) (Edit, ZeroConstructor, Config)
+	struct FStringAssetReference                       PauseEventStart;                                          // 0x0228(0x0010) (Edit, ZeroConstructor, Config)
+	struct FStringAssetReference                       PauseEventRelease;                                        // 0x0238(0x0010) (Edit, ZeroConstructor, Config)
+	struct FStringAssetReference                       StopAllEvent;                                             // 0x0248(0x0010) (Edit, ZeroConstructor, Config)
+	struct FWwiseNetworkRelationship                   NetworkRelationship;                                      // 0x0258(0x0018) (Edit, Config)
+	struct FWwiseAudioGameStateSettings                AudioStateSettings;                                       // 0x0270(0x00A0) (Edit, Config)
+	uint32_t                                           WaapiInterpreterPort;                                     // 0x0310(0x0004) (Edit, ZeroConstructor, Config, IsPlainOldData)
+	unsigned char                                      UnknownData02[0x4];                                       // 0x0314(0x0004) MISSED OFFSET
+	struct FStringAssetReference                       WwiseMediaSoundComponentEventName;                        // 0x0318(0x0010) (Edit, ZeroConstructor, Config)
+	class UWwiseEvent*                                 PauseEventStartInstance;                                  // 0x0328(0x0008) (ZeroConstructor, Transient, IsPlainOldData)
+	class UWwiseEvent*                                 PauseEventReleaseInstance;                                // 0x0330(0x0008) (ZeroConstructor, Transient, IsPlainOldData)
+	class UWwiseEvent*                                 StopAllEventInstance;                                     // 0x0338(0x0008) (ZeroConstructor, Transient, IsPlainOldData)
+	class UWwiseEvent*                                 WwiseMediaSoundComponentEventNameInstance;                // 0x0340(0x0008) (ZeroConstructor, Transient, IsPlainOldData)
+	class UWwiseObjectPoolWrapper*                     AnimNotifyPoolInstance;                                   // 0x0348(0x0008) (ZeroConstructor, Transient, IsPlainOldData)
+	unsigned char                                      UnknownData03[0x50];                                      // 0x0350(0x0050) MISSED OFFSET
+	TArray<class UWwiseEvent*>                         EventsToPlayOnFrontendStartInstance;                      // 0x03A0(0x0010) (ZeroConstructor, Transient)
+	TArray<class UWwiseEvent*>                         EventsToPlayOnFrontendEndInstance;                        // 0x03B0(0x0010) (ZeroConstructor, Transient)
+	TArray<class UWwiseEvent*>                         EventsToPlayOnStartEngagementInstance;                    // 0x03C0(0x0010) (ZeroConstructor, Transient)
+	TArray<class UWwiseEvent*>                         EventsToPlayOnEndEngagementInstance;                      // 0x03D0(0x0010) (ZeroConstructor, Transient)
+	TArray<class UWwiseEvent*>                         EventsToPlayOnLoadingStartInstance;                       // 0x03E0(0x0010) (ZeroConstructor, Transient)
+	TArray<class UWwiseEvent*>                         EventsToPlayOnLoadingEndInstance;                         // 0x03F0(0x0010) (ZeroConstructor, Transient)
+	TArray<class UWwiseEvent*>                         EventsToPlayOnFrontEndOrLoadingStartInstance;             // 0x0400(0x0010) (ZeroConstructor, Transient)
+	TArray<class UWwiseEvent*>                         EventsToPlayOnFrontEndOrLoadingEndInstance;               // 0x0410(0x0010) (ZeroConstructor, Transient)
 
 	static UClass* StaticClass()
 	{
@@ -252,6 +272,7 @@ public:
 	}
 
 };
+
 
 
 // Class WwiseAudio.WwiseEmitterManager
@@ -373,11 +394,11 @@ public:
 
 
 // Class WwiseAudio.WwisePoolManager
-// 0x00D0 (0x00F8 - 0x0028)
+// 0x00D8 (0x0100 - 0x0028)
 class UWwisePoolManager : public UObject
 {
 public:
-	unsigned char                                      UnknownData00[0xD0];                                      // 0x0028(0x00D0) MISSED OFFSET
+	unsigned char                                      UnknownData00[0xD8];                                      // 0x0028(0x00D8) MISSED OFFSET
 
 	static UClass* StaticClass()
 	{

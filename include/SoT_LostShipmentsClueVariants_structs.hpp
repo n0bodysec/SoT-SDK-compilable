@@ -8,10 +8,10 @@
 
 #include "SoT_Basic.hpp"
 #include "SoT_LostShipmentsClueVariants_enums.hpp"
+#include "SoT_Athena_classes.hpp"
 #include "SoT_LostShipmentsClueFramework_classes.hpp"
 #include "SoT_Engine_classes.hpp"
 #include "SoT_CoreUObject_classes.hpp"
-#include "SoT_Athena_classes.hpp"
 #include "SoT_Tales_classes.hpp"
 
 namespace SDK
@@ -46,11 +46,11 @@ struct FGenderSpecificTextPairings
 };
 
 // ScriptStruct LostShipmentsClueVariants.TextEntryWithLayout
-// 0x0058
+// 0x0070
 struct FTextEntryWithLayout
 {
 	struct FText                                       TextEntry;                                                // 0x0000(0x0038) (Edit, DisableEditOnInstance)
-	struct FTreasureMapWidgetText                      TextLayout;                                               // 0x0038(0x0020) (Edit, DisableEditOnInstance)
+	struct FTreasureMapWidgetText                      TextLayout;                                               // 0x0038(0x0038) (Edit, DisableEditOnInstance)
 };
 
 // ScriptStruct LostShipmentsClueVariants.MapRadialIconData

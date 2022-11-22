@@ -9,7 +9,8 @@
 #include <locale>
 #include <unordered_set>
 #include <string>
-#include "XorStr/xorstr.hpp"
+#include "XorStrEx/XorStrEx.hpp"
+#include "XorStrEx/XorStrEx.hpp"
 
 namespace SDK
 {

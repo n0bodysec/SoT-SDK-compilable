@@ -344,6 +344,26 @@ public:
 };
 
 
+// Class Animation.AnimNotify_DetachAndMaintainWorldPosition
+// 0x0018 (0x0050 - 0x0038)
+class UAnimNotify_DetachAndMaintainWorldPosition : public UAnimNotify
+{
+public:
+	TEnumAsByte<EWieldAnimationLocation>               CurrentLocation;                                          // 0x0038(0x0001) (Edit, BlueprintReadOnly, ZeroConstructor, IsPlainOldData)
+	unsigned char                                      UnknownData00[0x3];                                       // 0x0039(0x0003) MISSED OFFSET
+	struct FVector                                     PreviewLocationOffset;                                    // 0x003C(0x000C) (Edit, BlueprintReadOnly, ZeroConstructor, IsPlainOldData)
+	float                                              PreviewScaleMultiplier;                                   // 0x0048(0x0004) (Edit, BlueprintReadOnly, ZeroConstructor, IsPlainOldData)
+	unsigned char                                      UnknownData01[0x4];                                       // 0x004C(0x0004) MISSED OFFSET
+
+	static UClass* StaticClass()
+	{
+		static auto ptr = UObject::FindObject<UClass>(_xor_("Class Animation.AnimNotify_DetachAndMaintainWorldPosition"));
+		return ptr;
+	}
+
+};
+
+
 // Class Animation.AnimNotify_PlayAnimationForCosmetic
 // 0x0018 (0x0050 - 0x0038)
 class UAnimNotify_PlayAnimationForCosmetic : public UAnimNotify
@@ -615,6 +635,24 @@ public:
 };
 
 
+// Class Animation.AnimNotifyState_ToggleIK
+// 0x0068 (0x0090 - 0x0028)
+class UAnimNotifyState_ToggleIK : public UAnimNotifyState
+{
+public:
+	TArray<TEnumAsByte<ECharacterIKLimb>>              IKLimbsToAdjust;                                          // 0x0028(0x0010) (Edit, BlueprintReadOnly, ZeroConstructor)
+	bool                                               Enabled;                                                  // 0x0038(0x0001) (Edit, BlueprintReadOnly, ZeroConstructor, IsPlainOldData)
+	unsigned char                                      UnknownData00[0x57];                                      // 0x0039(0x0057) MISSED OFFSET
+
+	static UClass* StaticClass()
+	{
+		static auto ptr = UObject::FindObject<UClass>(_xor_("Class Animation.AnimNotifyState_ToggleIK"));
+		return ptr;
+	}
+
+};
+
+
 // Class Animation.AthenaAnimationControllableSocketsInterface
 // 0x0000 (0x0028 - 0x0028)
 class UAthenaAnimationControllableSocketsInterface : public UInterface
@@ -663,7 +701,7 @@ public:
 
 
 // Class Animation.ClientSkeletalMeshComponent
-// 0x0000 (0x0990 - 0x0990)
+// 0x0000 (0x09C0 - 0x09C0)
 class UClientSkeletalMeshComponent : public USkeletalMeshComponent
 {
 public:
@@ -678,13 +716,13 @@ public:
 
 
 // Class Animation.CosmeticItemActor
-// 0x00B0 (0x0480 - 0x03D0)
+// 0x00B0 (0x0478 - 0x03C8)
 class ACosmeticItemActor : public AActor
 {
 public:
-	unsigned char                                      UnknownData00[0x8];                                       // 0x03D0(0x0008) MISSED OFFSET
-	class USkeletalMeshComponent*                      MeshComponent;                                            // 0x03D8(0x0008) (Edit, ExportObject, ZeroConstructor, DisableEditOnInstance, EditConst, InstancedReference, IsPlainOldData)
-	unsigned char                                      UnknownData01[0xA0];                                      // 0x03E0(0x00A0) MISSED OFFSET
+	unsigned char                                      UnknownData00[0x8];                                       // 0x03C8(0x0008) MISSED OFFSET
+	class USkeletalMeshComponent*                      MeshComponent;                                            // 0x03D0(0x0008) (Edit, ExportObject, ZeroConstructor, DisableEditOnInstance, EditConst, InstancedReference, IsPlainOldData)
+	unsigned char                                      UnknownData01[0xA0];                                      // 0x03D8(0x00A0) MISSED OFFSET
 
 	static UClass* StaticClass()
 	{
@@ -711,13 +749,14 @@ public:
 
 
 // Class Animation.CosmeticItemAnimationComponent
-// 0x0060 (0x0128 - 0x00C8)
+// 0x0068 (0x0130 - 0x00C8)
 class UCosmeticItemAnimationComponent : public UActorComponent
 {
 public:
 	unsigned char                                      UnknownData00[0x8];                                       // 0x00C8(0x0008) MISSED OFFSET
 	TMap<class USkeletalMeshComponent*, struct FCosmeticItems> CosmeticItems;                                            // 0x00D0(0x0050) (ZeroConstructor)
 	class UCosmeticItemAnimationDataAsset*             DataAsset;                                                // 0x0120(0x0008) (Edit, ZeroConstructor, DisableEditOnInstance, IsPlainOldData)
+	unsigned char                                      UnknownData01[0x8];                                       // 0x0128(0x0008) MISSED OFFSET
 
 	static UClass* StaticClass()
 	{
@@ -778,6 +817,8 @@ public:
 		return ptr;
 	}
 
+
+	void UnregisterEvents();
 };
 
 

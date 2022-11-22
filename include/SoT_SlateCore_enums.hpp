@@ -23,7 +23,7 @@ enum class EFontLanguage : uint8_t
 	EFontLanguage__Italian         = 5,
 	EFontLanguage__Korean          = 6,
 	EFontLanguage__Polish          = 7,
-	EFontLanguage__Portugese       = 8,
+	EFontLanguage__Portuguese      = 8,
 	EFontLanguage__Russian         = 9,
 	EFontLanguage__SimplifiedChinese = 10,
 	EFontLanguage__TraditionalChinese = 11,

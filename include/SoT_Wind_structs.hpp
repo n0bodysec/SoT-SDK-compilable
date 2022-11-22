@@ -51,6 +51,15 @@ struct FWindServiceParams
 	float                                              MaxBlendTimeBetweenChanges;                               // 0x0020(0x0004) (Edit, ZeroConstructor, IsPlainOldData)
 };
 
+// ScriptStruct Wind.ExtraWind
+// 0x0038
+struct FExtraWind
+{
+	class UObject*                                     Source;                                                   // 0x0000(0x0008) (ZeroConstructor, IsPlainOldData)
+	class AActor*                                      Basis;                                                    // 0x0008(0x0008) (ZeroConstructor, IsPlainOldData)
+	unsigned char                                      UnknownData00[0x28];                                      // 0x0010(0x0028) MISSED OFFSET
+};
+
 // ScriptStruct Wind.WindTurbulenceParameters
 // 0x0070
 struct FWindTurbulenceParameters

@@ -9,6 +9,7 @@
 #include "SoT_Basic.hpp"
 #include "SoT_AthenaInputMkII_enums.hpp"
 #include "SoT_Engine_classes.hpp"
+#include "SoT_AthenaInput_classes.hpp"
 
 namespace SDK
 {

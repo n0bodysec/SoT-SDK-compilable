@@ -7,7 +7,8 @@
 #endif
 
 #include "SoT_Basic.hpp"
-#include "AthenaCommons.hpp"
+#include "SoT_Athena_classes.hpp"
+#include "SoT_AthenaInputMkII_classes.hpp"
 #include "SoT_CoreUObject_classes.hpp"
 #include "SoT_Engine_classes.hpp"
 
@@ -25,17 +26,17 @@ struct FMysteriousNotesCompletionEventsModel
 };
 
 // ScriptStruct MysteriousNotes.WieldableMysteriousNoteLayoutItem
-// 0x00A0
+// 0x00D0
 struct FWieldableMysteriousNoteLayoutItem
 {
 	class FString                                      Theme;                                                    // 0x0000(0x0010) (Edit, ZeroConstructor, DisableEditOnInstance)
 	class UFont*                                       Font;                                                     // 0x0010(0x0008) (Edit, ZeroConstructor, DisableEditOnInstance, IsPlainOldData)
 	struct FTreasureMapWidgetStreamedTexture           Image;                                                    // 0x0018(0x0030) (Edit, DisableEditOnInstance)
 	struct FStringAssetReference                       RadialIcon;                                               // 0x0048(0x0010) (Edit, ZeroConstructor, DisableEditOnInstance)
-	struct FTreasureMapWidgetText                      NoteTitleWidgetText;                                      // 0x0058(0x0020) (Edit, DisableEditOnInstance)
-	struct FTreasureMapWidgetText                      NoteBodyWidgetText;                                       // 0x0078(0x0020) (Edit, DisableEditOnInstance)
-	float                                              NoteWidth;                                                // 0x0098(0x0004) (Edit, ZeroConstructor, DisableEditOnInstance, IsPlainOldData)
-	unsigned char                                      UnknownData00[0x4];                                       // 0x009C(0x0004) MISSED OFFSET
+	struct FTreasureMapWidgetText                      NoteTitleWidgetText;                                      // 0x0058(0x0038) (Edit, DisableEditOnInstance)
+	struct FTreasureMapWidgetText                      NoteBodyWidgetText;                                       // 0x0090(0x0038) (Edit, DisableEditOnInstance)
+	float                                              NoteWidth;                                                // 0x00C8(0x0004) (Edit, ZeroConstructor, DisableEditOnInstance, IsPlainOldData)
+	float                                              NoteLineSpacingMultiplier;                                // 0x00CC(0x0004) (Edit, ZeroConstructor, DisableEditOnInstance, IsPlainOldData)
 };
 
 // ScriptStruct MysteriousNotes.MysteriousNoteInfo

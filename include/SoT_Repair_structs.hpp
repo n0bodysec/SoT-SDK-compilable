@@ -17,6 +17,24 @@ namespace SDK
 //Script Structs
 //---------------------------------------------------------------------------
 
+// ScriptStruct Repair.DamageZoneRepairableStateChangedEvent
+// 0x0010
+struct FDamageZoneRepairableStateChangedEvent
+{
+	class AActor*                                      DamageZoneActor;                                          // 0x0000(0x0008) (ZeroConstructor, IsPlainOldData)
+	TEnumAsByte<ERepairableState>                      RepairableState;                                          // 0x0008(0x0001) (ZeroConstructor, IsPlainOldData)
+	unsigned char                                      UnknownData00[0x7];                                       // 0x0009(0x0007) MISSED OFFSET
+};
+
+// ScriptStruct Repair.RepairableComponentRepairableStateChangedEvent
+// 0x0010
+struct FRepairableComponentRepairableStateChangedEvent
+{
+	class UActorComponent*                             RepairableComponent;                                      // 0x0000(0x0008) (ExportObject, ZeroConstructor, InstancedReference, IsPlainOldData)
+	TEnumAsByte<ERepairableState>                      RepairableState;                                          // 0x0008(0x0001) (ZeroConstructor, IsPlainOldData)
+	unsigned char                                      UnknownData00[0x7];                                       // 0x0009(0x0007) MISSED OFFSET
+};
+
 // ScriptStruct Repair.EventRepairableObjectRepairEndedEvent
 // 0x0028
 struct FEventRepairableObjectRepairEndedEvent
@@ -55,6 +73,14 @@ struct FEventPlayerUndoRepairCompleted
 struct FEventPlayerUndoRepairStart
 {
 	unsigned char                                      UnknownData00[0x8];                                       // 0x0000(0x0008) MISSED OFFSET
+};
+
+// ScriptStruct Repair.ShipPartDamagePersistenceModel
+// 0x001F (0x0020 - 0x0001)
+struct FShipPartDamagePersistenceModel : public FPersistenceModel
+{
+	TArray<TEnumAsByte<ERepairableState>>              ComponentRepairableStates;                                // 0x0000(0x0010) (ZeroConstructor)
+	class FString                                      Identifier;                                               // 0x0010(0x0010) (ZeroConstructor)
 };
 
 }

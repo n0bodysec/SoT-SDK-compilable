@@ -103,7 +103,7 @@ struct FTrackedObjectiveCompletionMessage
 	struct FGuid                                       ObjectiveId;                                              // 0x0000(0x0010) (ZeroConstructor, IsPlainOldData)
 	struct FPirateIdentity                             PirateIdentity;                                           // 0x0010(0x0078)
 	struct FPlayerBaseTelemetryFragment                PlayerInfo;                                               // 0x0088(0x0048)
-	TEnumAsByte<EPlayMode>                             Playmode;                                                 // 0x00D0(0x0001) (ZeroConstructor, IsPlainOldData)
+	TEnumAsByte<EPlayMode>                             PlayMode;                                                 // 0x00D0(0x0001) (ZeroConstructor, IsPlainOldData)
 	TEnumAsByte<EPlayModeVariant>                      PlayModeVariant;                                          // 0x00D1(0x0001) (ZeroConstructor, IsPlainOldData)
 	unsigned char                                      UnknownData00[0x6];                                       // 0x00D2(0x0006) MISSED OFFSET
 	double                                             CreatedAt;                                                // 0x00D8(0x0008) (ZeroConstructor, IsPlainOldData)
@@ -116,7 +116,7 @@ struct FTrackedObjectiveProgressUpdateMessage
 	struct FGuid                                       ObjectiveId;                                              // 0x0000(0x0010) (ZeroConstructor, IsPlainOldData)
 	struct FPirateIdentity                             PirateIdentity;                                           // 0x0010(0x0078)
 	struct FPlayerBaseTelemetryFragment                PlayerInfo;                                               // 0x0088(0x0048)
-	TEnumAsByte<EPlayMode>                             Playmode;                                                 // 0x00D0(0x0001) (ZeroConstructor, IsPlainOldData)
+	TEnumAsByte<EPlayMode>                             PlayMode;                                                 // 0x00D0(0x0001) (ZeroConstructor, IsPlainOldData)
 	TEnumAsByte<EPlayModeVariant>                      PlayModeVariant;                                          // 0x00D1(0x0001) (ZeroConstructor, IsPlainOldData)
 	unsigned char                                      UnknownData00[0x2];                                       // 0x00D2(0x0002) MISSED OFFSET
 	int                                                Value;                                                    // 0x00D4(0x0004) (ZeroConstructor, IsPlainOldData)

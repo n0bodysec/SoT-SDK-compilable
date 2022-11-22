@@ -82,13 +82,13 @@ public:
 
 
 // Class AthenaEngine.DynamicColourPointLightComponent
-// 0x0130 (0x05B0 - 0x0480)
+// 0x0130 (0x05E0 - 0x04B0)
 class UDynamicColourPointLightComponent : public UPointLightComponent
 {
 public:
-	unsigned char                                      UnknownData00[0x78];                                      // 0x0480(0x0078) MISSED OFFSET
-	struct FRuntimeFloatCurve                          DeactivationCurve;                                        // 0x04F8(0x0080) (Edit)
-	unsigned char                                      UnknownData01[0x38];                                      // 0x0578(0x0038) MISSED OFFSET
+	unsigned char                                      UnknownData00[0x78];                                      // 0x04B0(0x0078) MISSED OFFSET
+	struct FRuntimeFloatCurve                          DeactivationCurve;                                        // 0x0528(0x0080) (Edit)
+	unsigned char                                      UnknownData01[0x38];                                      // 0x05A8(0x0038) MISSED OFFSET
 
 	static UClass* StaticClass()
 	{
@@ -157,6 +157,22 @@ public:
 	static UClass* StaticClass()
 	{
 		static auto ptr = UObject::FindObject<UClass>(_xor_("Class AthenaEngine.OnlinePlayerPermissionsRetrieverInterface"));
+		return ptr;
+	}
+
+};
+
+
+// Class AthenaEngine.PersistentAssetCollectionDataAsset
+// 0x0010 (0x0038 - 0x0028)
+class UPersistentAssetCollectionDataAsset : public UDataAsset
+{
+public:
+	TArray<class UObject*>                             Assets;                                                   // 0x0028(0x0010) (Edit, ZeroConstructor, DisableEditOnInstance)
+
+	static UClass* StaticClass()
+	{
+		static auto ptr = UObject::FindObject<UClass>(_xor_("Class AthenaEngine.PersistentAssetCollectionDataAsset"));
 		return ptr;
 	}
 

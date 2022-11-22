@@ -47,6 +47,21 @@ public:
 };
 
 
+// Class SeasonProgressionFramework.SeasonSettings
+// 0x0000 (0x0038 - 0x0038)
+class USeasonSettings : public UDeveloperSettings
+{
+public:
+
+	static UClass* StaticClass()
+	{
+		static auto ptr = UObject::FindObject<UClass>(_xor_("Class SeasonProgressionFramework.SeasonSettings"));
+		return ptr;
+	}
+
+};
+
+
 }
 
 #ifdef _MSC_VER

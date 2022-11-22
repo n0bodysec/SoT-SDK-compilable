@@ -8,6 +8,7 @@
 
 #include "SoT_Basic.hpp"
 #include "SoT_WwiseAudio_enums.hpp"
+#include "SoT_RareAudio_classes.hpp"
 #include "SoT_Engine_classes.hpp"
 #include "SoT_CoreUObject_classes.hpp"
 #include "SoT_MovieScene_classes.hpp"
@@ -17,6 +18,17 @@ namespace SDK
 //---------------------------------------------------------------------------
 //Script Structs
 //---------------------------------------------------------------------------
+
+// ScriptStruct WwiseAudio.MultiEmitterData
+// 0x0028
+struct FMultiEmitterData
+{
+	class UWwiseObjectPoolWrapper*                     PoolWrapper;                                              // 0x0000(0x0008) (Edit, BlueprintVisible, BlueprintReadOnly, ZeroConstructor, DisableEditOnInstance, EditConst, IsPlainOldData)
+	class UWwiseEvent*                                 PlayEvent;                                                // 0x0008(0x0008) (Edit, BlueprintVisible, BlueprintReadOnly, ZeroConstructor, DisableEditOnInstance, EditConst, IsPlainOldData)
+	struct FName                                       Name;                                                     // 0x0010(0x0008) (Edit, BlueprintVisible, BlueprintReadOnly, ZeroConstructor, DisableEditOnInstance, EditConst, IsPlainOldData)
+	struct FVector                                     Offset;                                                   // 0x0018(0x000C) (Edit, BlueprintVisible, BlueprintReadOnly, ZeroConstructor, DisableEditOnInstance, EditConst, IsPlainOldData)
+	unsigned char                                      UnknownData00[0x4];                                       // 0x0024(0x0004) MISSED OFFSET
+};
 
 // ScriptStruct WwiseAudio.ReverbPresetControllerSettings
 // 0x0028
@@ -123,14 +135,6 @@ struct FWwiseAudioAcousticSurfaceParams
 {
 	float                                              Thickness;                                                // 0x0000(0x0004) (Edit, BlueprintVisible, BlueprintReadOnly, ZeroConstructor, IsPlainOldData)
 	float                                              Reflectivity;                                             // 0x0004(0x0004) (Edit, BlueprintVisible, BlueprintReadOnly, ZeroConstructor, IsPlainOldData)
-};
-
-// ScriptStruct WwiseAudio.AnimNotify_SoundSwitch
-// 0x0018
-struct FAnimNotify_SoundSwitch
-{
-	struct FStringAssetReference                       SkeletalMeshReference;                                    // 0x0000(0x0010) (Edit, ZeroConstructor)
-	struct FName                                       SkeletalMeshCategoryName;                                 // 0x0010(0x0008) (Edit, ZeroConstructor, IsPlainOldData)
 };
 
 // ScriptStruct WwiseAudio.WwiseEventParam

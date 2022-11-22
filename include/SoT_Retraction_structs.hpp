@@ -25,6 +25,13 @@ struct FRetractorOrientationAdjustmentFlags
 	bool                                               AdjustYaw;                                                // 0x0002(0x0001) (Edit, ZeroConstructor, IsPlainOldData)
 };
 
+// ScriptStruct Retraction.EventAttachedRetractableToItemProxy
+// 0x0008
+struct FEventAttachedRetractableToItemProxy
+{
+	class AActor*                                      Item;                                                     // 0x0000(0x0008) (ZeroConstructor, IsPlainOldData)
+};
+
 }
 
 #ifdef _MSC_VER

@@ -15,32 +15,32 @@ namespace SDK
 //---------------------------------------------------------------------------
 
 // Class StudiosAutomation.TestLevelScriptActor
-// 0x00C0 (0x0498 - 0x03D8)
+// 0x00C0 (0x0490 - 0x03D0)
 class ATestLevelScriptActor : public ALevelScriptActor
 {
 public:
-	unsigned char                                      UnknownData00[0x8];                                       // 0x03D8(0x0008) MISSED OFFSET
-	TEnumAsByte<ETestCategory>                         Category;                                                 // 0x03E0(0x0001) (Edit, ZeroConstructor, IsPlainOldData)
-	TEnumAsByte<ETestArea>                             Area;                                                     // 0x03E1(0x0001) (Edit, ZeroConstructor, IsPlainOldData)
-	bool                                               VisualTest;                                               // 0x03E2(0x0001) (Edit, ZeroConstructor, IsPlainOldData)
-	bool                                               RunInEditor;                                              // 0x03E3(0x0001) (Edit, ZeroConstructor, IsPlainOldData)
-	bool                                               RunOnServer;                                              // 0x03E4(0x0001) (Edit, ZeroConstructor, IsPlainOldData)
-	bool                                               RequiresServices;                                         // 0x03E5(0x0001) (Edit, ZeroConstructor, IsPlainOldData)
-	unsigned char                                      UnknownData01[0x2];                                       // 0x03E6(0x0002) MISSED OFFSET
-	TArray<struct FTestLevelMetadataEntry>             AdditionalMetadata;                                       // 0x03E8(0x0010) (Edit, ZeroConstructor)
-	TEnumAsByte<EPerformanceCaptureType>               CaptureType;                                              // 0x03F8(0x0001) (Edit, ZeroConstructor, IsPlainOldData)
-	TEnumAsByte<ETestAutomationPlayModeOverride>       PlayModeOverride;                                         // 0x03F9(0x0001) (Edit, ZeroConstructor, IsPlainOldData)
-	unsigned char                                      UnknownData02[0x2];                                       // 0x03FA(0x0002) MISSED OFFSET
-	float                                              TestTimeout;                                              // 0x03FC(0x0004) (Edit, ZeroConstructor, IsPlainOldData)
-	float                                              TestPausedTimeout;                                        // 0x0400(0x0004) (Edit, ZeroConstructor, IsPlainOldData)
-	unsigned char                                      UnknownData03[0x4];                                       // 0x0404(0x0004) MISSED OFFSET
-	TArray<class FString>                              VerboseLogCategories;                                     // 0x0408(0x0010) (Edit, ZeroConstructor)
-	TArray<int>                                        ClientsRunning;                                           // 0x0418(0x0010) (Net, ZeroConstructor)
-	TArray<int>                                        ClientIds;                                                // 0x0428(0x0010) (Net, ZeroConstructor)
-	TArray<struct FClientPawnDetails>                  ClientPawns;                                              // 0x0438(0x0010) (Net, ZeroConstructor)
-	TArray<class AActor*>                              SpawnedActors;                                            // 0x0448(0x0010) (Net, ZeroConstructor)
-	int                                                NextSpawnedActorIndex;                                    // 0x0458(0x0004) (ZeroConstructor, IsPlainOldData)
-	unsigned char                                      UnknownData04[0x3C];                                      // 0x045C(0x003C) MISSED OFFSET
+	unsigned char                                      UnknownData00[0x8];                                       // 0x03D0(0x0008) MISSED OFFSET
+	TEnumAsByte<ETestCategory>                         Category;                                                 // 0x03D8(0x0001) (Edit, ZeroConstructor, IsPlainOldData)
+	TEnumAsByte<ETestArea>                             Area;                                                     // 0x03D9(0x0001) (Edit, ZeroConstructor, IsPlainOldData)
+	bool                                               VisualTest;                                               // 0x03DA(0x0001) (Edit, ZeroConstructor, IsPlainOldData)
+	bool                                               RunInEditor;                                              // 0x03DB(0x0001) (Edit, ZeroConstructor, IsPlainOldData)
+	bool                                               RunOnServer;                                              // 0x03DC(0x0001) (Edit, ZeroConstructor, IsPlainOldData)
+	bool                                               RequiresServices;                                         // 0x03DD(0x0001) (Edit, ZeroConstructor, IsPlainOldData)
+	unsigned char                                      UnknownData01[0x2];                                       // 0x03DE(0x0002) MISSED OFFSET
+	TArray<struct FTestLevelMetadataEntry>             AdditionalMetadata;                                       // 0x03E0(0x0010) (Edit, ZeroConstructor)
+	TEnumAsByte<EPerformanceCaptureType>               CaptureType;                                              // 0x03F0(0x0001) (Edit, ZeroConstructor, IsPlainOldData)
+	TEnumAsByte<ETestAutomationPlayModeOverride>       PlayModeOverride;                                         // 0x03F1(0x0001) (Edit, ZeroConstructor, IsPlainOldData)
+	unsigned char                                      UnknownData02[0x2];                                       // 0x03F2(0x0002) MISSED OFFSET
+	float                                              TestTimeout;                                              // 0x03F4(0x0004) (Edit, ZeroConstructor, IsPlainOldData)
+	float                                              TestPausedTimeout;                                        // 0x03F8(0x0004) (Edit, ZeroConstructor, IsPlainOldData)
+	unsigned char                                      UnknownData03[0x4];                                       // 0x03FC(0x0004) MISSED OFFSET
+	TArray<class FString>                              VerboseLogCategories;                                     // 0x0400(0x0010) (Edit, ZeroConstructor)
+	TArray<int>                                        ClientsRunning;                                           // 0x0410(0x0010) (Net, ZeroConstructor)
+	TArray<int>                                        ClientIds;                                                // 0x0420(0x0010) (Net, ZeroConstructor)
+	TArray<struct FClientPawnDetails>                  ClientPawns;                                              // 0x0430(0x0010) (Net, ZeroConstructor)
+	TArray<class AActor*>                              SpawnedActors;                                            // 0x0440(0x0010) (Net, ZeroConstructor)
+	int                                                NextSpawnedActorIndex;                                    // 0x0450(0x0004) (ZeroConstructor, IsPlainOldData)
+	unsigned char                                      UnknownData04[0x3C];                                      // 0x0454(0x003C) MISSED OFFSET
 
 	static UClass* StaticClass()
 	{
@@ -91,7 +91,7 @@ public:
 
 
 // Class StudiosAutomation.ActorThatLogsErrorWhenTicked
-// 0x0000 (0x03D0 - 0x03D0)
+// 0x0000 (0x03C8 - 0x03C8)
 class AActorThatLogsErrorWhenTicked : public AActor
 {
 public:
@@ -99,6 +99,24 @@ public:
 	static UClass* StaticClass()
 	{
 		static auto ptr = UObject::FindObject<UClass>(_xor_("Class StudiosAutomation.ActorThatLogsErrorWhenTicked"));
+		return ptr;
+	}
+
+};
+
+
+// Class StudiosAutomation.AssetAuditSettings
+// 0x0030 (0x0068 - 0x0038)
+class UAssetAuditSettings : public UDeveloperSettings
+{
+public:
+	TArray<class FString>                              PathsToAuditOnSave;                                       // 0x0038(0x0010) (Edit, ZeroConstructor, Config, DisableEditOnInstance)
+	TArray<TAssetPtr<class UClass>>                    TypesToIgnoreInFeatureToggleAudits;                       // 0x0048(0x0010) (Edit, ZeroConstructor, Config, DisableEditOnInstance)
+	TArray<class FString>                              AssetAuditorsLoadExceptionList;                           // 0x0058(0x0010) (Edit, ZeroConstructor, Config)
+
+	static UClass* StaticClass()
+	{
+		static auto ptr = UObject::FindObject<UClass>(_xor_("Class StudiosAutomation.AssetAuditSettings"));
 		return ptr;
 	}
 
@@ -129,8 +147,8 @@ public:
 	static void OpenLevelWithGameMode(class UObject* WorldContextObject, const struct FName& LevelName, class UClass* GameMode, bool Absolute);
 	static void LogPlatformMemoryStats();
 	static bool IsTravelFinished(class UObject* WorldContextObject);
-	static bool IsFeatureToggleEnabled(const struct FName& FeatureToggleName);
 	static bool IsEditor();
+	static bool IsAutomationBuild();
 	static bool HasPerformanceDataBeenCaptured();
 	static class ATestLevelScriptActor* GetTestLevelScriptActor(bool ErrorOnFailure);
 	static int GetPlayerId(class APlayerState* State);
@@ -143,11 +161,12 @@ public:
 	static void DelayForFrames(class UObject* WorldContextObject, const struct FLatentActionInfo& LatentInfo, int NumFrames);
 	static void CollectGarbageNow(bool FullPurge);
 	static void BlockAsyncLoading(bool EnableBlock);
-	static void BeginPerformanceCapture(const class FString& FolderName, bool DumpMemReport, bool PreventGarbageCollection);
+	static void BeginPerformanceCapture(const class FString& FolderName, bool DumpMemReport, bool PreventGarbageCollection, const class FString& StatGranularity);
 	static void AssertValue_Int(int Actual, TEnumAsByte<EComparisonMethod> ShouldBe, int Expected, const class FString& What, class UObject* ContextObject);
 	static void AssertValue_Float(float Actual, TEnumAsByte<EComparisonMethod> ShouldBe, float Expected, const class FString& What, class UObject* ContextObject);
 	static void AssertValue_DateTime(const struct FDateTime& Actual, TEnumAsByte<EComparisonMethod> ShouldBe, const struct FDateTime& Expected, const class FString& What, class UObject* ContextObject);
 	static void AssertTrue(bool Condition, const class FString& Message, class UObject* ContextObject);
+	static void AssertObjectMatchesStringAssetReference(class UObject* Object, const struct FStringAssetReference& Reference, const class FString& What, class UObject* ContextObject);
 	static void AssertNotEqual_Vector(const struct FVector& Actual, const struct FVector& NotExpected, const class FString& What, class UObject* ContextObject);
 	static void AssertNotEqual_Transform(const struct FTransform& Actual, const struct FTransform& NotExpected, const class FString& What, class UObject* ContextObject);
 	static void AssertNotEqual_String(const class FString& Actual, const class FString& NotExpected, const class FString& What, class UObject* ContextObject);
@@ -200,7 +219,7 @@ public:
 
 
 // Class StudiosAutomation.DummyReplicatedActor
-// 0x0000 (0x03D0 - 0x03D0)
+// 0x0000 (0x03C8 - 0x03C8)
 class ADummyReplicatedActor : public AActor
 {
 public:
@@ -215,7 +234,7 @@ public:
 
 
 // Class StudiosAutomation.MapFixtureTestGameMode
-// 0x0000 (0x04C8 - 0x04C8)
+// 0x0000 (0x04C0 - 0x04C0)
 class AMapFixtureTestGameMode : public AGameMode
 {
 public:
@@ -291,7 +310,7 @@ public:
 
 
 // Class StudiosAutomation.TestablePlayerController
-// 0x0000 (0x0728 - 0x0728)
+// 0x0000 (0x0770 - 0x0770)
 class ATestablePlayerController : public APlayerController
 {
 public:
@@ -341,7 +360,7 @@ public:
 
 
 // Class StudiosAutomation.TestAbstractActor
-// 0x0000 (0x03D0 - 0x03D0)
+// 0x0000 (0x03C8 - 0x03C8)
 class ATestAbstractActor : public AActor
 {
 public:

@@ -217,6 +217,13 @@ struct FEventCosmeticItemSpawned
 	class UCosmeticItemAnimationSetDataAsset*          CosmeticData;                                             // 0x0008(0x0008) (ZeroConstructor, IsPlainOldData)
 };
 
+// ScriptStruct Animation.EventAnimationResetHappyReact
+// 0x0001
+struct FEventAnimationResetHappyReact
+{
+	unsigned char                                      UnknownData00[0x1];                                       // 0x0000(0x0001) MISSED OFFSET
+};
+
 // ScriptStruct Animation.EventAnimationHappyReact
 // 0x0001
 struct FEventAnimationHappyReact
@@ -301,6 +308,17 @@ struct FAnimNode_WeightedLoadOnDemandSquencePlayer : public FAnimNode_AssetPlaye
 	class UAnimSequence*                               CurrentSequence;                                          // 0x0058(0x0008) (ZeroConstructor, IsPlainOldData)
 	class UAnimSequence*                               NextSequence;                                             // 0x0060(0x0008) (ZeroConstructor, IsPlainOldData)
 	unsigned char                                      UnknownData02[0x8];                                       // 0x0068(0x0008) MISSED OFFSET
+};
+
+// ScriptStruct Animation.WeightedAnimationLoadOnDemandDataMetaData
+// 0x0038
+struct FWeightedAnimationLoadOnDemandDataMetaData
+{
+	TArray<struct FWeightedAnimationData>              AnimationList;                                            // 0x0000(0x0010) (ZeroConstructor)
+	class FString                                      AssetName;                                                // 0x0010(0x0010) (ZeroConstructor)
+	class FString                                      FallbackSkeletonName;                                     // 0x0020(0x0010) (ZeroConstructor)
+	bool                                               FallbackValidAdditive;                                    // 0x0030(0x0001) (ZeroConstructor, IsPlainOldData)
+	unsigned char                                      UnknownData00[0x7];                                       // 0x0031(0x0007) MISSED OFFSET
 };
 
 // ScriptStruct Animation.EventCustomAnimationMontageExitRequested

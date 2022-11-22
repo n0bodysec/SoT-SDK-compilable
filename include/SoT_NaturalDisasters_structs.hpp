@@ -8,13 +8,14 @@
 
 #include "SoT_Basic.hpp"
 #include "SoT_NaturalDisasters_enums.hpp"
+#include "SoT_ResourceContentionFramework_classes.hpp"
 #include "SoT_CoreUObject_classes.hpp"
 #include "SoT_Engine_classes.hpp"
-#include "SoT_Maths_classes.hpp"
-#include "AthenaCommons.hpp"
-#include "SoT_ResourceContentionFramework_classes.hpp"
-#include "SoT_StatusEffects_classes.hpp"
 #include "SoT_Kraken_classes.hpp"
+#include "SoT_StatusEffects_classes.hpp"
+#include "SoT_Maths_classes.hpp"
+#include "SoT_Athena_classes.hpp"
+#include "SoT_StoryFramework_classes.hpp"
 
 namespace SDK
 {
@@ -85,6 +86,14 @@ struct FAshenLordWorldEndCloudAnimation
 	float                                              ServerLifeTime;                                           // 0x0004(0x0004) (ZeroConstructor, IsPlainOldData)
 };
 
+// ScriptStruct NaturalDisasters.GeyserStoryCustomisationData
+// 0x0010
+struct FGeyserStoryCustomisationData
+{
+	struct FStoryFlag                                  StoryFlag;                                                // 0x0000(0x0008) (Edit)
+	class UGeyserSetupDataAsset*                       GeyserSetupData;                                          // 0x0008(0x0008) (Edit, ZeroConstructor, IsPlainOldData)
+};
+
 // ScriptStruct NaturalDisasters.EarthquakeForceFeedbackOption
 // 0x0010
 struct FEarthquakeForceFeedbackOption
@@ -109,6 +118,14 @@ struct FPlayerFeedback
 	struct FWeightedProbabilityRangeOfRanges           StaggerStrength;                                          // 0x0050(0x0030) (Edit, DisableEditOnInstance)
 };
 
+// ScriptStruct NaturalDisasters.EarthquakeStoryCustomisationData
+// 0x0010
+struct FEarthquakeStoryCustomisationData
+{
+	struct FStoryFlag                                  StoryFlag;                                                // 0x0000(0x0008) (Edit)
+	class UEarthquakeSetupDataAsset*                   EarthquakeSetupData;                                      // 0x0008(0x0008) (Edit, ZeroConstructor, IsPlainOldData)
+};
+
 // ScriptStruct NaturalDisasters.GeyserSpawnAngleOption
 // 0x000C
 struct FGeyserSpawnAngleOption
@@ -116,6 +133,22 @@ struct FGeyserSpawnAngleOption
 	float                                              Weight;                                                   // 0x0000(0x0004) (Edit, ZeroConstructor, DisableEditOnInstance, IsPlainOldData)
 	float                                              Direction;                                                // 0x0004(0x0004) (Edit, ZeroConstructor, DisableEditOnInstance, IsPlainOldData)
 	float                                              Range;                                                    // 0x0008(0x0004) (Edit, ZeroConstructor, DisableEditOnInstance, IsPlainOldData)
+};
+
+// ScriptStruct NaturalDisasters.GeyserManagerStoryCustomisationData
+// 0x0010
+struct FGeyserManagerStoryCustomisationData
+{
+	struct FStoryFlag                                  StoryFlag;                                                // 0x0000(0x0008) (Edit)
+	class UGeyserManagerSetupDataAsset*                GeyserManagerSetupData;                                   // 0x0008(0x0008) (Edit, ZeroConstructor, IsPlainOldData)
+};
+
+// ScriptStruct NaturalDisasters.VolcanoStoryCustomisationData
+// 0x0010
+struct FVolcanoStoryCustomisationData
+{
+	struct FStoryFlag                                  StoryFlag;                                                // 0x0000(0x0008) (Edit)
+	class UVolcanoSetupDataAsset*                      VolcanoSetupData;                                         // 0x0008(0x0008) (Edit, ZeroConstructor, IsPlainOldData)
 };
 
 // ScriptStruct NaturalDisasters.VolcanoStateData

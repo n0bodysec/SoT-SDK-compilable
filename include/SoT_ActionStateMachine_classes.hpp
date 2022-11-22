@@ -30,7 +30,7 @@ public:
 
 
 // Class ActionStateMachine.ActionStateCreatorDefinition
-// 0x0000 (0x03D0 - 0x03D0)
+// 0x0000 (0x03C8 - 0x03C8)
 class AActionStateCreatorDefinition : public AActor
 {
 public:
@@ -45,11 +45,11 @@ public:
 
 
 // Class ActionStateMachine.TestActionStateCreatorDefinition
-// 0x0018 (0x03E8 - 0x03D0)
+// 0x0018 (0x03E0 - 0x03C8)
 class ATestActionStateCreatorDefinition : public AActionStateCreatorDefinition
 {
 public:
-	unsigned char                                      UnknownData00[0x18];                                      // 0x03D0(0x0018) MISSED OFFSET
+	unsigned char                                      UnknownData00[0x18];                                      // 0x03C8(0x0018) MISSED OFFSET
 
 	static UClass* StaticClass()
 	{

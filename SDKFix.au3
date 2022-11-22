@@ -13,8 +13,7 @@
 #include <File.au3>
 #include <Array.au3>
 
-;~ Global Const $GENERATED_SDK_DIR = @LocalAppDataDir & "\Packages\Microsoft.SeaofThieves_8wekyb3d8bbwe\AC\Temp\SoT_1.4\SDK\"
-Global Const $GENERATED_SDK_DIR = "D:\Git\SDK\SoT\SoT-SDK-private\SoT-SDK\SDK\"
+Global Const $GENERATED_SDK_DIR = @ScriptDir & "\SDK\"
 Global Const $SDK_DIR = @ScriptDir & "\include"
 Global Const $SDK_SOURCE_DIR = @ScriptDir & "\source"
 Global Const $ENGINE_CLASS = $SDK_DIR & "\SoT_Engine_classes.hpp"
@@ -23,81 +22,95 @@ Global Const $SDK_HEADER = $SDK_DIR & "\SDK.hpp"
 Global Const $ATHENA_COMMONS = "AthenaCommons.hpp"
 
 Global Const $FILE_BASE_NAMES[] = [ _
-						   "SoT_Basic", _
-						   "SoT_CoreUObject", _
-						   "SoT_Engine", _
-						   "SoT_InputCore", _
-						   "SoT_SlateCore", _
-						   "SoT_Slate", _
-						   "SoT_AIModule", _
-						   "SoT_AIShips", _
-						   "SoT_ActionStateMachine", _
-						   "SoT_Animation", _
-						   "SoT_AthenaAI", _
-						   "SoT_AthenaEngine", _
-						   "SoT_AthenaInput", _
-						   "SoT_AthenaRigging", _
-						   "SoT_AthenaSocketLookup", _
-						   "SoT_Athena", _
-						   "SoT_CoherentUIGTPlugin", _
-						   "SoT_DebugMenu", _
-						   "SoT_Engine", _
-						   "SoT_GameService", _
-						   "SoT_GameplayDebugger", _
-						   "SoT_GameplayTags", _
-						   "SoT_GameplayTasks", _
-						   "SoT_InputCore", _
-						   "SoT_Interaction", _
-						   "SoT_JsonUtilities", _
-						   "SoT_Kraken", _
-						   "SoT_Maths", _
-						   "SoT_MovieSceneTracks", _
-						   "SoT_MovieScene", _
-						   "SoT_ObjectLifetime", _
-						   "SoT_ObjectMessaging", _
-						   "SoT_PirateGenerator", _
-						   "SoT_PositionalVoice", _
-						   "SoT_RareAudio", _
-						   "SoT_RareEngine", _
-						   "SoT_StatusEffects", _
-						   "SoT_StudiosAutomation", _
-						   "SoT_Time", _
-						   "SoT_UMG", _
-						   "SoT_Water", _
-						   "SoT_Watercrafts", _
-						   "SoT_Wind", _
-						   "SoT_WwiseAudio", _
-						   "SoT_NaturalDisasters", _
-						   "SoT_Sessions", _
-						   "SoT_Pets", _
-						   "SoT_ShipDamage", _
-						   "SoT_Repair", _
-						   "SoT_Tethering", _
-						   "SoT_Tales", _
-						   "SoT_Retraction", _
-						   "SoT_Cooking", _
-						   "SoT_BP_MediumShipTemplate", _
-						   "SoT_BP_LargeShipTemplate", _
-						   "SoT_BP_SmallShipTemplate", _
-						   "SoT_Fire", _
-						   "SoT_EmotingFramework", _
-						   "SoT_DeliverableFramework", _
-						   "SoT_PrioritisedPrompts", _
-						   "SoT_MerchantContracts", _
-						   "SoT_BP_CollectorsChest_Proxy", _
-						   "SoT_BP_SkeletonPawnBase", _
-						   "SoT_SeasonProgressionFramework", _
-						   "SoT_EnchantedCompass", _
-						   "SoT_TaleMaps", _
-						   "SoT_SpireFramework", _
-						   "SoT_ItemQuality", _
-						   "SoT_Reviving", _
-						   "SoT_AthenaAIAbilities", _
-						   "SoT_WaterSlide", _
-						   "SoT_ResourceContentionFramework", _
-						   "SoT_OnlineSubsystem", _
-						   "SoT_LevelSequence" _
-						]
+		"SoT_AIModule", _
+		"SoT_AIShips", _
+		"SoT_ActionStateMachine", _
+		"SoT_Animation", _
+		"SoT_Athena", _
+		"SoT_AthenaAI", _
+		"SoT_AthenaAIAbilities", _
+		"SoT_AthenaAudio", _
+		"SoT_AthenaDebug", _
+		"SoT_AthenaEngine", _
+		"SoT_AthenaInput", _
+		"SoT_AthenaInputMkII", _
+		"SoT_AthenaProjectiles", _
+		"SoT_AthenaRigging", _
+		"SoT_AthenaSocketLookup", _
+		"SoT_BP_CollectorsChest_Proxy", _
+		"SoT_BP_LargeShipTemplate", _
+		"SoT_BP_MediumShipTemplate", _
+		"SoT_BP_SkeletonPawnBase", _
+		"SoT_BP_SmallShipTemplate", _
+		"SoT_Basic", _
+		"SoT_CoherentUIGTPlugin", _
+		"SoT_CommodityDemandFramework", _
+		"SoT_Cooking", _
+		"SoT_CoreUObject", _
+		"SoT_CrewOwnershipTracking", _
+		"SoT_CustomDeath", _
+		"SoT_DebugMenu", _
+		"SoT_DeliverableFramework", _
+		"SoT_EmotingFramework", _
+		"SoT_EnchantedCompass", _
+		"SoT_Engine", _
+		"SoT_FactionsFramework", _
+		"SoT_Fire", _
+		"SoT_GameService", _
+		"SoT_GameplayDebugger", _
+		"SoT_GameplayTags", _
+		"SoT_GameplayTasks", _
+		"SoT_InputCore", _
+		"SoT_Interaction", _
+		"SoT_ItemQuality", _
+		"SoT_JsonUtilities", _
+		"SoT_Kraken", _
+		"SoT_LevelSequence", _
+		"SoT_LostShipmentsClueVariants", _
+		"SoT_Maths", _
+		"SoT_MerchantContracts", _
+		"SoT_MovieScene", _
+		"SoT_MovieSceneTracks", _
+		"SoT_MysteriousNotes", _
+		"SoT_NaturalDisasters", _
+		"SoT_NetworkRegions", _
+		"SoT_NudgeFramework", _
+		"SoT_ObjectMessaging", _
+		"SoT_OnlineSubsystem", _
+		"SoT_Pets", _
+		"SoT_PirateGenerator", _
+		"SoT_PositionalVoice", _
+		"SoT_PrioritisedPrompts", _
+		"SoT_RareAudio", _
+		"SoT_RareEngine", _
+		"SoT_RemoteActorDestruction", _
+		"SoT_Repair", _
+		"SoT_ResourceContentionFramework", _
+		"SoT_Retraction", _
+		"SoT_Reviving", _
+		"SoT_SeasonProgressionFramework", _
+		"SoT_Sessions", _
+		"SoT_ShipDamage", _
+		"SoT_ShortRangeMarkerFramework", _
+		"SoT_SimpleOverlaps", _
+		"SoT_Slate", _
+		"SoT_SlateCore", _
+		"SoT_SpireFramework", _
+		"SoT_StatusEffects", _
+		"SoT_StoryFramework", _
+		"SoT_StudiosAutomation", _
+		"SoT_TaleMaps", _
+		"SoT_Tales", _
+		"SoT_Tethering", _
+		"SoT_Time", _
+		"SoT_TrinketFramework", _
+		"SoT_UMG", _
+		"SoT_Water", _
+		"SoT_WaterSlide", _
+		"SoT_Watercrafts", _
+		"SoT_Wind", _
+		"SoT_WwiseAudio" _
+	]
 Func addAActorsInULevel()
 	Local Const $search = @TAB & "unsigned char                                      UnknownData00[0xA0];                                      // 0x0028(0x00A0) MISSED OFFSET"
 	Local Const $replace = @TAB & "unsigned char                                      UnknownData00[0x78];                                      // 0x0028(0x0078) MISSED OFFSET" & @CRLF _
@@ -117,13 +130,13 @@ Func addAActorsInULevel()
 EndFunc
 
 Func addSpaceBasesArrayInUSkinnedMeshComponent()
-	Local Const $search = @TAB & "TWeakObjectPtr<class USkinnedMeshComponent>        MasterPoseComponent;                                      // 0x0588(0x0008) (BlueprintVisible, ExportObject, BlueprintReadOnly, ZeroConstructor, InstancedReference, IsPlainOldData)" & @CRLF _
-						 & @TAB & "unsigned char                                      UnknownData00[0x40];                                      // 0x0590(0x0040) MISSED OFFSET"
-	Local Const $replace =  @TAB & "TWeakObjectPtr<class USkinnedMeshComponent>        MasterPoseComponent;                                      // 0x0588(0x0008) (BlueprintVisible, ExportObject, BlueprintReadOnly, ZeroConstructor, InstancedReference, IsPlainOldData)" & @CRLF _
-						  & @TAB & "TArray<FTransform>                                 SpaceBasesArray[2];                                       // 0x0590(0x0020)" & @CRLF _
-						  & @TAB & "int32_t                                            CurrentEditableSpaceBases;                                // 0x05B0(0x0004)" & @CRLF _
-						  & @TAB & "int32_t                                            CurrentReadSpaceBases;                                    // 0x05B4(0x0004)" & @CRLF _
-						  & @TAB & "unsigned char                                      UnknownData00[0x18];                                      // 0x05B8(0x0018) MISSED OFFSET"
+	Local Const $search = @TAB & "TWeakObjectPtr<class USkinnedMeshComponent>        MasterPoseComponent;                                      // 0x05D0(0x0008) (BlueprintVisible, ExportObject, BlueprintReadOnly, ZeroConstructor, InstancedReference, IsPlainOldData)" & @CRLF _
+						 & @TAB & "unsigned char                                      UnknownData00[0x40];                                      // 0x05D8(0x0040) MISSED OFFSET"
+	Local Const $replace =  @TAB & "TWeakObjectPtr<class USkinnedMeshComponent>        MasterPoseComponent;                                      // 0x05D0(0x0008) (BlueprintVisible, ExportObject, BlueprintReadOnly, ZeroConstructor, InstancedReference, IsPlainOldData)" & @CRLF _
+						  & @TAB & "TArray<FTransform>                                 SpaceBasesArray[2];                                       // 0x05D8(0x0020)" & @CRLF _
+						  & @TAB & "int32_t                                            CurrentEditableSpaceBases;                                // 0x05F8(0x0004)" & @CRLF _
+						  & @TAB & "int32_t                                            CurrentReadSpaceBases;                                    // 0x05FC(0x0004)" & @CRLF _
+						  & @TAB & "unsigned char                                      UnknownData00[0x18];                                      // 0x0600(0x0018) MISSED OFFSET"
 	Local $hFileOpen = FileOpen($ENGINE_CLASS, $FO_READ + $FO_UTF8_NOBOM)
 	Local $originalText = FileRead($hFileOpen)
 	Local $newText = StringReplace($originalText, $search, $replace)
@@ -414,9 +427,7 @@ Func fixTalesHppIncludes()
 		$fileAsArray[$i] = '#include "SoT_Athena_structs.hpp"'
 		_ArrayInsert($fileAsArray, $i+1, '#include "' & $ATHENA_COMMONS & '"')
 	  EndIf
-	  If $fileAsArray[$i] = '#include "SoT_EmissaryFramework_classes.hpp"' Or _
-		 $fileAsArray[$i] = '#include "SoT_TaleMaps_classes.hpp"' _
-		 Then
+	  If $fileAsArray[$i] = '#include "SoT_EmissaryFramework_classes.hpp"' Then
 		 If $markForDelete <> "" Then
 			 $markForDelete &= ";"
 		 EndIf
@@ -568,6 +579,38 @@ EndFunc
 ;~    FileClose($hFile)
 ;~ EndFunc
 
+Func fixStoryFrameworkStructsHppIncludes()
+	Local Const $PETS_STRUCTS_HPP = $SDK_DIR & "\SoT_StoryFramework_structs.hpp"
+	Local $hFile = FileOpen($PETS_STRUCTS_HPP, $FO_READ + $FO_UTF8_NOBOM)
+	Local $fileAsArray = FileReadToArray($hFile)
+	FileClose($hFile)
+	For $i = 0 To UBound($fileAsArray)-1
+		If $fileAsArray[$i] = '#include "SoT_Athena_classes.hpp"' Then
+			_ArrayInsert($fileAsArray, $i+1, '#include "' & $ATHENA_COMMONS & '"')
+			ExitLoop
+		EndIf
+	Next
+	$hFile = FileOpen($PETS_STRUCTS_HPP, $FO_OVERWRITE + $FO_UTF8_NOBOM)
+	_FileWriteFromArray($hFile, $fileAsArray)
+	FileClose($hFile)
+EndFunc
+
+Func fixCommodityDemandFrameworkHppIncludes()
+	Local Const $PETS_STRUCTS_HPP = $SDK_DIR & "\SoT_CommodityDemandFramework_structs.hpp"
+	Local $hFile = FileOpen($PETS_STRUCTS_HPP, $FO_READ + $FO_UTF8_NOBOM)
+	Local $fileAsArray = FileReadToArray($hFile)
+	FileClose($hFile)
+	For $i = 0 To UBound($fileAsArray)-1
+		If $fileAsArray[$i] = '#include "SoT_Athena_classes.hpp"' Then
+			_ArrayInsert($fileAsArray, $i+1, '#include "' & $ATHENA_COMMONS & '"')
+			ExitLoop
+		EndIf
+	Next
+	$hFile = FileOpen($PETS_STRUCTS_HPP, $FO_OVERWRITE + $FO_UTF8_NOBOM)
+	_FileWriteFromArray($hFile, $fileAsArray)
+	FileClose($hFile)
+EndFunc
+
 Func removeStructFromFile($fileName, $scriptStructName)
 	Local Const $Hpp = $SDK_DIR & "\" & $fileName
 	Local $hFile = FileOpen($Hpp, $FO_READ + $FO_UTF8_NOBOM)
@@ -686,6 +729,16 @@ Func removeStructsFromAthena()
 	removeStructFromFile("SoT_Athena_structs.hpp",'// ScriptStruct Athena.EventEmoteStarted')
 	; after 2.0.19
 	removeStructFromFile("SoT_Athena_structs.hpp",'// ScriptStruct Athena.EventEmissaryFlagMeshChanged')
+	; after 2.6.1 ?
+	removeStructFromFile("SoT_Athena_structs.hpp",'// ScriptStruct Athena.AthenaAnimationDeath')
+	removeStructFromFile("SoT_Athena_structs.hpp",'// ScriptStruct Athena.AthenaAnimationDeathData')
+	removeStructFromFile("SoT_Athena_structs.hpp",'// ScriptStruct Athena.PlayerMusicController')
+
+	removeStructFromFile("SoT_Athena_classes.hpp",'// Class Athena.AthenaAnimationInstance')
+	removeStructFromFile("SoT_Athena_classes.hpp",'// Class Athena.FirstPersonAnimationInstance')
+	removeStructFromFile("SoT_Athena_classes.hpp",'// Class Athena.ThirdPersonAnimationInstance')
+	removeStructFromFile("SoT_Athena_classes.hpp",'// Class Athena.SkeletonAnimationInstance')
+	removeStructFromFile("SoT_Athena_classes.hpp",'// Class Athena.CharacterAudioComponent')
 EndFunc
 
 Func removeStructsShipDamage()
@@ -716,6 +769,7 @@ Func createAthenaCommons()
 	_ArrayAdd($fileArray, '#include "SoT_Athena_enums.hpp"')
 	_ArrayAdd($fileArray, '#include "SoT_ObjectMessaging_structs.hpp"')
 	_ArrayAdd($fileArray, '#include "SoT_Maths_structs.hpp"')
+	_ArrayAdd($fileArray, '#include "SoT_AthenaInputMkII_classes.hpp"')
 	_ArrayAdd($fileArray, "")
 	_ArrayAdd($fileArray, "namespace SDK")
 	_ArrayAdd($fileArray, "{")
@@ -740,7 +794,7 @@ Func createAthenaCommons()
 	moveStructToFile($athenaStructHpp, "// ScriptStruct Athena.ItemLoadout", $ATHENA_COMMONS)
 	moveStructToFile($athenaStructHpp, "// ScriptStruct Athena.StartPickupObjectActionRuleParams", $ATHENA_COMMONS)
 	moveStructToFile($athenaStructHpp, "// ScriptStruct Athena.DetailAppearenceDesc", $ATHENA_COMMONS)
-	moveStructToFile($athenaStructHpp, "// ScriptStruct AthenaAI.AIBountySpawnerParams", $ATHENA_COMMONS)
+	;moveStructToFile($athenaStructHpp, "// ScriptStruct AthenaAI.AIBountySpawnerParams", $ATHENA_COMMONS)
 	moveStructToFile($athenaStructHpp, "// ScriptStruct Athena.BaseLightData", $ATHENA_COMMONS)
 	moveStructToFile($athenaStructHpp, "// ScriptStruct Athena.PointLightData", $ATHENA_COMMONS)
 	moveStructToFile($athenaStructHpp, "// ScriptStruct Athena.SpotLightData", $ATHENA_COMMONS)
@@ -755,7 +809,17 @@ Func createAthenaCommons()
 	moveStructToFile($athenaStructHpp, "// ScriptStruct Athena.QuestDesc", $ATHENA_COMMONS)
 	moveStructToFile($athenaStructHpp, "// ScriptStruct Athena.DamageInstance", $ATHENA_COMMONS)
 	moveStructToFile($athenaStructHpp, "// ScriptStruct Athena.LookAtOffsetParams", $ATHENA_COMMONS)
-	; QuestVariables
+	moveStructToFile($athenaStructHpp, "// ScriptStruct Athena.ItemMetaBase", $ATHENA_COMMONS)
+	moveStructToFile($athenaStructHpp, "// ScriptStruct Athena.PirateIdentity", $ATHENA_COMMONS)
+	moveStructToFile($athenaStructHpp, "// ScriptStruct Athena.PlayerBaseTelemetryFragment", $ATHENA_COMMONS)
+	moveStructToFile($athenaStructHpp, "// ScriptStruct Athena.VFXHandlerComponentParams", $ATHENA_COMMONS)
+	;moveStructToFile($athenaStructHpp, "// ScriptStruct Athena.KnockBackInfo", $ATHENA_COMMONS)
+	moveStructToFile($athenaStructHpp, "// ScriptStruct Athena.RandomParticleSystemPicker", $ATHENA_COMMONS)
+	moveStructToFile($athenaStructHpp, "// ScriptStruct Athena.DistanceThrottledRandomParticleSystemPicker", $ATHENA_COMMONS)
+	moveStructToFile($athenaStructHpp, "// ScriptStruct Athena.TreasureMapWidget", $ATHENA_COMMONS)
+	moveStructToFile($athenaStructHpp, "// ScriptStruct Athena.TreasureMapWidgetStreamedTexture", $ATHENA_COMMONS)
+	moveStructToFile($athenaStructHpp, "// ScriptStruct Athena.TreasureMapWidgetText", $ATHENA_COMMONS)
+	moveStructToFile($athenaStructHpp, "// ScriptStruct Athena.PersistenceModel", $ATHENA_COMMONS)
 	moveStructToFile($athenaStructHpp, "// ScriptStruct Athena.QuestVariable", $ATHENA_COMMONS)
 	moveStructToFile($athenaStructHpp, "// ScriptStruct Athena.QuestVariableActor", $ATHENA_COMMONS)
 	moveStructToFile($athenaStructHpp, "// ScriptStruct Athena.QuestVariableAsset", $ATHENA_COMMONS)
@@ -771,9 +835,9 @@ Func createAthenaCommons()
 	moveStructToFile($athenaStructHpp, "// ScriptStruct Athena.QuestVariableDataAsset", $ATHENA_COMMONS)
 	moveStructToFile($athenaStructHpp, "// ScriptStruct Athena.QuestVariableText", $ATHENA_COMMONS)
 	moveStructToFile($athenaStructHpp, "// ScriptStruct Athena.QuestVariableAssetArray", $ATHENA_COMMONS)
-	moveStructToFile($athenaStructHpp, "// ScriptStruct Athena.QuestVariableActorHandle", $ATHENA_COMMONS)
-	moveStructToFile($athenaStructHpp, "// ScriptStruct Athena.QuestVariableVaultHandle", $ATHENA_COMMONS)
-	moveStructToFile($athenaStructHpp, "// ScriptStruct Athena.QuestVariableAISpawner", $ATHENA_COMMONS)
+	;moveStructToFile($athenaStructHpp, "// ScriptStruct Athena.QuestVariableActorHandle", $ATHENA_COMMONS)
+	;moveStructToFile($athenaStructHpp, "// ScriptStruct Athena.QuestVariableVaultHandle", $ATHENA_COMMONS)
+	;moveStructToFile($athenaStructHpp, "// ScriptStruct Athena.QuestVariableAISpawner", $ATHENA_COMMONS)
 	moveStructToFile($athenaStructHpp, "// ScriptStruct Athena.QuestVariableAIDioramaDesc", $ATHENA_COMMONS)
 	moveStructToFile($athenaStructHpp, "// ScriptStruct Athena.QuestVariableBool", $ATHENA_COMMONS)
 	moveStructToFile($athenaStructHpp, "// ScriptStruct Athena.QuestVariableAISpawnerArray", $ATHENA_COMMONS)
@@ -783,18 +847,20 @@ Func createAthenaCommons()
 	moveStructToFile($athenaStructHpp, "// ScriptStruct Athena.QuestVariableFloat", $ATHENA_COMMONS)
 	moveStructToFile($athenaStructHpp, "// ScriptStruct Athena.QuestVariableTransform", $ATHENA_COMMONS)
 	moveStructToFile($athenaStructHpp, "// ScriptStruct Athena.QuestVariableOrientedPoint", $ATHENA_COMMONS)
-	moveStructToFile($athenaStructHpp, "// ScriptStruct Athena.PirateIdentity", $ATHENA_COMMONS)
-	moveStructToFile($athenaStructHpp, "// ScriptStruct Athena.PlayerBaseTelemetryFragment", $ATHENA_COMMONS)
 
 	moveStructToFile("SoT_AthenaAI_structs.hpp", "// ScriptStruct AthenaAI.TargetSkillsetProgressionPair", $ATHENA_COMMONS)
 	moveStructToFile("SoT_AthenaAI_structs.hpp", "// ScriptStruct AthenaAI.TinySharkParams", $ATHENA_COMMONS)
+	moveStructToFile("SoT_AthenaAI_structs.hpp", "// ScriptStruct AthenaAI.AIPartId", $ATHENA_COMMONS)
 	moveStructToFile("SoT_AthenaAI_classes.hpp", "// Class AthenaAI.TinySharkExperience", $ATHENA_COMMONS)
 	moveStructToFile("SoT_AthenaAI_classes.hpp", "// Class AthenaAI.AthenaAIFormComponent", $ATHENA_COMMONS)
 
 	Local $athenaClassesHpp = "SoT_Athena_classes.hpp"
 	moveStructToFile($athenaClassesHpp, "// Class Athena.MetalAIFormComponent", $ATHENA_COMMONS)
 	moveStructToFile($athenaClassesHpp, "// Class Athena.EntitlementDesc", $ATHENA_COMMONS)
+	moveStructToFile($athenaClassesHpp, "// Class Athena.RadialContextBase", $ATHENA_COMMONS)
 	moveStructToFile($athenaClassesHpp, "// Class Athena.ItemDesc", $ATHENA_COMMONS)
+	moveStructToFile($athenaClassesHpp, "// Class Athena.ItemWithoutIconsDesc", $ATHENA_COMMONS)
+	moveStructToFile($athenaClassesHpp, "// Class Athena.BootyItemDesc", $ATHENA_COMMONS)
 	moveStructToFile($athenaClassesHpp, "// Class Athena.CategoryBase", $ATHENA_COMMONS)
 	moveStructToFile($athenaClassesHpp, "// Class Athena.ItemCategory", $ATHENA_COMMONS)
 	moveStructToFile($athenaClassesHpp, "// Class Athena.ItemInfo", $ATHENA_COMMONS)
@@ -810,19 +876,28 @@ Func createAthenaCommons()
 	moveStructToFile($athenaClassesHpp, "// Class Athena.TaleQuestToolServiceDesc", $ATHENA_COMMONS)
 	moveStructToFile($athenaClassesHpp, "// Class Athena.ConditionalStatsTriggerType", $ATHENA_COMMONS)
 	moveStructToFile($athenaClassesHpp, "// Class Athena.StatCondition", $ATHENA_COMMONS)
+	moveStructToFile($athenaClassesHpp, "// Class Athena.TargetedStatCondition", $ATHENA_COMMONS)
+	moveStructToFile($athenaClassesHpp, "// Class Athena.ItemSnapshotMetaGenerator", $ATHENA_COMMONS)
+	moveStructToFile($athenaClassesHpp, "// Class Athena.SpawnRequirement", $ATHENA_COMMONS)
+	moveStructToFile($athenaClassesHpp, "// Class Athena.LookAtOffsetInputComponent", $ATHENA_COMMONS)
+	moveStructToFile($athenaClassesHpp, "// Class Athena.NPCDialogConditional", $ATHENA_COMMONS)
+	moveStructToFile($athenaClassesHpp, "// Class Athena.NPCDialogConditionalContext", $ATHENA_COMMONS)
+	moveStructToFile($athenaClassesHpp, "// Class Athena.NPCDialogOverrideType", $ATHENA_COMMONS)
 
-	moveStructToFile("SoT_Pets_classes.hpp", "// Class Pets.PetCategory", $ATHENA_COMMONS)
+	;moveStructToFile("SoT_Pets_classes.hpp", "// Class Pets.PetCategory", $ATHENA_COMMONS)
 	moveStructToFile("SoT_Pets_structs.hpp", "// ScriptStruct Pets.PetTurnToFaceData", $ATHENA_COMMONS)
 
 	moveStructToFile("SoT_SeasonProgressionFramework_structs.hpp", "// ScriptStruct SeasonProgressionFramework.PlayerTrackedObjective", $ATHENA_COMMONS)
 
 	moveStructToFile("SoT_TaleMaps_classes.hpp", "// Class TaleMaps.TaleQuestMapStepDescBase", $ATHENA_COMMONS)
-
-	moveStructToFile("SoT_TaleMaps_classes.hpp", "// Class TaleMaps.TaleQuestMapStepDescBase", $ATHENA_COMMONS)
+	moveStructToFile("SoT_Tales_classes.hpp", "// Class Tales.TaleQuestRunnableStepDesc", $ATHENA_COMMONS)
+	moveStructToFile("SoT_Tales_classes.hpp", "// Class Tales.TaleQuestFunctionStepLibrary", $ATHENA_COMMONS)
 EndFunc
 
 Func removeStructsFromTales()
-   removeStructFromFile("SoT_Tales_classes.hpp",'// Class Tales.TaleQuestEmissaryCompanyActionRewardBoostStepDesc')
+	removeStructFromFile("SoT_Tales_classes.hpp",'// Class Tales.TaleQuestEmissaryCompanyActionRewardBoostStepDesc')
+	removeStructFromFile("SoT_Tales_classes.hpp",'// Class Tales.TaleQuestImportFrame')
+	removeStructFromFile("SoT_Tales_classes.hpp",'// Class Tales.CallObjectFunctionStepDesc')
 ;~    removeStructFromFile("SoT_Tales_classes.hpp",'// Class Tales.TaleQuestAddCargoRunMapStepDesc')
 ;~    removeStructFromFile("SoT_Tales_classes.hpp",'// Class Tales.TaleQuestAddMerchantMapStepDesc')
 ;~    removeStructFromFile("SoT_Tales_classes.hpp",'// Class Tales.TaleQuestAddRiddleMapBaseStepDesc')
@@ -832,11 +907,40 @@ Func removeStructsFromTales()
 ;~    removeStructFromFile("SoT_Tales_classes.hpp",'// Class Tales.TaleQuestUpdateMerchantMapStepDesc')
 ;~    removeStructFromFile("SoT_Tales_classes.hpp",'// Class Tales.TaleQuestAddRiddleMapStepDesc')
 ;~    removeStructFromFile("SoT_Tales_classes.hpp",'// Class Tales.TaleQuestAddRiddleMapStepDesc')
-;~    removeStructFromFile("SoT_Tales_classes.hpp",'')
-;~    removeStructFromFile("SoT_Tales_classes.hpp",'')
-;~    removeStructFromFile("SoT_Tales_classes.hpp",'')
-;~    removeStructFromFile("SoT_Tales_classes.hpp",'')
-;~    removeStructFromFile("SoT_Tales_classes.hpp",'')
+	removeStructFromFile("SoT_Tales_structs.hpp",'// ScriptStruct Tales.MigrationActionPair')
+EndFunc
+
+Func removeOtherStructs()
+	removeStructFromFile("SoT_WwiseAudio_classes.hpp",'// Class WwiseAudio.MergedMultiEmitterComponent')
+
+	removeStructFromFile("SoT_StoryFramework_classes.hpp",'// Class StoryFramework.StoryDrivenBlendedLightingZoneComponent')
+	removeStructFromFile("SoT_StoryFramework_classes.hpp",'// Class StoryFramework.StoryDrivenSalvageItemSpawnComponent')
+
+	removeStructFromFile("SoT_Pets_classes.hpp",'// Class Pets.AIPetsOnDemandSpawner')
+	removeStructFromFile("SoT_Pets_classes.hpp",'// Class Pets.BTDecorator_IsForcingHangout')
+	removeStructFromFile("SoT_Pets_classes.hpp",'// Class Pets.BTDecorator_IsOccupiedHangoutSpotStillAvailable')
+	removeStructFromFile("SoT_Pets_classes.hpp",'// Class Pets.BTDecorator_IsOccupyingHangoutSpotWithGivenId')
+	removeStructFromFile("SoT_Pets_classes.hpp",'// Class Pets.BTDecorator_IsPerchedInHangout')
+	removeStructFromFile("SoT_Pets_classes.hpp",'// Class Pets.BTDecorator_PetFoodSourceAvailable')
+	removeStructFromFile("SoT_Pets_classes.hpp",'// Class Pets.BTDecorator_PetRoamingAnimationStateActive')
+	removeStructFromFile("SoT_Pets_classes.hpp",'// Class Pets.EnvQueryContext_AverageThreatPositionFromBlackboard')
+	removeStructFromFile("SoT_Pets_classes.hpp",'// Class Pets.EnvQueryContext_FirstThreatPositionFromBlackboard')
+	removeStructFromFile("SoT_Pets_classes.hpp",'// Class Pets.EnvQueryContext_SafePositionFromBlackboard')
+	removeStructFromFile("SoT_Pets_classes.hpp",'// Class Pets.ReactAIStrategyId')
+	removeStructFromFile("SoT_Pets_classes.hpp",'// Class Pets.PetAIController')
+
+	removeStructFromFile("SoT_Watercrafts_classes.hpp",'// Class Watercrafts.StorageSeat')
+
+	removeStructFromFile("SoT_ShipDamage_structs.hpp",'// ScriptStruct ShipDamage.ShipRestoredNetworkEvent')
+
+	removeStructFromFile("SoT_NaturalDisasters_classes.hpp",'// Class NaturalDisasters.GeyserItemSpawnComponent')
+	removeStructFromFile("SoT_NaturalDisasters_classes.hpp",'// Class NaturalDisasters.SeatStat_IslandVolcanoActive')
+
+	removeStructFromFile("SoT_Kraken_structs.hpp",'// ScriptStruct Kraken.KrakenAnchorDynamicsParams')
+	removeStructFromFile("SoT_Kraken_structs.hpp",'// ScriptStruct Kraken.KrakenShipWrappingBehaviourWrapParams')
+	removeStructFromFile("SoT_Kraken_structs.hpp",'// ScriptStruct Kraken.KrakenShipWrappingBehaviourParams')
+
+	removeStructFromFile("SoT_Kraken_classes.hpp",'// Class Kraken.KrakenShipWrappingBehaviourParamsDataAsset')
 EndFunc
 
 copyRelevantFiles()
@@ -861,11 +965,14 @@ fixShipDamageStructsHppIncludes()
 removeStructsShipDamage()
 removeStructsFromWatercrafts()
 removeStructsFromTales()
+removeOtherStructs()
 fixPrioritisedPromptsHppIncludes()
 fixEnchantedCompassStructsHppIncludes()
 fixWaterSlideStructsHppIncludes()
 fixRevivingStructsHppIncludes()
 fixLevelSequenceStructsHppIncludes()
 fixSeasonProgressionFrameworkStructsHppIncludes()
+fixStoryFrameworkStructsHppIncludes()
+fixCommodityDemandFrameworkHppIncludes()
 
 MsgBox(0, @ScriptName, "Done")

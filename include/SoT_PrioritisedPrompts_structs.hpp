@@ -35,7 +35,8 @@ struct FPrioritisedPrompt
 	class FString                                      Key;                                                      // 0x0038(0x0010) (Edit, BlueprintVisible, ZeroConstructor)
 	class UPopUpMessageDesc*                           PopUpMessageDesc;                                         // 0x0048(0x0008) (Edit, BlueprintVisible, ZeroConstructor, IsPlainOldData)
 	TEnumAsByte<EPromptPriority>                       BasePriority;                                             // 0x0050(0x0001) (Edit, BlueprintVisible, ZeroConstructor, IsPlainOldData)
-	unsigned char                                      UnknownData00[0x7];                                       // 0x0051(0x0007) MISSED OFFSET
+	TEnumAsByte<EMenuNavigationAction>                 MenuNavigation;                                           // 0x0051(0x0001) (Edit, BlueprintVisible, ZeroConstructor, IsPlainOldData)
+	unsigned char                                      UnknownData00[0x6];                                       // 0x0052(0x0006) MISSED OFFSET
 };
 
 // ScriptStruct PrioritisedPrompts.PrioritisedPromptWithHandle
@@ -69,6 +70,13 @@ struct FPermanentPromptNetworkEvent : public FNetworkEventStruct
 struct FPromptsCounterIncrementEvent
 {
 	class UClass*                                      AccessKey;                                                // 0x0000(0x0008) (Edit, BlueprintVisible, ZeroConstructor, IsPlainOldData)
+};
+
+// ScriptStruct PrioritisedPrompts.PromptsServiceSetupEvent
+// 0x0001
+struct FPromptsServiceSetupEvent
+{
+	unsigned char                                      UnknownData00[0x1];                                       // 0x0000(0x0001) MISSED OFFSET
 };
 
 // ScriptStruct PrioritisedPrompts.PlayerPromptTelemetryEvent

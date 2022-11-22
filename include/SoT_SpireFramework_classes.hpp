@@ -64,11 +64,11 @@ public:
 
 
 // Class SpireFramework.SpireResource
-// 0x0008 (0x03D8 - 0x03D0)
+// 0x0010 (0x03D8 - 0x03C8)
 class ASpireResource : public AActor
 {
 public:
-	unsigned char                                      UnknownData00[0x8];                                       // 0x03D0(0x0008) MISSED OFFSET
+	unsigned char                                      UnknownData00[0x10];                                      // 0x03C8(0x0010) MISSED OFFSET
 
 	static UClass* StaticClass()
 	{
@@ -111,15 +111,15 @@ public:
 
 
 // Class SpireFramework.SpireService
-// 0x0098 (0x0468 - 0x03D0)
+// 0x0098 (0x0460 - 0x03C8)
 class ASpireService : public AActor
 {
 public:
-	unsigned char                                      UnknownData00[0x8];                                       // 0x03D0(0x0008) MISSED OFFSET
-	class USpireServiceParams*                         Params;                                                   // 0x03D8(0x0008) (ZeroConstructor, Transient, IsPlainOldData)
-	TArray<struct FServerSpireInfo>                    ServerOnlySpireInfo;                                      // 0x03E0(0x0010) (ZeroConstructor, Transient)
-	TArray<struct FSpireInfo>                          SpireLevels;                                              // 0x03F0(0x0010) (Net, ZeroConstructor)
-	unsigned char                                      UnknownData01[0x68];                                      // 0x0400(0x0068) MISSED OFFSET
+	unsigned char                                      UnknownData00[0x8];                                       // 0x03C8(0x0008) MISSED OFFSET
+	class USpireServiceParams*                         Params;                                                   // 0x03D0(0x0008) (ZeroConstructor, Transient, IsPlainOldData)
+	TArray<struct FServerSpireInfo>                    ServerOnlySpireInfo;                                      // 0x03D8(0x0010) (ZeroConstructor, Transient)
+	TArray<struct FSpireInfo>                          SpireLevels;                                              // 0x03E8(0x0010) (Net, ZeroConstructor)
+	unsigned char                                      UnknownData01[0x68];                                      // 0x03F8(0x0068) MISSED OFFSET
 
 	static UClass* StaticClass()
 	{
@@ -166,11 +166,11 @@ public:
 
 
 // Class SpireFramework.SpireShippingDrawDebugActorSphereCollection
-// 0x0010 (0x03F0 - 0x03E0)
+// 0x0010 (0x03E8 - 0x03D8)
 class ASpireShippingDrawDebugActorSphereCollection : public AShippingDebugActorSphereCollection
 {
 public:
-	TArray<TWeakObjectPtr<class ASpireResource>>       SpireList;                                                // 0x03E0(0x0010) (ZeroConstructor)
+	TArray<TWeakObjectPtr<class ASpireResource>>       SpireList;                                                // 0x03D8(0x0010) (ZeroConstructor)
 
 	static UClass* StaticClass()
 	{
@@ -182,7 +182,7 @@ public:
 
 
 // Class SpireFramework.TaleLoadSpireStep
-// 0x0000 (0x0090 - 0x0090)
+// 0x0000 (0x0098 - 0x0098)
 class UTaleLoadSpireStep : public UTaleQuestStep
 {
 public:
@@ -248,7 +248,7 @@ public:
 
 
 // Class SpireFramework.TaleMakeSpireVisibleStep
-// 0x0000 (0x0090 - 0x0090)
+// 0x0000 (0x0098 - 0x0098)
 class UTaleMakeSpireVisibleStep : public UTaleQuestStep
 {
 public:
@@ -278,12 +278,12 @@ public:
 
 
 // Class SpireFramework.TaleRegisterSpireStep
-// 0x0010 (0x00A0 - 0x0090)
+// 0x0010 (0x00A8 - 0x0098)
 class UTaleRegisterSpireStep : public UTaleQuestStep
 {
 public:
-	class UTaleRegisterSpireStepDesc*                  StepDesc;                                                 // 0x0090(0x0008) (ZeroConstructor, IsPlainOldData)
-	unsigned char                                      UnknownData00[0x8];                                       // 0x0098(0x0008) MISSED OFFSET
+	class UTaleRegisterSpireStepDesc*                  StepDesc;                                                 // 0x0098(0x0008) (ZeroConstructor, IsPlainOldData)
+	unsigned char                                      UnknownData00[0x8];                                       // 0x00A0(0x0008) MISSED OFFSET
 
 	static UClass* StaticClass()
 	{
@@ -295,14 +295,14 @@ public:
 
 
 // Class SpireFramework.TaleRegisterSpireStepDesc
-// 0x0040 (0x00C0 - 0x0080)
+// 0x00C0 (0x0140 - 0x0080)
 class UTaleRegisterSpireStepDesc : public UTaleQuestStepDesc
 {
 public:
-	struct FQuestVariableVector                        SelectionOriginPoint;                                     // 0x0080(0x0010) (Edit)
-	struct FQuestVariableFloat                         PlayerExclusionSelectionRadius;                           // 0x0090(0x0010) (Edit)
-	struct FQuestVariableTaleResourceHandle            AllocatedSpireHandle;                                     // 0x00A0(0x0010) (Edit)
-	struct FQuestVariableVector                        AllocatedSpireLocation;                                   // 0x00B0(0x0010) (Edit)
+	struct FQuestVariableVector                        SelectionOriginPoint;                                     // 0x0080(0x0030) (Edit)
+	struct FQuestVariableFloat                         PlayerExclusionSelectionRadius;                           // 0x00B0(0x0030) (Edit)
+	struct FQuestVariableTaleResourceHandle            AllocatedSpireHandle;                                     // 0x00E0(0x0030) (Edit)
+	struct FQuestVariableVector                        AllocatedSpireLocation;                                   // 0x0110(0x0030) (Edit)
 
 	static UClass* StaticClass()
 	{
@@ -314,11 +314,11 @@ public:
 
 
 // Class SpireFramework.TaleReleaseSpireStep
-// 0x0008 (0x0098 - 0x0090)
+// 0x0008 (0x00A0 - 0x0098)
 class UTaleReleaseSpireStep : public UTaleQuestStep
 {
 public:
-	unsigned char                                      UnknownData00[0x8];                                       // 0x0090(0x0008) MISSED OFFSET
+	unsigned char                                      UnknownData00[0x8];                                       // 0x0098(0x0008) MISSED OFFSET
 
 	static UClass* StaticClass()
 	{
@@ -330,11 +330,11 @@ public:
 
 
 // Class SpireFramework.TaleReleaseSpireStepDesc
-// 0x0010 (0x0090 - 0x0080)
+// 0x0030 (0x00B0 - 0x0080)
 class UTaleReleaseSpireStepDesc : public UTaleQuestStepDesc
 {
 public:
-	struct FQuestVariableTaleResourceHandle            SpireHandle;                                              // 0x0080(0x0010) (Edit)
+	struct FQuestVariableTaleResourceHandle            SpireHandle;                                              // 0x0080(0x0030) (Edit)
 
 	static UClass* StaticClass()
 	{
@@ -346,7 +346,7 @@ public:
 
 
 // Class SpireFramework.TaleUnloadSpireStep
-// 0x0000 (0x0090 - 0x0090)
+// 0x0000 (0x0098 - 0x0098)
 class UTaleUnloadSpireStep : public UTaleQuestStep
 {
 public:
@@ -376,11 +376,11 @@ public:
 
 
 // Class SpireFramework.TaleWaitForSpireToLoadStep
-// 0x0050 (0x00E0 - 0x0090)
+// 0x0050 (0x00E8 - 0x0098)
 class UTaleWaitForSpireToLoadStep : public UTaleQuestStep
 {
 public:
-	unsigned char                                      UnknownData00[0x50];                                      // 0x0090(0x0050) MISSED OFFSET
+	unsigned char                                      UnknownData00[0x50];                                      // 0x0098(0x0050) MISSED OFFSET
 
 	static UClass* StaticClass()
 	{

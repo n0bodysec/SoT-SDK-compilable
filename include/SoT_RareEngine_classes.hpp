@@ -15,11 +15,11 @@ namespace SDK
 //---------------------------------------------------------------------------
 
 // Class RareEngine.RareGameEngine
-// 0x0058 (0x0A40 - 0x09E8)
+// 0x0058 (0x0A88 - 0x0A30)
 class URareGameEngine : public UGameEngine
 {
 public:
-	unsigned char                                      UnknownData00[0x58];                                      // 0x09E8(0x0058) MISSED OFFSET
+	unsigned char                                      UnknownData00[0x58];                                      // 0x0A30(0x0058) MISSED OFFSET
 
 	static UClass* StaticClass()
 	{
@@ -100,7 +100,7 @@ public:
 
 
 // Class RareEngine.RareHUD
-// 0x0000 (0x04C8 - 0x04C8)
+// 0x0000 (0x04C0 - 0x04C0)
 class ARareHUD : public AHUD
 {
 public:

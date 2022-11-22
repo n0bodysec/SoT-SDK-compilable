@@ -9,6 +9,7 @@
 #include "SoT_Basic.hpp"
 #include "SoT_Engine_classes.hpp"
 #include "SoT_CoreUObject_classes.hpp"
+#include "SoT_Athena_classes.hpp"
 
 namespace SDK
 {
@@ -103,6 +104,15 @@ struct FCustomPlayerStartConfigData
 	unsigned char                                      UnknownData00[0x4];                                       // 0x000C(0x0004) MISSED OFFSET
 	struct FQuat                                       Rotation;                                                 // 0x0010(0x0010) (IsPlainOldData)
 	TArray<class FString>                              Tags;                                                     // 0x0020(0x0010) (ZeroConstructor)
+};
+
+// ScriptStruct CustomDeath.CustomPlayerStartConfigResponseData
+// 0x0008
+struct FCustomPlayerStartConfigResponseData
+{
+	bool                                               Success;                                                  // 0x0000(0x0001) (ZeroConstructor, IsPlainOldData)
+	unsigned char                                      UnknownData00[0x3];                                       // 0x0001(0x0003) MISSED OFFSET
+	int                                                PlayerStartId;                                            // 0x0004(0x0004) (ZeroConstructor, IsPlainOldData)
 };
 
 }

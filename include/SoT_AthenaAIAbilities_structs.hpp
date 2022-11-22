@@ -10,10 +10,10 @@
 #include "SoT_AthenaAIAbilities_enums.hpp"
 #include "SoT_Athena_classes.hpp"
 #include "SoT_AthenaAI_classes.hpp"
+#include "SoT_Maths_classes.hpp"
 #include "SoT_StatusEffects_classes.hpp"
 #include "SoT_CoreUObject_classes.hpp"
 #include "SoT_Engine_classes.hpp"
-#include "SoT_Maths_classes.hpp"
 
 namespace SDK
 {

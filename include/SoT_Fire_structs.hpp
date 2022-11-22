@@ -10,8 +10,8 @@
 #include "SoT_Fire_enums.hpp"
 #include "SoT_CoreUObject_classes.hpp"
 #include "SoT_Engine_classes.hpp"
-#include "AthenaCommons.hpp"
 #include "SoT_StatusEffects_classes.hpp"
+#include "AthenaCommons.hpp"
 
 namespace SDK
 {
@@ -362,6 +362,15 @@ struct FOnFireChangedEvent
 struct FFireCellStateData
 {
 	unsigned char                                      UnknownData00[0x30];                                      // 0x0000(0x0030) MISSED OFFSET
+};
+
+// ScriptStruct Fire.HullCharringPersistenceModel
+// 0x0017 (0x0018 - 0x0001)
+struct FHullCharringPersistenceModel : public FPersistenceModel
+{
+	TArray<float>                                      TimeSpentCharring;                                        // 0x0000(0x0010) (ZeroConstructor)
+	int                                                TotalCellsOnFire;                                         // 0x0010(0x0004) (ZeroConstructor, IsPlainOldData)
+	unsigned char                                      UnknownData00[0x4];                                       // 0x0014(0x0004) MISSED OFFSET
 };
 
 // ScriptStruct Fire.PlayerFireGridTickParams

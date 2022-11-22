@@ -32,6 +32,7 @@ public:
 	void SetGameModeDeathPenaltyRespawnTimer(const struct FGameModeDeathPenaltyRespawnTimerData& GameModeDeathPenaltyRespawnTimerData);
 	bool SetCustomPlayerStart(const struct FSetCustomPlayerStartData& SetCustomPlayerStartData);
 	void SetCustomConfigForPlayer(int PlayerId, const struct FCustomDeathConfiguration& CustomDeathConfiguration);
+	void SetCrewBasedDeathPenaltyRespawnTimes(const struct FCrewBasedRespawnTimes& CrewBasedRespawnTimes);
 	void ResetCustomConfigForPlayer(const struct FResetCustomConfigForPlayerData& ResetCustomConfigForPlayerData);
 	void KillPlayer(const struct FKillPlayerData& KillPlayerData);
 	void KillCrew(const struct FKillCrewData& KillCrewData);
@@ -40,18 +41,18 @@ public:
 	class APlayerStart* GetCustomPlayerStart(int PlayerId);
 	void ForcePlayerRespawn(const struct FForcePlayerRespawnData& ForcePlayerRespawnData);
 	int DestroyCustomPlayerStart(const struct FDestroyCustomPlayerStartData& DestroyCustomPlayerStartData);
-	class APlayerStart* CreateNewCustomPlayerStart(const struct FCustomPlayerStartConfigData& CustomPlayerStartConfigData);
+	int CreateNewCustomPlayerStart(const struct FCustomPlayerStartConfigData& CustomPlayerStartConfigData);
 };
 
 
 // Class CustomDeath.CustomDeathService
-// 0x0098 (0x0468 - 0x03D0)
+// 0x0098 (0x0460 - 0x03C8)
 class ACustomDeathService : public AActor
 {
 public:
-	unsigned char                                      UnknownData00[0x38];                                      // 0x03D0(0x0038) MISSED OFFSET
-	TArray<class APlayerStart*>                        CustomPlayerStarts;                                       // 0x0408(0x0010) (ZeroConstructor)
-	unsigned char                                      UnknownData01[0x50];                                      // 0x0418(0x0050) MISSED OFFSET
+	unsigned char                                      UnknownData00[0x38];                                      // 0x03C8(0x0038) MISSED OFFSET
+	TArray<class APlayerStart*>                        CustomPlayerStarts;                                       // 0x0400(0x0010) (ZeroConstructor)
+	unsigned char                                      UnknownData01[0x50];                                      // 0x0410(0x0050) MISSED OFFSET
 
 	static UClass* StaticClass()
 	{

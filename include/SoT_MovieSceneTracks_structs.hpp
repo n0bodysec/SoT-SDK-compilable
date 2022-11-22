@@ -451,10 +451,12 @@ struct FMovieSceneSkeletalAnimationSectionTemplateParameters : public FMovieScen
 };
 
 // ScriptStruct MovieSceneTracks.MovieSceneSkeletalAnimationSectionTemplate
-// 0x00A0 (0x00B8 - 0x0018)
+// 0x00A8 (0x00C0 - 0x0018)
 struct FMovieSceneSkeletalAnimationSectionTemplate : public FMovieSceneEvalTemplate
 {
 	struct FMovieSceneSkeletalAnimationSectionTemplateParameters Params;                                                   // 0x0018(0x00A0)
+	TEnumAsByte<EAnimationTrackSubtype>                AnimationSubtype;                                         // 0x00B8(0x0001) (ZeroConstructor, IsPlainOldData)
+	unsigned char                                      UnknownData00[0x7];                                       // 0x00B9(0x0007) MISSED OFFSET
 };
 
 // ScriptStruct MovieSceneTracks.MovieSceneSlomoSectionTemplate

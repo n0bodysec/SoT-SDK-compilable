@@ -14,6 +14,36 @@ namespace SDK
 //Classes
 //---------------------------------------------------------------------------
 
+// Class Cooking.BurntItemConditionalStatTrigger
+// 0x0000 (0x0030 - 0x0030)
+class UBurntItemConditionalStatTrigger : public UConditionalStatsTriggerType
+{
+public:
+
+	static UClass* StaticClass()
+	{
+		static auto ptr = UObject::FindObject<UClass>(_xor_("Class Cooking.BurntItemConditionalStatTrigger"));
+		return ptr;
+	}
+
+};
+
+
+// Class Cooking.BurntItemOnShipConditionalStatTrigger
+// 0x0000 (0x0030 - 0x0030)
+class UBurntItemOnShipConditionalStatTrigger : public UConditionalStatsTriggerType
+{
+public:
+
+	static UClass* StaticClass()
+	{
+		static auto ptr = UObject::FindObject<UClass>(_xor_("Class Cooking.BurntItemOnShipConditionalStatTrigger"));
+		return ptr;
+	}
+
+};
+
+
 // Class Cooking.CookableInterface
 // 0x0000 (0x0028 - 0x0028)
 class UCookableInterface : public UInterface
@@ -75,7 +105,7 @@ public:
 
 
 // Class Cooking.CookableComponent
-// 0x0058 (0x0120 - 0x00C8)
+// 0x0060 (0x0128 - 0x00C8)
 class UCookableComponent : public UActorComponent
 {
 public:
@@ -87,8 +117,12 @@ public:
 	class UCurveFloat*                                 VisibleCookedExtentOverTime;                              // 0x0108(0x0008) (Edit, ZeroConstructor, IsPlainOldData)
 	float                                              DefaultVisibleCookedExtent;                               // 0x0110(0x0004) (Edit, ZeroConstructor, IsPlainOldData)
 	struct FName                                       CookableTypeName;                                         // 0x0114(0x0008) (Edit, ZeroConstructor, IsPlainOldData)
-	TEnumAsByte<ECookingState>                         CookingState;                                             // 0x011C(0x0001) (Edit, ZeroConstructor, IsPlainOldData)
-	unsigned char                                      UnknownData02[0x3];                                       // 0x011D(0x0003) MISSED OFFSET
+	struct FPlayerStat                                 CookedStat;                                               // 0x011C(0x0004) (Edit, DisableEditOnInstance)
+	struct FPlayerStat                                 ShipCookedStat;                                           // 0x0120(0x0004) (Edit, DisableEditOnInstance)
+	TEnumAsByte<ECookingState>                         CookingState;                                             // 0x0124(0x0001) (Edit, ZeroConstructor, IsPlainOldData)
+	TEnumAsByte<ECookingState>                         InitialCookingState;                                      // 0x0125(0x0001) (Edit, ZeroConstructor, IsPlainOldData)
+	TEnumAsByte<ECookingState>                         RemovedCookingState;                                      // 0x0126(0x0001) (Edit, ZeroConstructor, IsPlainOldData)
+	bool                                               IgnoreCookedFromRawStats;                                 // 0x0127(0x0001) (Edit, ZeroConstructor, DisableEditOnInstance, IsPlainOldData)
 
 	static UClass* StaticClass()
 	{
@@ -183,22 +217,22 @@ public:
 
 
 // Class Cooking.CookingPot
-// 0x01E0 (0x05D8 - 0x03F8)
+// 0x01E0 (0x05E0 - 0x0400)
 class ACookingPot : public AInteractableBase
 {
 public:
-	unsigned char                                      UnknownData00[0x8];                                       // 0x03F8(0x0008) MISSED OFFSET
-	class UStaticMeshComponent*                        MeshComponent;                                            // 0x0400(0x0008) (Edit, ExportObject, ZeroConstructor, EditConst, InstancedReference, IsPlainOldData)
-	class UActionRulesInteractableComponent*           InteractableComponent;                                    // 0x0408(0x0008) (Edit, ExportObject, ZeroConstructor, DisableEditOnInstance, EditConst, InstancedReference, IsPlainOldData)
-	class UCookerComponent*                            CookerComponent;                                          // 0x0410(0x0008) (Edit, ExportObject, ZeroConstructor, DisableEditOnInstance, EditConst, InstancedReference, IsPlainOldData)
-	float                                              HoldToInteractTime;                                       // 0x0418(0x0004) (Edit, ZeroConstructor, DisableEditOnInstance, IsPlainOldData)
-	unsigned char                                      UnknownData01[0x4];                                       // 0x041C(0x0004) MISSED OFFSET
-	struct FText                                       NotWieldingCookableItemTooltip;                           // 0x0420(0x0038) (Edit, DisableEditOnInstance)
-	struct FText                                       WieldingCookableItemTooltip;                              // 0x0458(0x0038) (Edit, DisableEditOnInstance)
-	struct FText                                       TakeItemTooltip;                                          // 0x0490(0x0038) (Edit, DisableEditOnInstance)
-	struct FText                                       CannotTakeItemTooltip;                                    // 0x04C8(0x0038) (Edit, DisableEditOnInstance)
-	struct FText                                       MixInItemTooltip;                                         // 0x0500(0x0038) (Edit, DisableEditOnInstance)
-	unsigned char                                      UnknownData02[0xA0];                                      // 0x0538(0x00A0) MISSED OFFSET
+	unsigned char                                      UnknownData00[0x8];                                       // 0x0400(0x0008) MISSED OFFSET
+	class UStaticMeshComponent*                        MeshComponent;                                            // 0x0408(0x0008) (Edit, ExportObject, ZeroConstructor, EditConst, InstancedReference, IsPlainOldData)
+	class UActionRulesInteractableComponent*           InteractableComponent;                                    // 0x0410(0x0008) (Edit, ExportObject, ZeroConstructor, DisableEditOnInstance, EditConst, InstancedReference, IsPlainOldData)
+	class UCookerComponent*                            CookerComponent;                                          // 0x0418(0x0008) (Edit, ExportObject, ZeroConstructor, DisableEditOnInstance, EditConst, InstancedReference, IsPlainOldData)
+	float                                              HoldToInteractTime;                                       // 0x0420(0x0004) (Edit, ZeroConstructor, DisableEditOnInstance, IsPlainOldData)
+	unsigned char                                      UnknownData01[0x4];                                       // 0x0424(0x0004) MISSED OFFSET
+	struct FText                                       NotWieldingCookableItemTooltip;                           // 0x0428(0x0038) (Edit, DisableEditOnInstance)
+	struct FText                                       WieldingCookableItemTooltip;                              // 0x0460(0x0038) (Edit, DisableEditOnInstance)
+	struct FText                                       TakeItemTooltip;                                          // 0x0498(0x0038) (Edit, DisableEditOnInstance)
+	struct FText                                       CannotTakeItemTooltip;                                    // 0x04D0(0x0038) (Edit, DisableEditOnInstance)
+	struct FText                                       MixInItemTooltip;                                         // 0x0508(0x0038) (Edit, DisableEditOnInstance)
+	unsigned char                                      UnknownData02[0xA0];                                      // 0x0540(0x00A0) MISSED OFFSET
 
 	static UClass* StaticClass()
 	{

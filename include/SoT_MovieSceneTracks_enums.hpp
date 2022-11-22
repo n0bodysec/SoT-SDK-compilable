@@ -54,6 +54,16 @@ enum class EParticleKey : uint8_t
 };
 
 
+// Enum MovieSceneTracks.EAnimationTrackSubtype
+enum class EAnimationTrackSubtype : uint8_t
+{
+	EAnimationTrackSubtype__None   = 0,
+	EAnimationTrackSubtype__CameraDockable_1stPerson = 1,
+	EAnimationTrackSubtype__CameraDockable_3rdPerson = 2,
+	EAnimationTrackSubtype__EAnimationTrackSubtype_MAX = 3
+};
+
+
 }
 
 #ifdef _MSC_VER

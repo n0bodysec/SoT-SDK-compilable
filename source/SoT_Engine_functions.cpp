@@ -2961,8 +2961,9 @@ bool AActor::GetActorEnableCollision()
 // bool                           bOnlyCollidingComponents       (Parm, ZeroConstructor, IsPlainOldData)
 // struct FVector                 Origin                         (Parm, OutParm, ZeroConstructor, IsPlainOldData)
 // struct FVector                 BoxExtent                      (Parm, OutParm, ZeroConstructor, IsPlainOldData)
+// bool                           bIncludeFromChildActors        (Parm, ZeroConstructor, IsPlainOldData)
 
-void AActor::GetActorBounds(bool bOnlyCollidingComponents, struct FVector* Origin, struct FVector* BoxExtent)
+void AActor::GetActorBounds(bool bOnlyCollidingComponents, bool bIncludeFromChildActors, struct FVector* Origin, struct FVector* BoxExtent)
 {
 	static auto fn = UObject::FindObject<UFunction>(_xor_("Function Engine.Actor.GetActorBounds"));
 
@@ -2971,9 +2972,11 @@ void AActor::GetActorBounds(bool bOnlyCollidingComponents, struct FVector* Origi
 		bool                           bOnlyCollidingComponents;
 		struct FVector                 Origin;
 		struct FVector                 BoxExtent;
+		bool                           bIncludeFromChildActors;
 	} params;
 
 	params.bOnlyCollidingComponents = bOnlyCollidingComponents;
+	params.bIncludeFromChildActors = bIncludeFromChildActors;
 
 	UObject::ProcessEvent(fn, &params);
 
@@ -5740,6 +5743,238 @@ bool ACharacter::CanJump()
 }
 
 
+// Function Engine.InputComponent.WasControllerKeyJustReleased
+// (Final, Native, Private, BlueprintCallable, BlueprintPure, Const)
+// Parameters:
+// struct FKey                    Key                            (Parm)
+// bool                           ReturnValue                    (Parm, OutParm, ZeroConstructor, ReturnParm, IsPlainOldData)
+
+bool UInputComponent::WasControllerKeyJustReleased(const struct FKey& Key)
+{
+	static auto fn = UObject::FindObject<UFunction>(_xor_("Function Engine.InputComponent.WasControllerKeyJustReleased"));
+
+	struct
+	{
+		struct FKey                    Key;
+		bool                           ReturnValue;
+	} params;
+
+	params.Key = Key;
+
+	UObject::ProcessEvent(fn, &params);
+
+	return params.ReturnValue;
+}
+
+
+// Function Engine.InputComponent.WasControllerKeyJustPressed
+// (Final, Native, Private, BlueprintCallable, BlueprintPure, Const)
+// Parameters:
+// struct FKey                    Key                            (Parm)
+// bool                           ReturnValue                    (Parm, OutParm, ZeroConstructor, ReturnParm, IsPlainOldData)
+
+bool UInputComponent::WasControllerKeyJustPressed(const struct FKey& Key)
+{
+	static auto fn = UObject::FindObject<UFunction>(_xor_("Function Engine.InputComponent.WasControllerKeyJustPressed"));
+
+	struct
+	{
+		struct FKey                    Key;
+		bool                           ReturnValue;
+	} params;
+
+	params.Key = Key;
+
+	UObject::ProcessEvent(fn, &params);
+
+	return params.ReturnValue;
+}
+
+
+// Function Engine.InputComponent.IsControllerKeyDown
+// (Final, Native, Private, BlueprintCallable, BlueprintPure, Const)
+// Parameters:
+// struct FKey                    Key                            (Parm)
+// bool                           ReturnValue                    (Parm, OutParm, ZeroConstructor, ReturnParm, IsPlainOldData)
+
+bool UInputComponent::IsControllerKeyDown(const struct FKey& Key)
+{
+	static auto fn = UObject::FindObject<UFunction>(_xor_("Function Engine.InputComponent.IsControllerKeyDown"));
+
+	struct
+	{
+		struct FKey                    Key;
+		bool                           ReturnValue;
+	} params;
+
+	params.Key = Key;
+
+	UObject::ProcessEvent(fn, &params);
+
+	return params.ReturnValue;
+}
+
+
+// Function Engine.InputComponent.GetTouchState
+// (Final, Native, Private, HasOutParms, BlueprintCallable, BlueprintPure, Const)
+// Parameters:
+// int                            FingerIndex                    (Parm, ZeroConstructor, IsPlainOldData)
+// float                          LocationX                      (Parm, OutParm, ZeroConstructor, IsPlainOldData)
+// float                          LocationY                      (Parm, OutParm, ZeroConstructor, IsPlainOldData)
+// bool                           bIsCurrentlyPressed            (Parm, OutParm, ZeroConstructor, IsPlainOldData)
+
+void UInputComponent::GetTouchState(int FingerIndex, float* LocationX, float* LocationY, bool* bIsCurrentlyPressed)
+{
+	static auto fn = UObject::FindObject<UFunction>(_xor_("Function Engine.InputComponent.GetTouchState"));
+
+	struct
+	{
+		int                            FingerIndex;
+		float                          LocationX;
+		float                          LocationY;
+		bool                           bIsCurrentlyPressed;
+	} params;
+
+	params.FingerIndex = FingerIndex;
+
+	UObject::ProcessEvent(fn, &params);
+
+	if (LocationX != nullptr)
+		*LocationX = params.LocationX;
+	if (LocationY != nullptr)
+		*LocationY = params.LocationY;
+	if (bIsCurrentlyPressed != nullptr)
+		*bIsCurrentlyPressed = params.bIsCurrentlyPressed;
+}
+
+
+// Function Engine.InputComponent.GetControllerVectorKeyState
+// (Final, Native, Private, HasDefaults, BlueprintCallable, BlueprintPure, Const)
+// Parameters:
+// struct FKey                    Key                            (Parm)
+// struct FVector                 ReturnValue                    (Parm, OutParm, ZeroConstructor, ReturnParm, IsPlainOldData)
+
+struct FVector UInputComponent::GetControllerVectorKeyState(const struct FKey& Key)
+{
+	static auto fn = UObject::FindObject<UFunction>(_xor_("Function Engine.InputComponent.GetControllerVectorKeyState"));
+
+	struct
+	{
+		struct FKey                    Key;
+		struct FVector                 ReturnValue;
+	} params;
+
+	params.Key = Key;
+
+	UObject::ProcessEvent(fn, &params);
+
+	return params.ReturnValue;
+}
+
+
+// Function Engine.InputComponent.GetControllerMouseDelta
+// (Final, Native, Private, HasOutParms, BlueprintCallable, BlueprintPure, Const)
+// Parameters:
+// float                          DeltaX                         (Parm, OutParm, ZeroConstructor, IsPlainOldData)
+// float                          DeltaY                         (Parm, OutParm, ZeroConstructor, IsPlainOldData)
+
+void UInputComponent::GetControllerMouseDelta(float* DeltaX, float* DeltaY)
+{
+	static auto fn = UObject::FindObject<UFunction>(_xor_("Function Engine.InputComponent.GetControllerMouseDelta"));
+
+	struct
+	{
+		float                          DeltaX;
+		float                          DeltaY;
+	} params;
+
+
+	UObject::ProcessEvent(fn, &params);
+
+	if (DeltaX != nullptr)
+		*DeltaX = params.DeltaX;
+	if (DeltaY != nullptr)
+		*DeltaY = params.DeltaY;
+}
+
+
+// Function Engine.InputComponent.GetControllerKeyTimeDown
+// (Final, Native, Private, BlueprintCallable, BlueprintPure, Const)
+// Parameters:
+// struct FKey                    Key                            (Parm)
+// float                          ReturnValue                    (Parm, OutParm, ZeroConstructor, ReturnParm, IsPlainOldData)
+
+float UInputComponent::GetControllerKeyTimeDown(const struct FKey& Key)
+{
+	static auto fn = UObject::FindObject<UFunction>(_xor_("Function Engine.InputComponent.GetControllerKeyTimeDown"));
+
+	struct
+	{
+		struct FKey                    Key;
+		float                          ReturnValue;
+	} params;
+
+	params.Key = Key;
+
+	UObject::ProcessEvent(fn, &params);
+
+	return params.ReturnValue;
+}
+
+
+// Function Engine.InputComponent.GetControllerAnalogStickState
+// (Final, Native, Private, HasOutParms, BlueprintCallable, BlueprintPure, Const)
+// Parameters:
+// TEnumAsByte<EControllerAnalogStick> WhichStick                     (Parm, ZeroConstructor, IsPlainOldData)
+// float                          StickX                         (Parm, OutParm, ZeroConstructor, IsPlainOldData)
+// float                          StickY                         (Parm, OutParm, ZeroConstructor, IsPlainOldData)
+
+void UInputComponent::GetControllerAnalogStickState(TEnumAsByte<EControllerAnalogStick> WhichStick, float* StickX, float* StickY)
+{
+	static auto fn = UObject::FindObject<UFunction>(_xor_("Function Engine.InputComponent.GetControllerAnalogStickState"));
+
+	struct
+	{
+		TEnumAsByte<EControllerAnalogStick> WhichStick;
+		float                          StickX;
+		float                          StickY;
+	} params;
+
+	params.WhichStick = WhichStick;
+
+	UObject::ProcessEvent(fn, &params);
+
+	if (StickX != nullptr)
+		*StickX = params.StickX;
+	if (StickY != nullptr)
+		*StickY = params.StickY;
+}
+
+
+// Function Engine.InputComponent.GetControllerAnalogKeyState
+// (Final, Native, Private, BlueprintCallable, BlueprintPure, Const)
+// Parameters:
+// struct FKey                    Key                            (Parm)
+// float                          ReturnValue                    (Parm, OutParm, ZeroConstructor, ReturnParm, IsPlainOldData)
+
+float UInputComponent::GetControllerAnalogKeyState(const struct FKey& Key)
+{
+	static auto fn = UObject::FindObject<UFunction>(_xor_("Function Engine.InputComponent.GetControllerAnalogKeyState"));
+
+	struct
+	{
+		struct FKey                    Key;
+		float                          ReturnValue;
+	} params;
+
+	params.Key = Key;
+
+	UObject::ProcessEvent(fn, &params);
+
+	return params.ReturnValue;
+}
+
+
 // Function Engine.AnimInstance.UnlockAIResources
 // (Final, BlueprintAuthorityOnly, Native, Public, BlueprintCallable)
 // Parameters:
@@ -5840,9 +6075,10 @@ void UAnimInstance::SetMorphTarget(const struct FName& MorphTargetName, float Va
 // float                          InPlayRate                     (Parm, ZeroConstructor, IsPlainOldData)
 // int                            LoopCount                      (Parm, ZeroConstructor, IsPlainOldData)
 // float                          BlendOutTriggerTime            (Parm, ZeroConstructor, IsPlainOldData)
+// float                          StartingPosition               (Parm, ZeroConstructor, IsPlainOldData)
 // class UAnimMontage*            ReturnValue                    (Parm, OutParm, ZeroConstructor, ReturnParm, IsPlainOldData)
 
-class UAnimMontage* UAnimInstance::PlaySlotAnimationAsDynamicMontage(class UAnimSequenceBase* Asset, const struct FName& SlotNodeName, float BlendInTime, float BlendOutTime, float InPlayRate, int LoopCount, float BlendOutTriggerTime)
+class UAnimMontage* UAnimInstance::PlaySlotAnimationAsDynamicMontage(class UAnimSequenceBase* Asset, const struct FName& SlotNodeName, float BlendInTime, float BlendOutTime, float InPlayRate, int LoopCount, float BlendOutTriggerTime, float StartingPosition)
 {
 	static auto fn = UObject::FindObject<UFunction>(_xor_("Function Engine.AnimInstance.PlaySlotAnimationAsDynamicMontage"));
 
@@ -5855,6 +6091,7 @@ class UAnimMontage* UAnimInstance::PlaySlotAnimationAsDynamicMontage(class UAnim
 		float                          InPlayRate;
 		int                            LoopCount;
 		float                          BlendOutTriggerTime;
+		float                          StartingPosition;
 		class UAnimMontage*            ReturnValue;
 	} params;
 
@@ -5865,6 +6102,7 @@ class UAnimMontage* UAnimInstance::PlaySlotAnimationAsDynamicMontage(class UAnim
 	params.InPlayRate = InPlayRate;
 	params.LoopCount = LoopCount;
 	params.BlendOutTriggerTime = BlendOutTriggerTime;
+	params.StartingPosition = StartingPosition;
 
 	UObject::ProcessEvent(fn, &params);
 
@@ -6008,9 +6246,10 @@ void UAnimInstance::Montage_Resume(class UAnimMontage* Montage)
 // Parameters:
 // class UAnimMontage*            MontageToPlay                  (Parm, ZeroConstructor, IsPlainOldData)
 // float                          InPlayRate                     (Parm, ZeroConstructor, IsPlainOldData)
+// float                          Position                       (Parm, ZeroConstructor, IsPlainOldData)
 // float                          ReturnValue                    (Parm, OutParm, ZeroConstructor, ReturnParm, IsPlainOldData)
 
-float UAnimInstance::Montage_Play(class UAnimMontage* MontageToPlay, float InPlayRate)
+float UAnimInstance::Montage_Play(class UAnimMontage* MontageToPlay, float InPlayRate, float Position)
 {
 	static auto fn = UObject::FindObject<UFunction>(_xor_("Function Engine.AnimInstance.Montage_Play"));
 
@@ -6018,11 +6257,13 @@ float UAnimInstance::Montage_Play(class UAnimMontage* MontageToPlay, float InPla
 	{
 		class UAnimMontage*            MontageToPlay;
 		float                          InPlayRate;
+		float                          Position;
 		float                          ReturnValue;
 	} params;
 
 	params.MontageToPlay = MontageToPlay;
 	params.InPlayRate = InPlayRate;
+	params.Position = Position;
 
 	UObject::ProcessEvent(fn, &params);
 
@@ -9033,238 +9274,6 @@ void UCharacterMovementComponent::AddForce(const struct FVector& Force)
 }
 
 
-// Function Engine.InputComponent.WasControllerKeyJustReleased
-// (Final, Native, Private, BlueprintCallable, BlueprintPure, Const)
-// Parameters:
-// struct FKey                    Key                            (Parm)
-// bool                           ReturnValue                    (Parm, OutParm, ZeroConstructor, ReturnParm, IsPlainOldData)
-
-bool UInputComponent::WasControllerKeyJustReleased(const struct FKey& Key)
-{
-	static auto fn = UObject::FindObject<UFunction>(_xor_("Function Engine.InputComponent.WasControllerKeyJustReleased"));
-
-	struct
-	{
-		struct FKey                    Key;
-		bool                           ReturnValue;
-	} params;
-
-	params.Key = Key;
-
-	UObject::ProcessEvent(fn, &params);
-
-	return params.ReturnValue;
-}
-
-
-// Function Engine.InputComponent.WasControllerKeyJustPressed
-// (Final, Native, Private, BlueprintCallable, BlueprintPure, Const)
-// Parameters:
-// struct FKey                    Key                            (Parm)
-// bool                           ReturnValue                    (Parm, OutParm, ZeroConstructor, ReturnParm, IsPlainOldData)
-
-bool UInputComponent::WasControllerKeyJustPressed(const struct FKey& Key)
-{
-	static auto fn = UObject::FindObject<UFunction>(_xor_("Function Engine.InputComponent.WasControllerKeyJustPressed"));
-
-	struct
-	{
-		struct FKey                    Key;
-		bool                           ReturnValue;
-	} params;
-
-	params.Key = Key;
-
-	UObject::ProcessEvent(fn, &params);
-
-	return params.ReturnValue;
-}
-
-
-// Function Engine.InputComponent.IsControllerKeyDown
-// (Final, Native, Private, BlueprintCallable, BlueprintPure, Const)
-// Parameters:
-// struct FKey                    Key                            (Parm)
-// bool                           ReturnValue                    (Parm, OutParm, ZeroConstructor, ReturnParm, IsPlainOldData)
-
-bool UInputComponent::IsControllerKeyDown(const struct FKey& Key)
-{
-	static auto fn = UObject::FindObject<UFunction>(_xor_("Function Engine.InputComponent.IsControllerKeyDown"));
-
-	struct
-	{
-		struct FKey                    Key;
-		bool                           ReturnValue;
-	} params;
-
-	params.Key = Key;
-
-	UObject::ProcessEvent(fn, &params);
-
-	return params.ReturnValue;
-}
-
-
-// Function Engine.InputComponent.GetTouchState
-// (Final, Native, Private, HasOutParms, BlueprintCallable, BlueprintPure, Const)
-// Parameters:
-// int                            FingerIndex                    (Parm, ZeroConstructor, IsPlainOldData)
-// float                          LocationX                      (Parm, OutParm, ZeroConstructor, IsPlainOldData)
-// float                          LocationY                      (Parm, OutParm, ZeroConstructor, IsPlainOldData)
-// bool                           bIsCurrentlyPressed            (Parm, OutParm, ZeroConstructor, IsPlainOldData)
-
-void UInputComponent::GetTouchState(int FingerIndex, float* LocationX, float* LocationY, bool* bIsCurrentlyPressed)
-{
-	static auto fn = UObject::FindObject<UFunction>(_xor_("Function Engine.InputComponent.GetTouchState"));
-
-	struct
-	{
-		int                            FingerIndex;
-		float                          LocationX;
-		float                          LocationY;
-		bool                           bIsCurrentlyPressed;
-	} params;
-
-	params.FingerIndex = FingerIndex;
-
-	UObject::ProcessEvent(fn, &params);
-
-	if (LocationX != nullptr)
-		*LocationX = params.LocationX;
-	if (LocationY != nullptr)
-		*LocationY = params.LocationY;
-	if (bIsCurrentlyPressed != nullptr)
-		*bIsCurrentlyPressed = params.bIsCurrentlyPressed;
-}
-
-
-// Function Engine.InputComponent.GetControllerVectorKeyState
-// (Final, Native, Private, HasDefaults, BlueprintCallable, BlueprintPure, Const)
-// Parameters:
-// struct FKey                    Key                            (Parm)
-// struct FVector                 ReturnValue                    (Parm, OutParm, ZeroConstructor, ReturnParm, IsPlainOldData)
-
-struct FVector UInputComponent::GetControllerVectorKeyState(const struct FKey& Key)
-{
-	static auto fn = UObject::FindObject<UFunction>(_xor_("Function Engine.InputComponent.GetControllerVectorKeyState"));
-
-	struct
-	{
-		struct FKey                    Key;
-		struct FVector                 ReturnValue;
-	} params;
-
-	params.Key = Key;
-
-	UObject::ProcessEvent(fn, &params);
-
-	return params.ReturnValue;
-}
-
-
-// Function Engine.InputComponent.GetControllerMouseDelta
-// (Final, Native, Private, HasOutParms, BlueprintCallable, BlueprintPure, Const)
-// Parameters:
-// float                          DeltaX                         (Parm, OutParm, ZeroConstructor, IsPlainOldData)
-// float                          DeltaY                         (Parm, OutParm, ZeroConstructor, IsPlainOldData)
-
-void UInputComponent::GetControllerMouseDelta(float* DeltaX, float* DeltaY)
-{
-	static auto fn = UObject::FindObject<UFunction>(_xor_("Function Engine.InputComponent.GetControllerMouseDelta"));
-
-	struct
-	{
-		float                          DeltaX;
-		float                          DeltaY;
-	} params;
-
-
-	UObject::ProcessEvent(fn, &params);
-
-	if (DeltaX != nullptr)
-		*DeltaX = params.DeltaX;
-	if (DeltaY != nullptr)
-		*DeltaY = params.DeltaY;
-}
-
-
-// Function Engine.InputComponent.GetControllerKeyTimeDown
-// (Final, Native, Private, BlueprintCallable, BlueprintPure, Const)
-// Parameters:
-// struct FKey                    Key                            (Parm)
-// float                          ReturnValue                    (Parm, OutParm, ZeroConstructor, ReturnParm, IsPlainOldData)
-
-float UInputComponent::GetControllerKeyTimeDown(const struct FKey& Key)
-{
-	static auto fn = UObject::FindObject<UFunction>(_xor_("Function Engine.InputComponent.GetControllerKeyTimeDown"));
-
-	struct
-	{
-		struct FKey                    Key;
-		float                          ReturnValue;
-	} params;
-
-	params.Key = Key;
-
-	UObject::ProcessEvent(fn, &params);
-
-	return params.ReturnValue;
-}
-
-
-// Function Engine.InputComponent.GetControllerAnalogStickState
-// (Final, Native, Private, HasOutParms, BlueprintCallable, BlueprintPure, Const)
-// Parameters:
-// TEnumAsByte<EControllerAnalogStick> WhichStick                     (Parm, ZeroConstructor, IsPlainOldData)
-// float                          StickX                         (Parm, OutParm, ZeroConstructor, IsPlainOldData)
-// float                          StickY                         (Parm, OutParm, ZeroConstructor, IsPlainOldData)
-
-void UInputComponent::GetControllerAnalogStickState(TEnumAsByte<EControllerAnalogStick> WhichStick, float* StickX, float* StickY)
-{
-	static auto fn = UObject::FindObject<UFunction>(_xor_("Function Engine.InputComponent.GetControllerAnalogStickState"));
-
-	struct
-	{
-		TEnumAsByte<EControllerAnalogStick> WhichStick;
-		float                          StickX;
-		float                          StickY;
-	} params;
-
-	params.WhichStick = WhichStick;
-
-	UObject::ProcessEvent(fn, &params);
-
-	if (StickX != nullptr)
-		*StickX = params.StickX;
-	if (StickY != nullptr)
-		*StickY = params.StickY;
-}
-
-
-// Function Engine.InputComponent.GetControllerAnalogKeyState
-// (Final, Native, Private, BlueprintCallable, BlueprintPure, Const)
-// Parameters:
-// struct FKey                    Key                            (Parm)
-// float                          ReturnValue                    (Parm, OutParm, ZeroConstructor, ReturnParm, IsPlainOldData)
-
-float UInputComponent::GetControllerAnalogKeyState(const struct FKey& Key)
-{
-	static auto fn = UObject::FindObject<UFunction>(_xor_("Function Engine.InputComponent.GetControllerAnalogKeyState"));
-
-	struct
-	{
-		struct FKey                    Key;
-		float                          ReturnValue;
-	} params;
-
-	params.Key = Key;
-
-	UObject::ProcessEvent(fn, &params);
-
-	return params.ReturnValue;
-}
-
-
 // Function Engine.GameInstance.ReceiveShutdown
 // (Event, Public, BlueprintEvent)
 
@@ -11939,22 +11948,6 @@ void APlayerState::OnRep_UniqueId()
 }
 
 
-// Function Engine.PlayerState.OnRep_PlayerName
-// (Native, Public)
-
-void APlayerState::OnRep_PlayerName()
-{
-	static auto fn = UObject::FindObject<UFunction>(_xor_("Function Engine.PlayerState.OnRep_PlayerName"));
-
-	struct
-	{
-	} params;
-
-
-	UObject::ProcessEvent(fn, &params);
-}
-
-
 // Function Engine.Controller.UnPossess
 // (Native, Public, BlueprintCallable)
 
@@ -13023,6 +13016,29 @@ void APlayerController::SendToConsole(const class FString& Command)
 	} params;
 
 	params.Command = Command;
+
+	UObject::ProcessEvent(fn, &params);
+}
+
+
+// Function Engine.PlayerController.SendPlayerName
+// (Net, NetReliable, Native, Event, Public, NetClient)
+// Parameters:
+// int                            Id                             (Parm, ZeroConstructor, IsPlainOldData)
+// class FString                  Name                           (Parm, ZeroConstructor)
+
+void APlayerController::SendPlayerName(int Id, const class FString& Name)
+{
+	static auto fn = UObject::FindObject<UFunction>(_xor_("Function Engine.PlayerController.SendPlayerName"));
+
+	struct
+	{
+		int                            Id;
+		class FString                  Name;
+	} params;
+
+	params.Id = Id;
+	params.Name = Name;
 
 	UObject::ProcessEvent(fn, &params);
 }
@@ -16323,6 +16339,46 @@ void ALevelScriptActor::InitialNetRelevantActorsCreated()
 }
 
 
+// Function Engine.ArrowComponent.SetArrowColor_New
+// (Native, Public, HasDefaults, BlueprintCallable)
+// Parameters:
+// struct FLinearColor            NewColor                       (Parm, ZeroConstructor, IsPlainOldData)
+
+void UArrowComponent::SetArrowColor_New(const struct FLinearColor& NewColor)
+{
+	static auto fn = UObject::FindObject<UFunction>(_xor_("Function Engine.ArrowComponent.SetArrowColor_New"));
+
+	struct
+	{
+		struct FLinearColor            NewColor;
+	} params;
+
+	params.NewColor = NewColor;
+
+	UObject::ProcessEvent(fn, &params);
+}
+
+
+// Function Engine.ArrowComponent.SetArrowColor_DEPRECATED
+// (Native, Public, HasDefaults, BlueprintCallable)
+// Parameters:
+// struct FColor                  NewColor                       (Parm, ZeroConstructor, IsPlainOldData)
+
+void UArrowComponent::SetArrowColor_DEPRECATED(const struct FColor& NewColor)
+{
+	static auto fn = UObject::FindObject<UFunction>(_xor_("Function Engine.ArrowComponent.SetArrowColor_DEPRECATED"));
+
+	struct
+	{
+		struct FColor                  NewColor;
+	} params;
+
+	params.NewColor = NewColor;
+
+	UObject::ProcessEvent(fn, &params);
+}
+
+
 // Function Engine.MeshComponent.ResetDefaultMaterials
 // (Final, Native, Public, BlueprintCallable)
 
@@ -16488,6 +16544,26 @@ class UMaterialInterface* UStaticMeshComponent::GetCustomDepthMaterial()
 	UObject::ProcessEvent(fn, &params);
 
 	return params.ReturnValue;
+}
+
+
+// Function Engine.FogVolume.SetScaleWithLighting
+// (Final, Native, Public, BlueprintCallable)
+// Parameters:
+// bool                           bScaleWithLighting             (ConstParm, Parm, ZeroConstructor, IsPlainOldData)
+
+void AFogVolume::SetScaleWithLighting(bool bScaleWithLighting)
+{
+	static auto fn = UObject::FindObject<UFunction>(_xor_("Function Engine.FogVolume.SetScaleWithLighting"));
+
+	struct
+	{
+		bool                           bScaleWithLighting;
+	} params;
+
+	params.bScaleWithLighting = bScaleWithLighting;
+
+	UObject::ProcessEvent(fn, &params);
 }
 
 
@@ -19422,6 +19498,26 @@ void UBlueprintAsyncActionBase::Activate()
 }
 
 
+// Function Engine.ChildActorComponent.SetChildActorClass
+// (Final, RequiredAPI, Native, Public, BlueprintCallable)
+// Parameters:
+// class UClass*                  InClass                        (Parm, ZeroConstructor, IsPlainOldData)
+
+void UChildActorComponent::SetChildActorClass(class UClass* InClass)
+{
+	static auto fn = UObject::FindObject<UFunction>(_xor_("Function Engine.ChildActorComponent.SetChildActorClass"));
+
+	struct
+	{
+		class UClass*                  InClass;
+	} params;
+
+	params.InClass = InClass;
+
+	UObject::ProcessEvent(fn, &params);
+}
+
+
 // Function Engine.AmbientSound.Stop
 // (Final, Native, Public, BlueprintCallable)
 
@@ -21462,22 +21558,6 @@ int ULightComponent::GetNumberOfShadowCastersInFirstCascade()
 }
 
 
-// Function Engine.Light.ToggleEnabled
-// (Final, Native, Public, BlueprintCallable)
-
-void ALight::ToggleEnabled()
-{
-	static auto fn = UObject::FindObject<UFunction>(_xor_("Function Engine.Light.ToggleEnabled"));
-
-	struct
-	{
-	} params;
-
-
-	UObject::ProcessEvent(fn, &params);
-}
-
-
 // Function Engine.Light.SetLightFunctionScale
 // (Final, Native, Public, HasDefaults, BlueprintCallable)
 // Parameters:
@@ -21558,26 +21638,6 @@ void ALight::SetLightColor(const struct FLinearColor& NewLightColor)
 }
 
 
-// Function Engine.Light.SetEnabled
-// (Final, Native, Public, BlueprintCallable)
-// Parameters:
-// bool                           bSetEnabled                    (Parm, ZeroConstructor, IsPlainOldData)
-
-void ALight::SetEnabled(bool bSetEnabled)
-{
-	static auto fn = UObject::FindObject<UFunction>(_xor_("Function Engine.Light.SetEnabled"));
-
-	struct
-	{
-		bool                           bSetEnabled;
-	} params;
-
-	params.bSetEnabled = bSetEnabled;
-
-	UObject::ProcessEvent(fn, &params);
-}
-
-
 // Function Engine.Light.SetCastShadows
 // (Final, Native, Public, BlueprintCallable)
 // Parameters:
@@ -21635,43 +21695,6 @@ void ALight::SetAffectTranslucentLighting(bool bNewValue)
 	params.bNewValue = bNewValue;
 
 	UObject::ProcessEvent(fn, &params);
-}
-
-
-// Function Engine.Light.OnRep_bEnabled
-// (Native, Public)
-
-void ALight::OnRep_bEnabled()
-{
-	static auto fn = UObject::FindObject<UFunction>(_xor_("Function Engine.Light.OnRep_bEnabled"));
-
-	struct
-	{
-	} params;
-
-
-	UObject::ProcessEvent(fn, &params);
-}
-
-
-// Function Engine.Light.IsEnabled
-// (Final, Native, Public, BlueprintCallable, BlueprintPure, Const)
-// Parameters:
-// bool                           ReturnValue                    (Parm, OutParm, ZeroConstructor, ReturnParm, IsPlainOldData)
-
-bool ALight::IsEnabled()
-{
-	static auto fn = UObject::FindObject<UFunction>(_xor_("Function Engine.Light.IsEnabled"));
-
-	struct
-	{
-		bool                           ReturnValue;
-	} params;
-
-
-	UObject::ProcessEvent(fn, &params);
-
-	return params.ReturnValue;
 }
 
 
@@ -26176,26 +26199,6 @@ void UAudioComponent::AdjustAttenuation(const struct FAttenuationSettings& InAtt
 }
 
 
-// Function Engine.ChildActorComponent.SetChildActorClass
-// (Final, RequiredAPI, Native, Public, BlueprintCallable)
-// Parameters:
-// class UClass*                  InClass                        (Parm, ZeroConstructor, IsPlainOldData)
-
-void UChildActorComponent::SetChildActorClass(class UClass* InClass)
-{
-	static auto fn = UObject::FindObject<UFunction>(_xor_("Function Engine.ChildActorComponent.SetChildActorClass"));
-
-	struct
-	{
-		class UClass*                  InClass;
-	} params;
-
-	params.InClass = InClass;
-
-	UObject::ProcessEvent(fn, &params);
-}
-
-
 // Function Engine.DecalComponent.SetSortOrder
 // (Final, Native, Public, BlueprintCallable)
 // Parameters:
@@ -27358,46 +27361,6 @@ float UPhysicsSpringComponent::GetNormalizedCompressionScalar()
 	UObject::ProcessEvent(fn, &params);
 
 	return params.ReturnValue;
-}
-
-
-// Function Engine.ArrowComponent.SetArrowColor_New
-// (Native, Public, HasDefaults, BlueprintCallable)
-// Parameters:
-// struct FLinearColor            NewColor                       (Parm, ZeroConstructor, IsPlainOldData)
-
-void UArrowComponent::SetArrowColor_New(const struct FLinearColor& NewColor)
-{
-	static auto fn = UObject::FindObject<UFunction>(_xor_("Function Engine.ArrowComponent.SetArrowColor_New"));
-
-	struct
-	{
-		struct FLinearColor            NewColor;
-	} params;
-
-	params.NewColor = NewColor;
-
-	UObject::ProcessEvent(fn, &params);
-}
-
-
-// Function Engine.ArrowComponent.SetArrowColor_DEPRECATED
-// (Native, Public, HasDefaults, BlueprintCallable)
-// Parameters:
-// struct FColor                  NewColor                       (Parm, ZeroConstructor, IsPlainOldData)
-
-void UArrowComponent::SetArrowColor_DEPRECATED(const struct FColor& NewColor)
-{
-	static auto fn = UObject::FindObject<UFunction>(_xor_("Function Engine.ArrowComponent.SetArrowColor_DEPRECATED"));
-
-	struct
-	{
-		struct FColor                  NewColor;
-	} params;
-
-	params.NewColor = NewColor;
-
-	UObject::ProcessEvent(fn, &params);
 }
 
 
@@ -30795,28 +30758,74 @@ void UDeformablesBlueprintFunctionLibrary::ApplyWorldForceToDeformables(class US
 }
 
 
-// Function Engine.FeatureConfigBlueprintFunctionLibrary.IsFeatureEnabled
-// (Final, Native, Static, Public, BlueprintCallable, BlueprintPure)
+// Function Engine.FeatureConfigBlueprintFunctionLibrary.MakeFeatureFlag
+// (Final, Native, Static, Public, HasOutParms, BlueprintCallable, BlueprintPure)
 // Parameters:
-// struct FName                   FeatureName                    (ConstParm, Parm, ZeroConstructor, IsPlainOldData)
+// struct FFeatureFlag            Flag                           (Parm, OutParm)
+
+void UFeatureConfigBlueprintFunctionLibrary::MakeFeatureFlag(struct FFeatureFlag* Flag)
+{
+	static auto fn = UObject::FindObject<UFunction>(_xor_("Function Engine.FeatureConfigBlueprintFunctionLibrary.MakeFeatureFlag"));
+
+	struct
+	{
+		struct FFeatureFlag            Flag;
+	} params;
+
+
+	static auto defaultObj = StaticClass()->CreateDefaultObject();
+	defaultObj->ProcessEvent(fn, &params);
+
+	if (Flag != nullptr)
+		*Flag = params.Flag;
+}
+
+
+// Function Engine.FeatureConfigBlueprintFunctionLibrary.IsFeatureEnabled
+// (Final, RequiredAPI, Native, Static, Public, HasOutParms, BlueprintCallable, BlueprintPure)
+// Parameters:
+// struct FFeatureFlag            Flag                           (ConstParm, Parm, OutParm, ReferenceParm)
 // bool                           ReturnValue                    (Parm, OutParm, ZeroConstructor, ReturnParm, IsPlainOldData)
 
-bool UFeatureConfigBlueprintFunctionLibrary::IsFeatureEnabled(const struct FName& FeatureName)
+bool UFeatureConfigBlueprintFunctionLibrary::IsFeatureEnabled(const struct FFeatureFlag& Flag)
 {
 	static auto fn = UObject::FindObject<UFunction>(_xor_("Function Engine.FeatureConfigBlueprintFunctionLibrary.IsFeatureEnabled"));
 
 	struct
 	{
-		struct FName                   FeatureName;
+		struct FFeatureFlag            Flag;
 		bool                           ReturnValue;
 	} params;
 
-	params.FeatureName = FeatureName;
+	params.Flag = Flag;
 
 	static auto defaultObj = StaticClass()->CreateDefaultObject();
 	defaultObj->ProcessEvent(fn, &params);
 
 	return params.ReturnValue;
+}
+
+
+// Function Engine.FeatureConfigBlueprintFunctionLibrary.BreakFeatureFlag
+// (Final, Native, Static, Public, HasOutParms, BlueprintCallable, BlueprintPure)
+// Parameters:
+// struct FFeatureFlag            Flag                           (Parm, OutParm)
+
+void UFeatureConfigBlueprintFunctionLibrary::BreakFeatureFlag(struct FFeatureFlag* Flag)
+{
+	static auto fn = UObject::FindObject<UFunction>(_xor_("Function Engine.FeatureConfigBlueprintFunctionLibrary.BreakFeatureFlag"));
+
+	struct
+	{
+		struct FFeatureFlag            Flag;
+	} params;
+
+
+	static auto defaultObj = StaticClass()->CreateDefaultObject();
+	defaultObj->ProcessEvent(fn, &params);
+
+	if (Flag != nullptr)
+		*Flag = params.Flag;
 }
 
 
@@ -54297,6 +54306,59 @@ void UCanvas::K2_DrawTriangle(class UTexture* RenderTexture, TArray<struct FCanv
 }
 
 
+// Function Engine.Canvas.K2_DrawTextWithFontInfo
+// (Final, Native, Public, HasOutParms, HasDefaults, BlueprintCallable)
+// Parameters:
+// struct FSlateFontInfo          FontInfo                       (ConstParm, Parm, OutParm, ReferenceParm)
+// class FString                  RenderText                     (Parm, ZeroConstructor)
+// struct FVector2D               ScreenPosition                 (Parm, ZeroConstructor, IsPlainOldData)
+// struct FVector2D               Scale                          (Parm, ZeroConstructor, IsPlainOldData)
+// struct FLinearColor            RenderColor                    (Parm, ZeroConstructor, IsPlainOldData)
+// float                          Kerning                        (Parm, ZeroConstructor, IsPlainOldData)
+// struct FLinearColor            ShadowColor                    (Parm, ZeroConstructor, IsPlainOldData)
+// struct FVector2D               ShadowOffset                   (Parm, ZeroConstructor, IsPlainOldData)
+// bool                           bCentreX                       (Parm, ZeroConstructor, IsPlainOldData)
+// bool                           bCentreY                       (Parm, ZeroConstructor, IsPlainOldData)
+// bool                           bOutlined                      (Parm, ZeroConstructor, IsPlainOldData)
+// struct FLinearColor            OutlineColor                   (Parm, ZeroConstructor, IsPlainOldData)
+
+void UCanvas::K2_DrawTextWithFontInfo(const struct FSlateFontInfo& FontInfo, const class FString& RenderText, const struct FVector2D& ScreenPosition, const struct FVector2D& Scale, const struct FLinearColor& RenderColor, float Kerning, const struct FLinearColor& ShadowColor, const struct FVector2D& ShadowOffset, bool bCentreX, bool bCentreY, bool bOutlined, const struct FLinearColor& OutlineColor)
+{
+	static auto fn = UObject::FindObject<UFunction>(_xor_("Function Engine.Canvas.K2_DrawTextWithFontInfo"));
+
+	struct
+	{
+		struct FSlateFontInfo          FontInfo;
+		class FString                  RenderText;
+		struct FVector2D               ScreenPosition;
+		struct FVector2D               Scale;
+		struct FLinearColor            RenderColor;
+		float                          Kerning;
+		struct FLinearColor            ShadowColor;
+		struct FVector2D               ShadowOffset;
+		bool                           bCentreX;
+		bool                           bCentreY;
+		bool                           bOutlined;
+		struct FLinearColor            OutlineColor;
+	} params;
+
+	params.FontInfo = FontInfo;
+	params.RenderText = RenderText;
+	params.ScreenPosition = ScreenPosition;
+	params.Scale = Scale;
+	params.RenderColor = RenderColor;
+	params.Kerning = Kerning;
+	params.ShadowColor = ShadowColor;
+	params.ShadowOffset = ShadowOffset;
+	params.bCentreX = bCentreX;
+	params.bCentreY = bCentreY;
+	params.bOutlined = bOutlined;
+	params.OutlineColor = OutlineColor;
+
+	UObject::ProcessEvent(fn, &params);
+}
+
+
 // Function Engine.Canvas.K2_DrawTexture
 // (Final, Native, Public, HasDefaults, BlueprintCallable)
 // Parameters:
@@ -54347,6 +54409,7 @@ void UCanvas::K2_DrawTexture(class UTexture* RenderTexture, const struct FVector
 // class UFont*                   RenderFont                     (Parm, ZeroConstructor, IsPlainOldData)
 // class FString                  RenderText                     (Parm, ZeroConstructor)
 // struct FVector2D               ScreenPosition                 (Parm, ZeroConstructor, IsPlainOldData)
+// struct FVector2D               Scale                          (Parm, ZeroConstructor, IsPlainOldData)
 // struct FLinearColor            RenderColor                    (Parm, ZeroConstructor, IsPlainOldData)
 // float                          Kerning                        (Parm, ZeroConstructor, IsPlainOldData)
 // struct FLinearColor            ShadowColor                    (Parm, ZeroConstructor, IsPlainOldData)
@@ -54356,7 +54419,7 @@ void UCanvas::K2_DrawTexture(class UTexture* RenderTexture, const struct FVector
 // bool                           bOutlined                      (Parm, ZeroConstructor, IsPlainOldData)
 // struct FLinearColor            OutlineColor                   (Parm, ZeroConstructor, IsPlainOldData)
 
-void UCanvas::K2_DrawText(class UFont* RenderFont, const class FString& RenderText, const struct FVector2D& ScreenPosition, const struct FLinearColor& RenderColor, float Kerning, const struct FLinearColor& ShadowColor, const struct FVector2D& ShadowOffset, bool bCentreX, bool bCentreY, bool bOutlined, const struct FLinearColor& OutlineColor)
+void UCanvas::K2_DrawText(class UFont* RenderFont, const class FString& RenderText, const struct FVector2D& ScreenPosition, const struct FVector2D& Scale, const struct FLinearColor& RenderColor, float Kerning, const struct FLinearColor& ShadowColor, const struct FVector2D& ShadowOffset, bool bCentreX, bool bCentreY, bool bOutlined, const struct FLinearColor& OutlineColor)
 {
 	static auto fn = UObject::FindObject<UFunction>(_xor_("Function Engine.Canvas.K2_DrawText"));
 
@@ -54365,6 +54428,7 @@ void UCanvas::K2_DrawText(class UFont* RenderFont, const class FString& RenderTe
 		class UFont*                   RenderFont;
 		class FString                  RenderText;
 		struct FVector2D               ScreenPosition;
+		struct FVector2D               Scale;
 		struct FLinearColor            RenderColor;
 		float                          Kerning;
 		struct FLinearColor            ShadowColor;
@@ -54378,6 +54442,7 @@ void UCanvas::K2_DrawText(class UFont* RenderFont, const class FString& RenderTe
 	params.RenderFont = RenderFont;
 	params.RenderText = RenderText;
 	params.ScreenPosition = ScreenPosition;
+	params.Scale = Scale;
 	params.RenderColor = RenderColor;
 	params.Kerning = Kerning;
 	params.ShadowColor = ShadowColor;
@@ -56317,9 +56382,10 @@ void UCanvasRenderTarget2D::GetSize(int* Width, int* Height)
 // TEnumAsByte<ECanvasRenderTargetMips> Mips                           (Parm, ZeroConstructor, IsPlainOldData)
 // bool                           HDR                            (Parm, ZeroConstructor, IsPlainOldData)
 // bool                           CreateTextureResource          (Parm, ZeroConstructor, IsPlainOldData)
+// TEnumAsByte<EPixelFormat>      RenderTargetFormat             (Parm, ZeroConstructor, IsPlainOldData)
 // class UCanvasRenderTarget2D*   ReturnValue                    (Parm, OutParm, ZeroConstructor, ReturnParm, IsPlainOldData)
 
-class UCanvasRenderTarget2D* UCanvasRenderTarget2D::CreateCanvasRenderTarget2D(class UObject* WorldContextObject, class UClass* CanvasRenderTarget2DClass, int Width, int Height, TEnumAsByte<ECanvasRenderTargetMips> Mips, bool HDR, bool CreateTextureResource)
+class UCanvasRenderTarget2D* UCanvasRenderTarget2D::CreateCanvasRenderTarget2D(class UObject* WorldContextObject, class UClass* CanvasRenderTarget2DClass, int Width, int Height, TEnumAsByte<ECanvasRenderTargetMips> Mips, bool HDR, bool CreateTextureResource, TEnumAsByte<EPixelFormat> RenderTargetFormat)
 {
 	static auto fn = UObject::FindObject<UFunction>(_xor_("Function Engine.CanvasRenderTarget2D.CreateCanvasRenderTarget2D"));
 
@@ -56332,6 +56398,7 @@ class UCanvasRenderTarget2D* UCanvasRenderTarget2D::CreateCanvasRenderTarget2D(c
 		TEnumAsByte<ECanvasRenderTargetMips> Mips;
 		bool                           HDR;
 		bool                           CreateTextureResource;
+		TEnumAsByte<EPixelFormat>      RenderTargetFormat;
 		class UCanvasRenderTarget2D*   ReturnValue;
 	} params;
 
@@ -56342,6 +56409,7 @@ class UCanvasRenderTarget2D* UCanvasRenderTarget2D::CreateCanvasRenderTarget2D(c
 	params.Mips = Mips;
 	params.HDR = HDR;
 	params.CreateTextureResource = CreateTextureResource;
+	params.RenderTargetFormat = RenderTargetFormat;
 
 	static auto defaultObj = StaticClass()->CreateDefaultObject();
 	defaultObj->ProcessEvent(fn, &params);
@@ -56412,9 +56480,10 @@ class UTexture* UMaybeCompressedCanvasRenderTarget2D::GetTexture()
 // TEnumAsByte<ECanvasRenderTargetMips> Mips                           (Parm, ZeroConstructor, IsPlainOldData)
 // bool                           HDR                            (Parm, ZeroConstructor, IsPlainOldData)
 // bool                           CreateTextureResource          (Parm, ZeroConstructor, IsPlainOldData)
+// int                            ChannelCount                   (Parm, ZeroConstructor, IsPlainOldData)
 // class UMaybeCompressedCanvasRenderTarget2D* ReturnValue                    (Parm, OutParm, ZeroConstructor, ReturnParm, IsPlainOldData)
 
-class UMaybeCompressedCanvasRenderTarget2D* UMaybeCompressedCanvasRenderTarget2D::CreateMaybeCompressedCanvasRenderTarget2D(class UObject* WorldContextObject, int Width, int Height, TEnumAsByte<ECanvasRenderTargetMips> Mips, bool HDR, bool CreateTextureResource)
+class UMaybeCompressedCanvasRenderTarget2D* UMaybeCompressedCanvasRenderTarget2D::CreateMaybeCompressedCanvasRenderTarget2D(class UObject* WorldContextObject, int Width, int Height, TEnumAsByte<ECanvasRenderTargetMips> Mips, bool HDR, bool CreateTextureResource, int ChannelCount)
 {
 	static auto fn = UObject::FindObject<UFunction>(_xor_("Function Engine.MaybeCompressedCanvasRenderTarget2D.CreateMaybeCompressedCanvasRenderTarget2D"));
 
@@ -56426,6 +56495,7 @@ class UMaybeCompressedCanvasRenderTarget2D* UMaybeCompressedCanvasRenderTarget2D
 		TEnumAsByte<ECanvasRenderTargetMips> Mips;
 		bool                           HDR;
 		bool                           CreateTextureResource;
+		int                            ChannelCount;
 		class UMaybeCompressedCanvasRenderTarget2D* ReturnValue;
 	} params;
 
@@ -56435,6 +56505,7 @@ class UMaybeCompressedCanvasRenderTarget2D* UMaybeCompressedCanvasRenderTarget2D
 	params.Mips = Mips;
 	params.HDR = HDR;
 	params.CreateTextureResource = CreateTextureResource;
+	params.ChannelCount = ChannelCount;
 
 	static auto defaultObj = StaticClass()->CreateDefaultObject();
 	defaultObj->ProcessEvent(fn, &params);
@@ -56899,6 +56970,43 @@ struct FVector USkeletalMeshSocket::GetSocketLocation(class USkeletalMeshCompone
 	UObject::ProcessEvent(fn, &params);
 
 	return params.ReturnValue;
+}
+
+
+// Function Engine.TimecodeProvider.GetSynchronizationState
+// (Native, Public, BlueprintCallable, BlueprintPure, Const)
+// Parameters:
+// TEnumAsByte<ETimecodeProviderSynchronizationState> ReturnValue                    (Parm, OutParm, ZeroConstructor, ReturnParm, IsPlainOldData)
+
+TEnumAsByte<ETimecodeProviderSynchronizationState> UTimecodeProvider::GetSynchronizationState()
+{
+	static auto fn = UObject::FindObject<UFunction>(_xor_("Function Engine.TimecodeProvider.GetSynchronizationState"));
+
+	struct
+	{
+		TEnumAsByte<ETimecodeProviderSynchronizationState> ReturnValue;
+	} params;
+
+
+	UObject::ProcessEvent(fn, &params);
+
+	return params.ReturnValue;
+}
+
+
+// Function Engine.TimecodeProvider.FetchAndUpdate
+// (Native, Public, BlueprintCallable)
+
+void UTimecodeProvider::FetchAndUpdate()
+{
+	static auto fn = UObject::FindObject<UFunction>(_xor_("Function Engine.TimecodeProvider.FetchAndUpdate"));
+
+	struct
+	{
+	} params;
+
+
+	UObject::ProcessEvent(fn, &params);
 }
 
 

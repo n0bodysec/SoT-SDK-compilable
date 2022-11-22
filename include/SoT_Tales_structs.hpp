@@ -8,13 +8,15 @@
 
 #include "SoT_Basic.hpp"
 #include "SoT_Tales_enums.hpp"
-#include "SoT_Engine_classes.hpp"
 #include "SoT_CoreUObject_classes.hpp"
-#include "SoT_MerchantContracts_classes.hpp"
+#include "SoT_Engine_classes.hpp"
 #include "SoT_Athena_structs.hpp"
 #include "AthenaCommons.hpp"
+#include "SoT_AthenaEngine_classes.hpp"
 #include "SoT_AIModule_classes.hpp"
+#include "SoT_MerchantContracts_classes.hpp"
 #include "SoT_PrioritisedPrompts_enums.hpp"
+#include "SoT_Maths_classes.hpp"
 #include "SoT_TaleMaps_classes.hpp"
 
 namespace SDK
@@ -24,7 +26,7 @@ namespace SDK
 //---------------------------------------------------------------------------
 
 // ScriptStruct Tales.QuestVariableAny
-// 0x0000 (0x0010 - 0x0010)
+// 0x0000 (0x0030 - 0x0030)
 struct FQuestVariableAny : public FQuestVariable
 {
 
@@ -67,6 +69,17 @@ struct FTaleQuestDeliveryRequest
 	int                                                NumToAllocate;                                            // 0x0034(0x0004) (Edit, BlueprintVisible, ZeroConstructor, IsPlainOldData)
 };
 
+// ScriptStruct Tales.TaleQuestQueryableStateDataInfo
+// 0x0020
+struct FTaleQuestQueryableStateDataInfo
+{
+	struct FGuid                                       TaleId;                                                   // 0x0000(0x0010) (ZeroConstructor, IsPlainOldData)
+	class UClass*                                      DataID;                                                   // 0x0010(0x0008) (ZeroConstructor, IsPlainOldData)
+	bool                                               DataBool;                                                 // 0x0018(0x0001) (ZeroConstructor, IsPlainOldData)
+	unsigned char                                      UnknownData00[0x3];                                       // 0x0019(0x0003) MISSED OFFSET
+	int                                                DataInt;                                                  // 0x001C(0x0004) (ZeroConstructor, IsPlainOldData)
+};
+
 // ScriptStruct Tales.TrackedActorData
 // 0x0010
 struct FTrackedActorData
@@ -85,7 +98,7 @@ struct FCriticalActorDelegateData
 };
 
 // ScriptStruct Tales.SnapshottedActorData
-// 0x0068
+// 0x0060
 struct FSnapshottedActorData
 {
 	TScriptInterface<class USnapshotOwnerInterface>    Instagator;                                               // 0x0000(0x0010) (ZeroConstructor, IsPlainOldData)
@@ -94,7 +107,6 @@ struct FSnapshottedActorData
 	bool                                               ActorWasTracked;                                          // 0x0021(0x0001) (ZeroConstructor, IsPlainOldData)
 	unsigned char                                      UnknownData00[0x6];                                       // 0x0022(0x0006) MISSED OFFSET
 	struct FText                                       FailureMessage;                                           // 0x0028(0x0038)
-	class AItemInfo*                                   StoredItemInfo;                                           // 0x0060(0x0008) (ZeroConstructor, IsPlainOldData)
 };
 
 // ScriptStruct Tales.PhasedActor
@@ -116,50 +128,87 @@ struct FPhasedItem
 	unsigned char                                      UnknownData00[0x17];                                      // 0x0011(0x0017) MISSED OFFSET
 };
 
+// ScriptStruct Tales.BodyFramePair
+// 0x0028
+struct FBodyFramePair
+{
+	unsigned char                                      UnknownData00[0x10];                                      // 0x0000(0x0010) MISSED OFFSET
+	class UTaleQuestIndexedFrame*                      Frame;                                                    // 0x0010(0x0008) (ZeroConstructor, Transient, IsPlainOldData)
+	TScriptInterface<class UTaleQuestStepInterface>    Body;                                                     // 0x0018(0x0010) (ZeroConstructor, Transient, IsPlainOldData)
+};
+
 // ScriptStruct Tales.QuestVariableArray
-// 0x0000 (0x0010 - 0x0010)
+// 0x0000 (0x0030 - 0x0030)
 struct FQuestVariableArray : public FQuestVariable
 {
 
 };
 
 // ScriptStruct Tales.QuestVariableSetEQSTaleContextValue
-// 0x0000 (0x0010 - 0x0010)
+// 0x0000 (0x0030 - 0x0030)
 struct FQuestVariableSetEQSTaleContextValue : public FQuestVariable
 {
 
 };
 
 // ScriptStruct Tales.QuestVariableLinkEQSContext
-// 0x0000 (0x0010 - 0x0010)
+// 0x0000 (0x0030 - 0x0030)
 struct FQuestVariableLinkEQSContext : public FQuestVariable
 {
 
 };
 
 // ScriptStruct Tales.QuestVariableItemDescType
-// 0x0000 (0x0010 - 0x0010)
+// 0x0000 (0x0030 - 0x0030)
 struct FQuestVariableItemDescType : public FQuestVariable
 {
 
 };
 
 // ScriptStruct Tales.QuestVariableItemInfo
-// 0x0000 (0x0010 - 0x0010)
+// 0x0000 (0x0030 - 0x0030)
 struct FQuestVariableItemInfo : public FQuestVariable
 {
 
 };
 
+// ScriptStruct Tales.QuestVariableCollection
+// 0x0000 (0x0030 - 0x0030)
+struct FQuestVariableCollection : public FQuestVariable
+{
+
+};
+
+// ScriptStruct Tales.QuestVariableGuidArray
+// 0x0000 (0x0030 - 0x0030)
+struct FQuestVariableGuidArray : public FQuestVariable
+{
+
+};
+
 // ScriptStruct Tales.QuestVariablePrioritisedPrompt
-// 0x0000 (0x0010 - 0x0010)
+// 0x0000 (0x0030 - 0x0030)
 struct FQuestVariablePrioritisedPrompt : public FQuestVariable
 {
 
 };
 
+// ScriptStruct Tales.QuestVariableGameEvent
+// 0x0000 (0x0030 - 0x0030)
+struct FQuestVariableGameEvent : public FQuestVariable
+{
+
+};
+
+// ScriptStruct Tales.QuestVariableAISpawner
+// 0x0000 (0x0030 - 0x0030)
+struct FQuestVariableAISpawner : public FQuestVariable
+{
+
+};
+
 // ScriptStruct Tales.QuestVariableBountyTargetArray
-// 0x0000 (0x0010 - 0x0010)
+// 0x0000 (0x0030 - 0x0030)
 struct FQuestVariableBountyTargetArray : public FQuestVariable
 {
 
@@ -174,14 +223,14 @@ struct FTaleQuestDeliverableItem
 };
 
 // ScriptStruct Tales.QuestVariableMerchantItemArray
-// 0x0000 (0x0010 - 0x0010)
+// 0x0000 (0x0030 - 0x0030)
 struct FQuestVariableMerchantItemArray : public FQuestVariable
 {
 
 };
 
 // ScriptStruct Tales.QuestVariableMerchantItem
-// 0x0000 (0x0010 - 0x0010)
+// 0x0000 (0x0030 - 0x0030)
 struct FQuestVariableMerchantItem : public FQuestVariable
 {
 
@@ -194,6 +243,14 @@ struct FTaleActorSpawnParameters
 	bool                                               Tracked;                                                  // 0x0000(0x0001) (Edit, BlueprintVisible, ZeroConstructor, IsPlainOldData)
 	bool                                               GatherForMigration;                                       // 0x0001(0x0001) (Edit, BlueprintVisible, ZeroConstructor, IsPlainOldData)
 	bool                                               DeferredSpawning;                                         // 0x0002(0x0001) (Edit, BlueprintVisible, ZeroConstructor, IsPlainOldData)
+};
+
+// ScriptStruct Tales.CompondNodePinDesc
+// 0x0048
+struct FCompondNodePinDesc
+{
+	struct FText                                       DisplayName;                                              // 0x0000(0x0038)
+	struct FGuid                                       PinId;                                                    // 0x0038(0x0010) (ZeroConstructor, IsPlainOldData)
 };
 
 // ScriptStruct Tales.TaleQuestDesc
@@ -226,21 +283,21 @@ struct FCriticalActorWrapper
 };
 
 // ScriptStruct Tales.QuestVariableActorArray
-// 0x0000 (0x0010 - 0x0010)
+// 0x0000 (0x0030 - 0x0030)
 struct FQuestVariableActorArray : public FQuestVariable
 {
 
 };
 
 // ScriptStruct Tales.QuestVariableObjectArray
-// 0x0000 (0x0010 - 0x0010)
+// 0x0000 (0x0030 - 0x0030)
 struct FQuestVariableObjectArray : public FQuestVariable
 {
 
 };
 
 // ScriptStruct Tales.QuestVariableClassArray
-// 0x0000 (0x0010 - 0x0010)
+// 0x0000 (0x0030 - 0x0030)
 struct FQuestVariableClassArray : public FQuestVariable
 {
 
@@ -254,21 +311,29 @@ struct FParticpantToolGroup
 };
 
 // ScriptStruct Tales.QuestVariableRotator
-// 0x0000 (0x0010 - 0x0010)
+// 0x0000 (0x0030 - 0x0030)
 struct FQuestVariableRotator : public FQuestVariable
 {
 
 };
 
 // ScriptStruct Tales.QuestVariableActorAssetType
-// 0x0000 (0x0010 - 0x0010)
+// 0x0000 (0x0030 - 0x0030)
 struct FQuestVariableActorAssetType : public FQuestVariable
 {
 
 };
 
+// ScriptStruct Tales.TaleQuestForEachCrewTask
+// 0x0028
+struct FTaleQuestForEachCrewTask
+{
+	TScriptInterface<class UTaleQuestStepInterface>    Task;                                                     // 0x0000(0x0010) (ZeroConstructor, IsPlainOldData)
+	unsigned char                                      UnknownData00[0x18];                                      // 0x0010(0x0018) MISSED OFFSET
+};
+
 // ScriptStruct Tales.QuestVariableTaleResourceHandle
-// 0x0000 (0x0010 - 0x0010)
+// 0x0000 (0x0030 - 0x0030)
 struct FQuestVariableTaleResourceHandle : public FQuestVariable
 {
 
@@ -302,6 +367,22 @@ struct FPlaySequencerAutomationEvent
 	unsigned char                                      UnknownData00[0x18];                                      // 0x0000(0x0018) MISSED OFFSET
 };
 
+// ScriptStruct Tales.EventModalInteractionStateChanged
+// 0x0001
+struct FEventModalInteractionStateChanged
+{
+	bool                                               IsInteractionBlocked;                                     // 0x0000(0x0001) (BlueprintVisible, BlueprintReadOnly, ZeroConstructor, IsPlainOldData)
+};
+
+// ScriptStruct Tales.ToggleModalInteractionNetworkEvent
+// 0x0010 (0x0020 - 0x0010)
+struct FToggleModalInteractionNetworkEvent : public FBoxedRpc
+{
+	class AActor*                                      TargetActor;                                              // 0x0010(0x0008) (ZeroConstructor, IsPlainOldData)
+	bool                                               InteractionBlocked;                                       // 0x0018(0x0001) (ZeroConstructor, IsPlainOldData)
+	unsigned char                                      UnknownData00[0x7];                                       // 0x0019(0x0007) MISSED OFFSET
+};
+
 // ScriptStruct Tales.StepMerchantItemDesc
 // 0x0040
 struct FStepMerchantItemDesc
@@ -311,31 +392,39 @@ struct FStepMerchantItemDesc
 };
 
 // ScriptStruct Tales.QuestVariableActorAssetTypeArray
-// 0x0000 (0x0010 - 0x0010)
+// 0x0000 (0x0030 - 0x0030)
 struct FQuestVariableActorAssetTypeArray : public FQuestVariable
 {
 
 };
 
 // ScriptStruct Tales.QuestVariableItemDescTypeArray
-// 0x0000 (0x0010 - 0x0010)
+// 0x0000 (0x0030 - 0x0030)
 struct FQuestVariableItemDescTypeArray : public FQuestVariable
 {
 
 };
 
 // ScriptStruct Tales.QuestVariablePageLayout
-// 0x0000 (0x0010 - 0x0010)
+// 0x0000 (0x0030 - 0x0030)
 struct FQuestVariablePageLayout : public FQuestVariable
 {
 
 };
 
 // ScriptStruct Tales.QuestVariableTexture
-// 0x0000 (0x0010 - 0x0010)
+// 0x0000 (0x0030 - 0x0030)
 struct FQuestVariableTexture : public FQuestVariable
 {
 
+};
+
+// ScriptStruct Tales.TaleQuestFailedEvent
+// 0x0020
+struct FTaleQuestFailedEvent
+{
+	TArray<struct FGuid>                               CrewIds;                                                  // 0x0000(0x0010) (ZeroConstructor)
+	struct FGuid                                       QuestId;                                                  // 0x0010(0x0010) (ZeroConstructor, IsPlainOldData)
 };
 
 // ScriptStruct Tales.TaleQuestContextInvalidTelemetryEvent

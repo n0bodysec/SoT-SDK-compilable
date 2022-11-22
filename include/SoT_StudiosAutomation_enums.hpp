@@ -56,7 +56,8 @@ enum class ETestArea : uint8_t
 	ETestArea__UserInterfaceInitialization = 3,
 	ETestArea__Art                 = 4,
 	ETestArea__Audio               = 5,
-	ETestArea__ETestArea_MAX       = 6
+	ETestArea__AI                  = 6,
+	ETestArea__ETestArea_MAX       = 7
 };
 
 

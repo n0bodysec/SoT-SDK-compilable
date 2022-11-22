@@ -10,10 +10,10 @@
 #include "SoT_AIShips_enums.hpp"
 #include "SoT_CoreUObject_classes.hpp"
 #include "SoT_Engine_classes.hpp"
-#include "SoT_Maths_classes.hpp"
 #include "SoT_AIModule_classes.hpp"
 #include "SoT_Athena_classes.hpp"
 #include "SoT_AthenaAI_classes.hpp"
+#include "SoT_Maths_classes.hpp"
 #include "SoT_AthenaEngine_classes.hpp"
 
 namespace SDK
@@ -432,20 +432,21 @@ struct FAIShipEncounterZoneEnteredNetworkEvent : public FNetworkEventStruct
 	unsigned char                                      UnknownData00[0x4];                                       // 0x001C(0x0004) MISSED OFFSET
 };
 
-// ScriptStruct AIShips.FeatureLockedCampaignParams
-// 0x0010
-struct FFeatureLockedCampaignParams
+// ScriptStruct AIShips.FeatureLockedAIShipBattles
+// 0x0018
+struct FFeatureLockedAIShipBattles
 {
-	struct FName                                       Feature;                                                  // 0x0000(0x0008) (Edit, ZeroConstructor, DisableEditOnInstance, IsPlainOldData)
-	class UCursedSailsCampaignDataAsset*               CampaignDataAsset;                                        // 0x0008(0x0008) (Edit, ZeroConstructor, DisableEditOnInstance, IsPlainOldData)
+	struct FFeatureFlag                                Feature;                                                  // 0x0000(0x000C) (Edit, DisableEditOnInstance)
+	unsigned char                                      UnknownData00[0x4];                                       // 0x000C(0x0004) MISSED OFFSET
+	class UAIShipBattlesDataAsset*                     BattlesData;                                              // 0x0010(0x0008) (Edit, ZeroConstructor, DisableEditOnInstance, IsPlainOldData)
 };
 
 // ScriptStruct AIShips.AIShipWorldSettings
 // 0x0018
 struct FAIShipWorldSettings
 {
-	TArray<struct FFeatureLockedCampaignParams>        CampaignParams;                                           // 0x0000(0x0010) (Edit, ZeroConstructor, DisableEditOnInstance)
-	class UAIShipBattlesDataAsset*                     BattlesData;                                              // 0x0010(0x0008) (Edit, ZeroConstructor, DisableEditOnInstance, IsPlainOldData)
+	TArray<struct FFeatureLockedAIShipBattles>         FeatureToggledBattlesData;                                // 0x0000(0x0010) (Edit, ZeroConstructor, DisableEditOnInstance)
+	class UAIShipBattlesDataAsset*                     DefaultBattlesData;                                       // 0x0010(0x0008) (Edit, ZeroConstructor, DisableEditOnInstance, IsPlainOldData)
 };
 
 // ScriptStruct AIShips.AIShipDamagedTelemetryEvent
@@ -471,7 +472,7 @@ struct FAIShipDespawnTelemetryEvent
 };
 
 // ScriptStruct AIShips.AIShipSpawnTelemetryEvent
-// 0x0068
+// 0x0070
 struct FAIShipSpawnTelemetryEvent
 {
 	class FString                                      AIShipId;                                                 // 0x0000(0x0010) (BlueprintVisible, BlueprintReadOnly, ZeroConstructor)
@@ -480,8 +481,8 @@ struct FAIShipSpawnTelemetryEvent
 	class FString                                      AIShipType;                                               // 0x0030(0x0010) (BlueprintVisible, BlueprintReadOnly, ZeroConstructor)
 	struct FGuid                                       SpawnConfigId;                                            // 0x0040(0x0010) (BlueprintVisible, BlueprintReadOnly, ZeroConstructor, IsPlainOldData)
 	class FString                                      AIShipSize;                                               // 0x0050(0x0010) (BlueprintVisible, BlueprintReadOnly, ZeroConstructor)
-	int                                                AIShipWaveIndex;                                          // 0x0060(0x0004) (BlueprintVisible, BlueprintReadOnly, ZeroConstructor, IsPlainOldData)
-	unsigned char                                      UnknownData00[0x4];                                       // 0x0064(0x0004) MISSED OFFSET
+	struct FVector                                     SpawnLocation;                                            // 0x0060(0x000C) (BlueprintVisible, BlueprintReadOnly, ZeroConstructor, IsPlainOldData)
+	int                                                AIShipWaveIndex;                                          // 0x006C(0x0004) (BlueprintVisible, BlueprintReadOnly, ZeroConstructor, IsPlainOldData)
 };
 
 }

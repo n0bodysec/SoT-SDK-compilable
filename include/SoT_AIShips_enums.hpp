@@ -23,6 +23,22 @@ enum class EAIShipEncounterType : uint8_t
 };
 
 
+// Enum AIShips.EObstacleType
+enum class EObstacleType : uint8_t
+{
+	EObstacleType__None            = 0,
+	EObstacleType__SeaRock         = 1,
+	EObstacleType__UnderseaRock    = 2,
+	EObstacleType__Island          = 3,
+	EObstacleType__AIShip          = 4,
+	EObstacleType__PlayerShip      = 5,
+	EObstacleType__Shipwreck       = 6,
+	EObstacleType__GameEventExclusionZone = 7,
+	EObstacleType__HauntedSeaFort  = 8,
+	EObstacleType__EObstacleType_MAX = 9
+};
+
+
 // Enum AIShips.ECannonballIconType
 enum class ECannonballIconType : uint8_t
 {

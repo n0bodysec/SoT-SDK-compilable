@@ -8,11 +8,11 @@
 
 #include "SoT_Basic.hpp"
 #include "SoT_SpireFramework_enums.hpp"
+#include "SoT_AthenaDebug_classes.hpp"
 #include "SoT_CoreUObject_classes.hpp"
 #include "SoT_Engine_classes.hpp"
 #include "SoT_Tales_classes.hpp"
 #include "SoT_AthenaEngine_classes.hpp"
-#include "SoT_AthenaDebug_classes.hpp"
 #include "SoT_Athena_classes.hpp"
 
 namespace SDK

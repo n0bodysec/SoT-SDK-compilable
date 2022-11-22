@@ -43,7 +43,8 @@ enum class EInteractionObject : uint8_t
 	EInteractionObject__Shop       = 1,
 	EInteractionObject__Chest      = 2,
 	EInteractionObject__Barrel     = 3,
-	EInteractionObject__EInteractionObject_MAX = 4
+	EInteractionObject__CaptainsBookcase = 4,
+	EInteractionObject__EInteractionObject_MAX = 5
 };
 
 

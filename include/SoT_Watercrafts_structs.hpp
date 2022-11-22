@@ -8,12 +8,14 @@
 
 #include "SoT_Basic.hpp"
 #include "SoT_Watercrafts_enums.hpp"
-#include "SoT_Water_classes.hpp"
 #include "SoT_Engine_classes.hpp"
 #include "SoT_CoreUObject_classes.hpp"
 #include "SoT_Athena_classes.hpp"
 #include "SoT_AthenaInput_classes.hpp"
+#include "SoT_Water_classes.hpp"
+#include "SoT_Maths_classes.hpp"
 #include "SoT_ActionStateMachine_classes.hpp"
+#include "SoT_Tales_classes.hpp"
 
 namespace SDK
 {
@@ -61,6 +63,13 @@ struct FRowboatStrainDamageData
 	float                                              WorldEdgeDamageScalar;                                    // 0x0014(0x0004) (Edit, ZeroConstructor, DisableEditOnInstance, IsPlainOldData)
 	float                                              MinWorldEdgeDamageFrequencyInSeconds;                     // 0x0018(0x0004) (Edit, ZeroConstructor, DisableEditOnInstance, IsPlainOldData)
 	float                                              MaxWorldEdgeDamageFrequencyInSeconds;                     // 0x001C(0x0004) (Edit, ZeroConstructor, DisableEditOnInstance, IsPlainOldData)
+};
+
+// ScriptStruct Watercrafts.QuestVariableWatercraft
+// 0x0000 (0x0030 - 0x0030)
+struct FQuestVariableWatercraft : public FQuestVariable
+{
+
 };
 
 // ScriptStruct Watercrafts.OarParams

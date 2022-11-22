@@ -47,6 +47,13 @@ struct FGameTimeRange
 	struct FGameTime                                   End;                                                      // 0x0008(0x0008) (Edit)
 };
 
+// ScriptStruct Time.ReplicatedTimespan
+// 0x0008
+struct FReplicatedTimespan
+{
+	int64_t                                            Ticks;                                                    // 0x0000(0x0008) (ZeroConstructor, IsPlainOldData)
+};
+
 // ScriptStruct Time.EventSetDateTime
 // 0x0014
 struct FEventSetDateTime

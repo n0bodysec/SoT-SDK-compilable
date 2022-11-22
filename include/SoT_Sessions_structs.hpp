@@ -36,6 +36,13 @@ struct FCrewSessionTemplate : public FSessionTemplate
 	unsigned char                                      UnknownData00[0x4];                                       // 0x0034(0x0004) MISSED OFFSET
 };
 
+// ScriptStruct Sessions.OnlineSessionMemberLostEvent
+// 0x0028
+struct FOnlineSessionMemberLostEvent
+{
+	unsigned char                                      UnknownData00[0x28];                                      // 0x0000(0x0028) MISSED OFFSET
+};
+
 // ScriptStruct Sessions.SessionLostEvent
 // 0x0001
 struct FSessionLostEvent
@@ -55,6 +62,16 @@ struct FSessionDetailsChangedEvent
 struct FSessionInfoUpdateAvailableEvent
 {
 	struct FGuid                                       CrewId;                                                   // 0x0000(0x0010) (ZeroConstructor, IsPlainOldData)
+};
+
+// ScriptStruct Sessions.CrewSessionKeepAliveFailedTelemetryEvent
+// 0x0028
+struct FCrewSessionKeepAliveFailedTelemetryEvent
+{
+	struct FGuid                                       CrewId;                                                   // 0x0000(0x0010) (ZeroConstructor, IsPlainOldData)
+	class FString                                      UserStatus;                                               // 0x0010(0x0010) (ZeroConstructor)
+	int                                                ErrorCode;                                                // 0x0020(0x0004) (ZeroConstructor, IsPlainOldData)
+	int                                                KeepAliveCounter;                                         // 0x0024(0x0004) (ZeroConstructor, IsPlainOldData)
 };
 
 // ScriptStruct Sessions.CrewSessionOperationFailedTelemetryEvent
@@ -91,7 +108,7 @@ struct FCrewSessionTelemetry
 	TArray<struct FCrewSessionMemberTelemetry>         SessionMembers;                                           // 0x0000(0x0010) (ZeroConstructor)
 	class FString                                      SessionTemplate;                                          // 0x0010(0x0010) (ZeroConstructor)
 	class FString                                      SessionVisibility;                                        // 0x0020(0x0010) (ZeroConstructor)
-	class FString                                      Playmode;                                                 // 0x0030(0x0010) (ZeroConstructor)
+	class FString                                      PlayMode;                                                 // 0x0030(0x0010) (ZeroConstructor)
 };
 
 // ScriptStruct Sessions.CrewSessionBaseSessionTelemetryEvent

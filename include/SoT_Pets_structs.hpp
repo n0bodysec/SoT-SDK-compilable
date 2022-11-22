@@ -12,10 +12,10 @@
 #include "SoT_AthenaAI_classes.hpp"
 #include "SoT_Interaction_classes.hpp"
 #include "SoT_AIModule_classes.hpp"
+#include "SoT_RareAudio_classes.hpp"
 #include "SoT_Engine_classes.hpp"
 #include "AthenaCommons.hpp"
 #include "SoT_CoreUObject_classes.hpp"
-#include "SoT_RareAudio_classes.hpp"
 #include "SoT_ActionStateMachine_classes.hpp"
 
 namespace SDK
@@ -28,7 +28,7 @@ namespace SDK
 // 0x0008
 struct FHangoutSpotId
 {
-	struct FName                                       Name;                                                     // 0x0000(0x0008) (ZeroConstructor, IsPlainOldData)
+	struct FName                                       Name;                                                     // 0x0000(0x0008) (Edit, ZeroConstructor, EditConst, IsPlainOldData)
 };
 
 // ScriptStruct Pets.PetHangoutSpotParams
@@ -124,11 +124,12 @@ struct FHangoutSpotPosition
 };
 
 // ScriptStruct Pets.PetCustomisation
-// 0x0018
+// 0x0028
 struct FPetCustomisation
 {
-	class FString                                      PetName;                                                  // 0x0000(0x0010) (Edit, ZeroConstructor, DisableEditOnInstance)
-	struct FAIPartId                                   PetPartId;                                                // 0x0010(0x0008) (Edit, DisableEditOnInstance)
+	class FString                                      DefaultPetName;                                           // 0x0000(0x0010) (ZeroConstructor)
+	class FString                                      PetName;                                                  // 0x0010(0x0010) (Edit, ZeroConstructor, DisableEditOnInstance)
+	struct FAIPartId                                   PetPartId;                                                // 0x0020(0x0008) (Edit, DisableEditOnInstance)
 };
 
 // ScriptStruct Pets.PetListingTypeEntry
@@ -305,6 +306,13 @@ struct FEventPetSadnessEnd
 struct FEventPetSadnessBegin
 {
 	unsigned char                                      UnknownData00[0x1];                                       // 0x0000(0x0001) MISSED OFFSET
+};
+
+// ScriptStruct Pets.EventPetInfoAssigned
+// 0x0008
+struct FEventPetInfoAssigned
+{
+	class AItemInfo*                                   PetInfo;                                                  // 0x0000(0x0008) (ZeroConstructor, IsPlainOldData)
 };
 
 // ScriptStruct Pets.EventPetOwnerAssigned
@@ -497,6 +505,13 @@ struct FPetPickedUpTelemetryEvent
 struct FPetControllerSetTickOrderEvent
 {
 	class AActor*                                      Actor;                                                    // 0x0000(0x0008) (ZeroConstructor, IsPlainOldData)
+};
+
+// ScriptStruct Pets.EventPetUGCBlockStateChanged
+// 0x0001
+struct FEventPetUGCBlockStateChanged
+{
+	bool                                               IsPetUGCBlocked;                                          // 0x0000(0x0001) (ZeroConstructor, IsPlainOldData)
 };
 
 // ScriptStruct Pets.EventPerchHangoutSpotSetEnabledState
